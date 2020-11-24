@@ -1,4 +1,6 @@
-# Products, Variants, and Options
+---
+title: Products, Variants, and Options
+---
 
 ## The basics
 

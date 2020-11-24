@@ -1,4 +1,6 @@
-# Account Management
+---
+title: Account Management
+---
 
 ## The basics
 
