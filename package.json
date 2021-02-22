@@ -16,15 +16,6 @@
   "bugs": {
     "url": "https://github.com/postlight/mailchimp-open-commerce-docs/issues"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
-  },
   "homepage": "https://github.com/postlight/mailchimp-open-commerce-docs#readme",
-  "devDependencies": {
-    "husky": "^4.3.7",
-    "prettier": "^2.2.0",
-    "pretty-quick": "^3.1.0"
-  }
+  "devDependencies": {}
 }
