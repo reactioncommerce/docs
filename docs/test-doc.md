@@ -13,6 +13,7 @@
     - [Links](#links)
     - [Emphasis](#emphasis)
     - [Code](#code)
+    - [Tables](#tables)
 
 **Note:** This document is itself written using Markdown; you
 can [see the source for it by adding '.text' to the URL](/projects/markdown/syntax.text).
@@ -300,3 +301,25 @@ Unlike a pre-formatted code block, a code span indicates code within a
 normal paragraph. For example:
 
 Use the `printf()` function.
+
+### Tables
+
+| Field | Description |
+| ----- | ----------- |
+| Discount Code | a case-sensitive string, which customers must enter to receive the discount |
+| Discount | a string or number, depending on the calculation method |
+| Calculation Method | determines how the discount value applies <ul><li>Credit: A credit is applied to the order subtotal, up to the discount value.</li><li>Discount: The discount value is applied as a percentage of the order subtotal.</li><li>Sale: Item pricing is overridden with a fixed sale price. [tk applies to all items? how does this work?]</li><li>Shipping: The discount value should be a string that matches the name of a shipping method. The calculated shipping rate will be applied as a discount.</li></ul>|
+| Account Limit | number of times a single customer can use the code |
+| Total Limit | number of times all customers combined can use the code |
+
+| Field | Description |
+| ----- | ----------- |
+| Attribute label | Required. The attribute label describes the category of variant, for example, "Color" or "Size". |
+| Short title | Describes this particular variant within the category set by the attribute label. For example, a variant with attribute label "Color" might have short title "Red". This is usually shown in a drop-down list or button on the product detail page in your shop. |
+| Title | The full title is usually shown on carts, checkout pages, order summary pages, and invoices. It should fully describe the configured variant. For example, if this is an option with short title "Large", its parent variant has short title "Red", and the product title is "Fancy T-Shirt", then a good title would be "Fancy T-Shirt – Red – Large". |
+| Origin country | Optional. |
+| Width, Length, Height, Weight | Optional. Units for these measurements can be changed under **Settings > Shop Localization**. |
+| Price | Required. Enter a number without currency symbols. |
+| Compare at price | Optional. The suggested retail price of your product. |
+| Manage inventory | Optional. If you'd like to track this item in your inventory, check this box. <ul><li>**Quantity** – Optional. Enter your current inventory quantity.</li><li>**Warn at** – Optional. Allows for "Limited Supply" notifications to be displayed on product pages when quantity is lower than this number.</li><li>**Allow backorder** – Optional. Allows customers to backorder the product.</li></ul>|
+| Taxable | Optional. Check this box to automatically add tax to this item when purchased. [tk explain what this actually means: Add Tax code and Tax description for more options.] |
