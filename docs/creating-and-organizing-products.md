@@ -8,7 +8,7 @@ A variant defines a certain product configuration, describing a discrete, ordera
 
 If necessary, a variant can have further variants, which we call _options_ or _second-level variants_. For example, the “Size 9” variant for “Pair of Best Brand Shoes, Model B” may come in two different colors, black and red. So the “Size 9” variant would have two variants of its own, “Black” and “Red”.
 
-> **Note**: Only a terminal variant may be ordered. So if a variant has options, a shopper will need to order one of the options, but if a variant has no options, that variant itself may be ordered.
+> Note: Only a terminal variant may be ordered. So if a variant has options, a shopper will need to order one of the options, but if a variant has no options, that variant itself may be ordered.
 
 ## Creating a product
 
@@ -82,7 +82,7 @@ Your changes might be saved, but they're not immediately visible to customers. P
 
 ![Publish product](_assets/reaction-admin-product-publish.png)
 
-> **Note**: Products published to the Catalog cannot be unpublished. They may be hidden from the storefront using the visibility controls outlined in the [Hiding and showing products from your storefront](#hiding-and-showing-products-from-your-storefront) section.
+> Note: Products published to the Catalog cannot be unpublished. They may be hidden from the storefront using the visibility controls outlined in the [Hiding and showing products from your storefront](#hiding-and-showing-products-from-your-storefront) section.
 
 ## Hiding and showing products
 
@@ -90,7 +90,7 @@ Products can be marked as visible or hidden, which determines whether customers 
 
 These options are available for the top-level product, each variant and each option. Hiding the product will hide the entire product from the storefront. Hiding a variant will hide that variant and all of its options, while hiding an individual option will affect only that option.
 
-> **Note**: In some cases, an administrator signed into the shop may still be able to see products marked as hidden.
+> Note: In some cases, an administrator signed into the shop may still be able to see products marked as hidden.
 
 To change change the visibility of a product, variant, or option:
 

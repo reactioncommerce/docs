@@ -10,7 +10,7 @@ To create a tag, log in to the Open Commerce admin dashboard, click **Tags** in 
 
 Tag names and slugs must be unique within a shop. When creating tags designed for a multi-level hierarchy, it is important to take this into account. The process for creating a tag is the same regardless of what level of the navigation hierarchy it will occupy. However, when creating child tags it is a good practice to include the parent tag in the name and slug to prevent conflicts. For example, a store selling language textbooks could have tags with the slugs `french`, `french-beginner`, `french-advanced`, `mandarin`, `mandarin-beginner`, `mandarin-advanced`, but it could not have two tags with the slug `beginner`, one for each language.
 
-> **Note**: Multiple tags can have the same display title. For example, `french-beginner` and `mandarin-beginner` could both have the display title "Beginner".
+> Note: Multiple tags can have the same display title. For example, `french-beginner` and `mandarin-beginner` could both have the display title "Beginner".
 
 ## Assigning tags
 
