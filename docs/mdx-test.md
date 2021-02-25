@@ -24,8 +24,6 @@ print('hello world')
 
 ## note section
 
-Note:
-
 Blockquote note:
 
 > Note: hello there
