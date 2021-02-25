@@ -44,7 +44,7 @@ This `registerPluginHandler` function looks for the `catalog` key and pushes dat
 
 To keep track of which plugins are registering what, look at the `name` key in the object. You can save off and export as much information as you need, in whatever format is best.
 
-> Note: A `registerPluginHandler` function may _**not**_ return a Promise. If you need to asynchronously process the data, save it temporarily. Then create and register a `startup` type function, which imports the temporary data, does the `async` tasks, and returns a Promise. Startup functions are called immediately after `registerPluginHandler` functions in the Open Commerce startup process.
+> **Note**: A `registerPluginHandler` function may _**not**_ return a Promise. If you need to asynchronously process the data, save it temporarily. Then create and register a `startup` type function, which imports the temporary data, does the `async` tasks, and returns a Promise. Startup functions are called immediately after `registerPluginHandler` functions in the Open Commerce startup process.
 
 The `registerPluginHandler` function itself is registered using `functionsByType`:
 
@@ -85,7 +85,7 @@ for (const funkyFn of context.getFunctionsOfType('funky')) {
 }
 ```
 
-> Note: The plugin that calls the functions must document what arguments it will provide and what return value and/or side effects it expects.
+> **Note**: The plugin that calls the functions must document what arguments it will provide and what return value and/or side effects it expects.
 
 ## Queries and mutations
 
@@ -93,4 +93,4 @@ To register just one function, `context.queries` or `context.mutations` can be u
 
 For example, for a function named "expireCarts" on `context.mutations`, call `context.mutations.expireCarts`. Just as with `functionsByType`, the plugin that calls the function must document what arguments it will provide and what return value and/or side effects it expects. If your query or mutation function is intended to be called only by other plugins, you do not need to add it to your GraphQL schema or create a GraphQL resolver for it.
 
-> Note: If more than one plugin registers a query or mutation function, the last one registered will "win" and override prior registrations. There is no error or warning thrown in this case. Being able to override these functions in a custom plugin is a feature of Mailchimp Open Commerce.
+> **Note**: If more than one plugin registers a query or mutation function, the last one registered will "win" and override prior registrations. There is no error or warning thrown in this case. Being able to override these functions in a custom plugin is a feature of Mailchimp Open Commerce.

@@ -44,7 +44,7 @@ Items in a cart, and ultimately in an order, are divided into fulfillment groups
 
 A fulfillment quote represents the current price of a single fulfillment method for a specific cart. The price may be a fixed amount or may be calculated based on the “from” and “to” addresses, the parcel dimensions, discounts, and other factors. Thus, as the items in a fulfillment group change, the fulfillment quotes for that group are updated and can also change.
 
-> Note: The price may be comprised of multiple prices, for example, shipping and handling. These prices can be separated for tax or accounting purposes, but may or may not be shown separated to the shopper.
+> **Note**: The price may be comprised of multiple prices, for example, shipping and handling. These prices can be separated for tax or accounting purposes, but may or may not be shown separated to the shopper.
 
 ### Fulfillment methods
 
@@ -94,7 +94,7 @@ If your payment provider flags a payment as having an elevated risk, you will be
 
 Payment methods may or may not support refunding. Each payment has a current status, such as "authorized", "captured", "refunded", or "partially refunded". If your payment method allows refunds, you will be able to refund any amount, up to the full amount charged.
 
-> Note: Payments must already be captured to be refunded.
+> **Note**: Payments must already be captured to be refunded.
 
 <!--
 ![](_assets/operator-guide-single-order-refunds.png "Refunds UI")

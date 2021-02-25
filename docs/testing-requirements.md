@@ -10,7 +10,7 @@ When you are changing code in one of the Mailchimp Open Commerce repositories, y
 
 All unit and integration tests for Open Commerce should use the [Jest framework](https://jestjs.io). When submitting a pull request, [CircleCI](https://circleci.com) automatically runs all unit and integration tests and will not allow merging until they all pass.
 
-> Note: If you make changes in a file that does not have unit tests, you must create a unit test file and add all necessary tests to achieve full coverage of that file. This includes testing all existing code as well as your new changes. Often it is easiest to begin your development by writing all of the missing tests before changing any code.
+> **Note**: If you make changes in a file that does not have unit tests, you must create a unit test file and add all necessary tests to achieve full coverage of that file. This includes testing all existing code as well as your new changes. Often it is easiest to begin your development by writing all of the missing tests before changing any code.
 
 Because Open Commerce is composed of microservices, most of which integrate with others, there is not a sharp divide between unit and integration tests. We suggest thinking of the terms "unit" and "integration" more as ends of a spectrum, where the "unit" end mocks everything and tests in complete isolation while the "integration" end mocks nothing and is essentially like running the Open Commerce app itself.
 
@@ -250,7 +250,7 @@ testInput({
 
 Jest integration test files always end in `.test.js` and should be located in the `/tests` folder. Integration tests can write some initial test data into an in-memory MongoDB store, allowing them to test database queries without mocking them.
 
-> Note: The MongoDB collections are simulated in-memory collections, implemented using [`mongodb-memory-server`](https://github.com/nodkz/mongodb-memory-server).
+> **Note**: The MongoDB collections are simulated in-memory collections, implemented using [`mongodb-memory-server`](https://github.com/nodkz/mongodb-memory-server).
 
 ### GraphQL integration tests
 
@@ -261,7 +261,7 @@ Integration tests can send actual GraphQL requests to a temporary test server th
 - Whether mutations properly affect the MongoDB collections
 - The effect of complex permission rules on query results
 
-> Note: The `query`, `mutation`, and `subscription` properties of the test server are wrappers around the methods of the same name provided by the [graphql.js](https://github.com/f/graphql.js) package.
+> **Note**: The `query`, `mutation`, and `subscription` properties of the test server are wrappers around the methods of the same name provided by the [graphql.js](https://github.com/f/graphql.js) package.
 
 When creating GraphQL tests, the folder and file structure in `/tests` should match the plugin folder structure as much as possible.
 
@@ -352,7 +352,7 @@ or:
 npm run test:integration:watch
 ```
 
-> Note: To use watch mode on macOS, you must install `watchman`. This can be done via the [Homebrew package manager](https://brew.sh) by running `brew install watchman`.
+> **Note**: To use watch mode on macOS, you must install `watchman`. This can be done via the [Homebrew package manager](https://brew.sh) by running `brew install watchman`.
 
 Jest has a built-in caching feature. This can sometimes cause you to see bad cached results, even if the test has since been fixed. To force a test to ignore the cache, add the `--no-cache` flag:
 

@@ -8,7 +8,7 @@ Open Commerce _accounts_ are different than _users_, although they are linked to
 
 The **Accounts** page of the admin dashboard is the place to manage user groups and invite shop owners or managers. There, you can add members to specific groups, thus giving them privileges to perform actions. By default, the Accounts page shows the administrator groups (i.e., Owner and Shop Managers) and the users in those groups.
 
-> Note: An account is generally created by registering using one of the Open Commerce UI clients. However, when a developer first starts the Open Commerce app with an empty database, it will automatically create an initial administrator account.
+> **Note**: An account is generally created by registering using one of the Open Commerce UI clients. However, when a developer first starts the Open Commerce app with an empty database, it will automatically create an initial administrator account.
 
 ## Default account groups
 

@@ -26,10 +26,10 @@ print('hello world')
 
 Blockquote note:
 
-> Note: hello there
+> **Note**: hello there
 
 Blockquote multi line note:
 
-> Note: This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+> **Note**: This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
 > consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
 > Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
