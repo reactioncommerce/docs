@@ -14,6 +14,7 @@
     - [Emphasis](#emphasis)
     - [Code](#code)
     - [Tables](#tables)
+    - [Images](#images)
 
 **Note:** This document is itself written using Markdown; you
 can [see the source for it by adding '.text' to the URL](/projects/markdown/syntax.text).
@@ -323,3 +324,13 @@ Use the `printf()` function.
 | Compare at price | Optional. The suggested retail price of your product. |
 | Manage inventory | Optional. If you'd like to track this item in your inventory, check this box. <ul><li>**Quantity** – Optional. Enter your current inventory quantity.</li><li>**Warn at** – Optional. Allows for "Limited Supply" notifications to be displayed on product pages when quantity is lower than this number.</li><li>**Allow backorder** – Optional. Allows customers to backorder the product.</li></ul>|
 | Taxable | Optional. Check this box to automatically add tax to this item when purchased. [tk explain what this actually means: Add Tax code and Tax description for more options.] |
+
+### Images
+
+Absolute path:
+
+![Image of Octocat](https://octodex.github.com/images/original.png)
+
+Relative path:
+
+![Product list](_assets/operator-ui-product-list.png)
