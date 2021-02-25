@@ -12,7 +12,7 @@ If necessary, a variant can have further variants, which we call _options_ or _s
 
 ## Creating a product
 
-![Product list](_assets/operator-ui-product-list.png)
+![Product list](./_assets/operator-ui-product-list.png)
 
 To create a product, log in to the Open Commerce admin dashboard and follow these steps:
 
@@ -21,20 +21,20 @@ To create a product, log in to the Open Commerce admin dashboard and follow thes
 2. Click **Create product**.
 
 3. You can change the product title, permalink, subtitle, vendor, description, and origin country and more in the **Details** card.
-   ![Product Details](_assets/reaction-admin-product-detail.png)
+   ![Product Details](./_assets/reaction-admin-product-detail.png)
 
 4. To add images, click the **Drag image or click to upload** button. Once uploaded, you can use the Order fields to set the order that the images appear in.
-   ![Product media](_assets/operator-ui-product-media.png)
+   ![Product media](./_assets/operator-ui-product-media.png)
 
 5. You can customize your product's social sharing messages under the Social card.
 
 6. Add product tags by clicking on the **+** button. Select tags from the dropdown menu in the dialog, and then click **Add tags to products**. (If you need to create a new tag, see [tk Tags doc] for further information.)
-   ![Product tags](_assets/reaction-admin-product-tags.png)
+   ![Product tags](./_assets/reaction-admin-product-tags.png)
 
 7. Make sure that you click **Save changes** in each card where you have entered new information.
 
 8. Make your product visible by clicking the **⋯** button next to its name and then clicking **Make Visible**.
-   ![Make a product visible](_assets/reaction-admin-product-make-visible.png)
+   ![Make a product visible](./_assets/reaction-admin-product-make-visible.png)
 
 This creates the product, but it can't be published yet. To be publishable, it will need to have at least one variant.
 
@@ -45,7 +45,7 @@ Variants allow you to create different versions of the same base product. Varian
 To create more variants:
 
 1. Click the **⋯** button next to the product's name, and then click "Create variant."
-   ![Adding a product variant](_assets/reaction-admin-product-variant-add.png)
+   ![Adding a product variant](./_assets/reaction-admin-product-variant-add.png)
 2. Fill out the following fields:
 
    - **Attribute label** – Required. The attribute label describes the category of variant, for example, "Color" or "Size".
@@ -68,7 +68,7 @@ To create more variants:
 Options provide a second layer of customization within each variant. For instance, in addition to carrying shirts in multiple colors, you may also want to carry multiple size options for each color. To create an option:
 
 1. Hover over the variant you'd like to create an option for. Click the **⋯** button to the right of its name and then click **Create variant**.
-   ![Adding a variant option](_assets/reaction-admin-product-option-add.png)
+   ![Adding a variant option](./_assets/reaction-admin-product-option-add.png)
 
 2. Add the option's information as you would when [creating a top-level variant](#configuring-a-variant).
 
@@ -80,7 +80,7 @@ Options provide a second layer of customization within each variant. For instanc
 
 Your changes might be saved, but they're not immediately visible to customers. Publishing your changes with the **Publish** button will take all your saved changes and make them visible to customers. Products may be to be made **Not Visible** which will hide the product from customers, even if it's published.
 
-![Publish product](_assets/reaction-admin-product-publish.png)
+![Publish product](./_assets/reaction-admin-product-publish.png)
 
 > **Note**: Products published to the Catalog cannot be unpublished. They may be hidden from the storefront using the visibility controls outlined in the [Hiding and showing products from your storefront](#hiding-and-showing-products-from-your-storefront) section.
 
@@ -95,10 +95,10 @@ These options are available for the top-level product, each variant and each opt
 To change change the visibility of a product, variant, or option:
 
 1. Click the **⋯** button next to the product title in the left sidebar.
-   ![Product visibility](_assets/reaction-admin-product-dropdown.png)
+   ![Product visibility](./_assets/reaction-admin-product-dropdown.png)
 
 2. Select **Make Hidden** or **Make Visible** and confirm.
-   ![Hide product](_assets/reaction-admin-product-make-hidden.png)
+   ![Hide product](./_assets/reaction-admin-product-make-hidden.png)
 
 3. Click the **Publish** button at the top right of the window to make your changes appear on the shop.
 
@@ -109,10 +109,10 @@ Duplicating a product, variant, or option will create a new copy of that item, i
 To duplicate a product, variant, or option:
 
 1. Click the **⋯** button next to the product title.
-   ![Duplicate product](_assets/reaction-admin-product-dropdown.png)
+   ![Duplicate product](./_assets/reaction-admin-product-dropdown.png)
 
 2. Select **Duplicate** and confirm.
-   ![Duplicate product](_assets/reaction-admin-product-duplicate.png)
+   ![Duplicate product](./_assets/reaction-admin-product-duplicate.png)
 
 3. Click the **Publish** button at the top right of the window to make your changes appear on the shop.
 
@@ -123,10 +123,10 @@ Archiving products is immediate upon confirmation, and is not reversible from th
 To remove an entire product, variant, or option from your shop:
 
 1. Click on the **⋯** button next to the product, variant, or option title.
-   ![Archive product](_assets/reaction-admin-product-dropdown.png)
+   ![Archive product](./_assets/reaction-admin-product-dropdown.png)
 
 2. Select **Archive** and confirm.
-   ![Archive product selection](_assets/reaction-admin-product-archive-select.png)
+   ![Archive product selection](./_assets/reaction-admin-product-archive-select.png)
 
 3. Click the **Publish** button on the top right to make your changes appear on the shop.
 

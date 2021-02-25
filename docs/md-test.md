@@ -333,4 +333,4 @@ Absolute path:
 
 Relative path:
 
-![Product list](_assets/operator-ui-product-list.png)
+![Product list](./_assets/operator-ui-product-list.png)

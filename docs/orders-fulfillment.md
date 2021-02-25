@@ -17,13 +17,13 @@ The fulfillment type also determines which user interface components are shown t
 To view and process orders, click **Orders** in the left sidebar of the admin dashboard. The Orders page shows a sortable table of all the orders your shop has received.
 
 <!--
-![](_assets/operator-guide-orders-table.png)
+![](./_assets/operator-guide-orders-table.png)
  -->
 
 Clicking on an order will show you all of the order details, including the order summary, fulfillment groups, payments, and refunds. From here you can fulfill your order and act upon all of its data.
 
 <!--
-![](_assets/operator-guide-single-order.png)
+![](./_assets/operator-guide-single-order.png)
  -->
 
 - **Update group status** lets you change a fulfillment group's status to any other available status.
@@ -75,19 +75,19 @@ Each payment method can decide what it means to "capture" a payment. For a credi
 All payments can be captured in a single click by using the **Capture all payments** button inside the Payments card.
 
 <!--
-![](_assets/operator-guide-capture-all-payments.png "Capture all payments")
+![](./_assets/operator-guide-capture-all-payments.png "Capture all payments")
  -->
 
 Each payment can be captured independently by using the **Capture payment** button next to each payment line.
 
 <!--
-![](_assets/operator-guide-capture-single-payment.png "Capture single payment")
+![](./_assets/operator-guide-capture-single-payment.png "Capture single payment")
  -->
 
 If your payment provider flags a payment as having an elevated risk, you will be notified by a message in the payments information area. You can still capture this payment independently, or alongside other payments with the **Capture all payments** button. Either way, you will be required to confirm your desire to capture the payment in a dialog.
 
 <!--
-![](_assets/operator-guide-single-order-elevated-risk-payment.png "Capturing a payment with elevated risk")
+![](./_assets/operator-guide-single-order-elevated-risk-payment.png "Capturing a payment with elevated risk")
  -->
 
 ### Refunds
@@ -97,21 +97,21 @@ Payment methods may or may not support refunding. Each payment has a current sta
 > **Note**: Payments must already be captured to be refunded.
 
 <!--
-![](_assets/operator-guide-single-order-refunds.png "Refunds UI")
+![](./_assets/operator-guide-single-order-refunds.png "Refunds UI")
  -->
 
 To refund one or more payments, type the amount you'd like to refund in the appropriate input box. If more than one payment is to be refunded, you'll see the total refund amount updated in the submit button <!-- IN the button? -->. You many enter an optional refund reason.
 
 <!--
-![](_assets/operator-guide-refunds.png "Refunds")
+![](./_assets/operator-guide-refunds.png "Refunds")
  -->
 
 Once a payment has been partially refunded, you will see the refunded amount, as well as the amount that is still available to refund, under each payment.
 
 <!--
-![](_assets/operator-guide-partial-refunds.png "Partial refunded")
+![](./_assets/operator-guide-partial-refunds.png "Partial refunded")
  -->
 
 If your payments have been fully refunded, you will see a message that states this. All previous refunds are listed in a card at the bottom of the page.
 
-<!-- ![](_assets/operator-guide-fully-refunded.png "Fully refunded") -->
+<!-- ![](./_assets/operator-guide-fully-refunded.png "Fully refunded") -->
