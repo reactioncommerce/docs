@@ -2,19 +2,21 @@
 
 ## The basics
 
+*Preliminary draft content as of 02/26/2021*
+
 When you are changing code in one of the Mailchimp Open Commerce repositories, you should test your code before submitting a pull request for review. Testing Open Commerce breaks down into three broad categories:
 
 - Unit tests
 - Integration tests
 - Acceptance testing (AT)
 
-All unit and integration tests for Open Commerce should use the [Jest framework](https://jestjs.io). When submitting a pull request, [CircleCI](https://circleci.com) automatically runs all unit and integration tests and will not allow merging until they all pass.
+All unit and integration tests for Open Commerce should use the [Jest framework](https://jestjs.io). When submitting a pull request, [CircleCI](https://circleci.com) automatically runs all unit and integration tests and will not allow merging until they all pass. 
 
 > **Note**: If you make changes in a file that does not have unit tests, you must create a unit test file and add all necessary tests to achieve full coverage of that file. This includes testing all existing code as well as your new changes. Often it is easiest to begin your development by writing all of the missing tests before changing any code.
 
 Because Open Commerce is composed of microservices, most of which integrate with others, there is not a sharp divide between unit and integration tests. We suggest thinking of the terms "unit" and "integration" more as ends of a spectrum, where the "unit" end mocks everything and tests in complete isolation while the "integration" end mocks nothing and is essentially like running the Open Commerce app itself.
 
-In practice, in the Open Commerce codebase, the primary distinction is this:
+In practice, in the Open Commerce codebase, the primary distinction is this: 
 
 - Integration tests are all written in the `/tests` folder and can make use of a fake, in-memory version of MongoDB.
 - Unit tests have no mock database and are written in files throughout the codebase, with names similar to the name of the file they test.
@@ -23,7 +25,7 @@ For example, if you write a GraphQL `shop` resolver and a `tags` resolver, each 
 
 ## Writing Jest unit tests
 
-_intro sentence tk_
+*intro sentence tk*
 
 ### Filenames and code style
 
@@ -43,7 +45,7 @@ Often you need to [test asynchronous code](https://jestjs.io/docs/en/asynchronou
 
 To write unit tests for modules that depend on other modules, you need to supply mock data. There are several ways to mock data for Open Commerce.
 
-- Use [Jest's mocking capabilities](https://jestjs.io/docs/en/mock-functions.html).
+- Use [Jest's mocking capabilities](https://jestjs.io/docs/en/mock-functions.html). 
 - Use the [rewire-exports](https://www.npmjs.com/package/babel-plugin-rewire-exports) Babel plugin, which can temporarily replace anything that another file exports. This is useful for mocking functions that are imported by the function that you're testing.
 - Use the built-in `Factory` test utility, which uses [@reactioncommerce/data-factory](https://github.com/reactioncommerce/data-factory) to attach all core schemas to the `Factory` object.
 
@@ -51,8 +53,8 @@ The following examples use the `Factory` utility.
 
 To mock one object, use the `makeOne()` method with the name of the collection, such as:
 
-```js
-import { Factory } from '/imports/test-utils/helpers/factory';
+``` js
+import { Factory } from "/imports/test-utils/helpers/factory";
 const mockTag = Factory.Tag.makeOne();
 ```
 
@@ -80,8 +82,8 @@ The output of `Factory` will be something like:
 
 To mock multiple instances of one type of object, use the `makeMany` method with an integer argument:
 
-```js
-import { Factory } from '/imports/test-utils/helpers/factory';
+``` js
+import { Factory } from "/imports/test-utils/helpers/factory";
 const mockTags = Factory.Tag.makeMany(2);
 ```
 
@@ -89,63 +91,60 @@ const mockTags = Factory.Tag.makeMany(2);
 
 ```js
 [
-  {
-    _id: 'e02993ea96d7',
-    name: 'mockName',
-    slug: 'mockSlug',
-    type: 'mockType',
-    metafields: ['item'],
-    position: '3ff4e0634ecc',
-    relatedTagIds: ['mockRelatedTagIds.$'],
-    isDeleted: false,
-    isTopLevel: true,
-    isVisible: true,
-    groups: ['mockGroups.$'],
-    shopId: 'a05276973251',
-    createdAt: '1970-01-02T02:28:37.000Z',
-    updatedAt: '2018-06-04T19:16:58.117Z',
-    heroMediaUrl: 'mockHeroMediaUrl',
-  },
-  {
-    _id: 'bdc84075a8eb',
-    name: 'mockName',
-    slug: 'mockSlug',
-    type: 'mockType',
-    metafields: ['item'],
-    position: '5034c879b7c2',
-    relatedTagIds: ['mockRelatedTagIds.$'],
-    isDeleted: false,
-    isTopLevel: true,
-    isVisible: true,
-    groups: ['mockGroups.$'],
-    shopId: '28d65013adc8',
-    createdAt: '1970-01-02T02:28:37.000Z',
-    updatedAt: '2018-06-04T19:16:58.117Z',
-    heroMediaUrl: 'mockHeroMediaUrl',
-  },
-];
+ {
+   _id: "e02993ea96d7",
+   name: "mockName",
+   slug: "mockSlug",
+   type: "mockType",
+   metafields: ["item"],
+   position: "3ff4e0634ecc",
+   relatedTagIds: ["mockRelatedTagIds.$"],
+   isDeleted: false,
+   isTopLevel: true,
+   isVisible: true,
+   groups: ["mockGroups.$"],
+   shopId: "a05276973251",
+   createdAt: "1970-01-02T02:28:37.000Z",
+   updatedAt: "2018-06-04T19:16:58.117Z",
+   heroMediaUrl: "mockHeroMediaUrl"
+ },
+ {
+   _id: "bdc84075a8eb",
+   name: "mockName",
+   slug: "mockSlug",
+   type: "mockType",
+   metafields: ["item"],
+   position: "5034c879b7c2",
+   relatedTagIds: ["mockRelatedTagIds.$"],
+   isDeleted: false,
+   isTopLevel: true,
+   isVisible: true,
+   groups: ["mockGroups.$"],
+   shopId: "28d65013adc8",
+   createdAt: "1970-01-02T02:28:37.000Z",
+   updatedAt: "2018-06-04T19:16:58.117Z",
+   heroMediaUrl: "mockHeroMediaUrl"
+ }
+]
 ```
 
-Sometimes mock data needs to have a specific value for a property. For example, you might want all mocked objects in a test to have the same `shopId`. To do this you can provide a properties object as an argument to ether the `makeOne` or `makeMany` factory methods to overwrite the mocked value.
+Sometimes mock data needs to have a specific value for a property. For example, you might want all mocked objects in a test to have the same `shopId`. To do this you can provide a properties object as an argument to either the `makeOne` or `makeMany` factory methods to overwrite the mocked value.
 
-```js
-import { Factory } from '/imports/test-utils/helpers/factory';
-const mockTag = Factory.Tag.makeOne({ shopId: '1234' });
+``` js
+import { Factory } from "/imports/test-utils/helpers/factory";
+const mockTag = Factory.Tag.makeOne({ shopId: "1234" });
 ```
 
 <!-- omitted output of this for now -->
 
 Additionally, `makeMany` supports custom values that are not constant. For example, you can create a series of mock objects that have sequential `_id` values by using an arrow function. The below code will output two mocked tags with `_id` values of `"100"` and `"101"`.
 
-```js
-import { Factory } from '/imports/test-utils/helpers/factory';
-const mockTags = Factory.Tag.makeMany(2, {
-  shopId: '1234',
-  _id: (index) => (index + 100).toString(),
-});
+``` js
+import { Factory } from "/imports/test-utils/helpers/factory";
+const mockTags = Factory.Tag.makeMany(2, { shopId: "1234", _id: (index) => (index + 100).toString() });
 ```
 
-Finally, indexes can be passed from one `makeMany` method into another `makeMany` method. In this example, passing `30` into `makeMany` will then pass `30` into `makeMockProductWithSpecificId`.
+Finally, indexes can be passed from one `makeMany` method into another `makeMany` method. In this example, passing `30` into `makeMany` will then pass `30` into `makeMockProductWithSpecificId`. 
 
 ```js
 function makeMockProductWithSpecificId(index) {
@@ -156,15 +155,16 @@ function makeMockProductWithSpecificId(index) {
     isDeleted: false,
     isVisible: true,
     tagIds: [mockTagWithFeatured._id],
-    shopId: internalShopId,
+    shopId: internalShopId
   });
 }
 
 const mockCatalogItemsWithFeaturedProducts = Factory.Catalog.makeMany(30, {
   product: makeMockProductWithSpecificId,
-  shopId: internalShopId,
+  shopId: internalShopId
 });
 ```
+
 
 ### React component tests
 
@@ -182,33 +182,31 @@ Shallow rendering allows testing components in isolation, without worrying about
 It's common for components to have functionality based around user interaction that fires a callback function or manipulates the component's state. Below are examples of testing these interactions using shallow rendering to simulate the interaction event and test for the component's reaction.
 
 **Simple interaction**
-
 ```js
-import React from 'react';
-import { shallow } from 'enzyme';
-import Button from './Button';
+import React from "react";
+import { shallow } from "enzyme";
+import Button from "./Button";
 
 const mockHandleClick = jest.fn();
 
-test('Button component fires callback function onClick', () => {
+test("Button component fires callback function onClick", () => {
   const component = shallow(<Button onClick={mockHandleClick}>Button</Button>);
-  component.find('button').simulate('click');
+  component.find("button").simulate("click");
   expect(mockHandleClick).toHaveBeenCalled();
 });
 ```
 
 **Interaction with state change**
-
 ```js
-import React from 'react';
-import { shallow } from 'enzyme';
-import Accordion from './Accordion';
+import React from "react";
+import { shallow } from "enzyme";
+import Accordion from "./Accordion";
 
-test('Accordion component open & closes onClick', () => {
+test("Accordion component open & closes onClick", () => {
   const component = shallow(<Accordion>Content</Accordion>);
-  component.find('div.header').simulate('click');
+  component.find("div.header").simulate("click");
   expect(component.state().isExpanded).toBe(true);
-  component.find('div.header').simulate('click');
+  component.find("div.header").simulate("click");
   expect(component.state().isExpanded).toBe(false);
 });
 ```
@@ -218,37 +216,37 @@ test('Accordion component open & closes onClick', () => {
 All new Open Commerce form and input components are based on the [composable form spec](http://composableforms.com/) and use the [composable form test](https://github.com/DairyStateDesigns/composable-form-tests#readme) package for user interaction.
 
 **Simple input**
-
 ```js
-import React from 'react';
-import { mount } from 'enzyme';
-import { testInput } from 'composable-form-tests';
-import Input from './Input';
+import React from "react";
+import { mount } from "enzyme";
+import { testInput } from "composable-form-tests";
+import Input from "./Input";
 
 testInput({
   component: Input,
   defaultValue: null,
-  exampleValueOne: 'ONE',
-  exampleValueTwo: 'TWO',
+  exampleValueOne: "ONE",
+  exampleValueTwo: "TWO",
   mount,
   simulateChanging(wrapper, value) {
     // Refer to Enzyme documentation
-    wrapper.find('input').simulate('change', { target: { value } });
+    wrapper.find("input").simulate("change", { target: { value } });
   },
   simulateChanged(wrapper, value) {
     // Refer to Enzyme documentation
-    wrapper.find('input').simulate('blur', { target: { value } });
+    wrapper.find("input").simulate("blur", { target: { value } });
   },
   simulateSubmit(wrapper) {
     // Refer to Enzyme documentation
-    wrapper.find('input').simulate('keypress', { which: 13 });
-  },
+    wrapper.find("input").simulate("keypress", { which: 13 });
+  }
 });
 ```
 
+
 ## Writing Jest integration tests
 
-Jest integration test files always end in `.test.js` and should be located in the `/tests` folder. Integration tests can write some initial test data into an in-memory MongoDB store, allowing them to test database queries without mocking them.
+Jest integration test files always end in `.test.js` and should be located in the `/tests` folder. Integration tests can write some initial test data into an in-memory MongoDB store, allowing them to test database queries without mocking them. 
 
 > **Note**: The MongoDB collections are simulated in-memory collections, implemented using [`mongodb-memory-server`](https://github.com/nodkz/mongodb-memory-server).
 
@@ -268,7 +266,7 @@ When creating GraphQL tests, the folder and file structure in `/tests` should ma
 Prior to running the tests in each file, initialize a server, in-memory database, and any collection data you need. Then stop the server when done.
 
 ```js
-import TestApp from '/imports/test-utils/helpers/TestApp';
+import TestApp from "/imports/test-utils/helpers/TestApp";
 
 let testApp;
 beforeAll(async () => {
@@ -278,7 +276,7 @@ beforeAll(async () => {
 
 afterAll(() => testApp.stop());
 
-test('something', async () => {
+test("something", async () => {
   // (1) use testApp.collections to write to MongoDB collections to set up initial data state
   // (2) execute a GraphQL query or mutation using testApp.query()() or testApp.mutation()()
   // (3) verify the response is as expected and/or verify that the collection data has been changed
@@ -309,7 +307,7 @@ await testApp.createUserAndAccount(mockAccount);
 mockAdminAccount = Factory.Accounts.makeOne({
   // ...any specific properties you need on the account
 });
-await testApp.createUserAndAccount(mockAdminAccount, ['owner']);
+await testApp.createUserAndAccount(mockAdminAccount, ["owner"]);
 ```
 
 **Set and clear the mock user**
@@ -326,7 +324,7 @@ afterAll(async () => {
 
 ## Running Jest tests
 
-For unit tests, the test file can be anywhere in the Open Commerce codebase, but ideally they should be in the same folder and with the same base filename as the code being tested. For integration tests, the test file should always be located in the `/tests` folder.
+For unit tests, the test file can be anywhere in the Open Commerce codebase, but ideally they should be in the same folder and with the same base filename as the code being tested. For integration tests, the test file should always be located in the `/tests` folder. 
 
 To run tests, use `npm` and specify the type of test being run. Either:
 
@@ -346,7 +344,7 @@ To run tests and have them rerun as you make changes to test files, add `:watch`
 npm run test:unit:watch
 ```
 
-or:
+or: 
 
 ```sh
 npm run test:integration:watch

@@ -2,11 +2,13 @@
 
 ## The basics
 
+*Preliminary draft content as of 02/26/2021*
+
 Because Mailchimp Open Commerce is composed of microservices, sometimes one API plugin needs to provide a function that will be called by another plugin. There are three ways to provide functions.
 
-- [Plugin handlers](#plugin-handler) are the most flexible way to share code or any other information. It can provide dependency/sorting information and additional information, and it can track which plugin registered a function.
-- [Functions by type](#functions-by-type) can share multiple functions by identifying what type of functions they are. It does provide the additional information and tracking that plugin handlers can.
-- [Queries and mutations](#queries-mutations) can register a single function with a particular name.
+* [Plugin handlers](#plugin-handler) are the most flexible way to share code or any other information. It can provide dependency/sorting information and additional information, and it can track which plugin registered a function.
+* [Functions by type](#functions-by-type) can share multiple functions by identifying what type of functions they are. It does provide the additional information and tracking that plugin handlers can.
+* [Queries and mutations](#queries-mutations) can register a single function with a particular name.
 
 We recommend using `registerPluginHandler` in new code.
 
@@ -32,9 +34,7 @@ export function registerPluginHandler({ catalog }) {
       customPublishedProductFields.push(...publishedProductFields);
     }
     if (Array.isArray(publishedProductVariantFields)) {
-      customPublishedProductVariantFields.push(
-        ...publishedProductVariantFields,
-      );
+      customPublishedProductVariantFields.push(...publishedProductVariantFields);
     }
   }
 }
@@ -49,37 +49,38 @@ To keep track of which plugins are registering what, look at the `name` key in t
 The `registerPluginHandler` function itself is registered using `functionsByType`:
 
 ```js
-import { registerPluginHandler } from './registration';
+import { registerPluginHandler } from "./registration";
 
 await app.registerPlugin({
-  label: 'Catalog',
-  name: 'reaction-catalog',
+  label: "Catalog",
+  name: "reaction-catalog",
   functionsByType: {
-    registerPluginHandler: [registerPluginHandler],
-  },
+    registerPluginHandler: [registerPluginHandler]
+  }
 });
 ```
+
 
 ## Functions by type
 
 To provide a function to another plugin for a specific purpose, pass it to `registerPlugin` in the `functionsByType` list. In this example, a plugin registers functions of type "funky".
 
 ```js
-import funkyFn from './funkyFn';
+import funkyFn from "./funkyFn";
 
 await app.registerPlugin({
-  label: 'Cart',
-  name: 'reaction-cart',
+  label: "Cart",
+  name: "reaction-cart",
   functionsByType: {
-    funky: [funkyFn],
-  },
+    funky: [funkyFn]
+  }
 });
 ```
 
 Another plugin can then loop through and call all "funky" functions that were registered by this plugin (or any other plugins):
 
 ```js
-for (const funkyFn of context.getFunctionsOfType('funky')) {
+for (const funkyFn of context.getFunctionsOfType("funky")) {
   // eslint-disable-next-line no-await-in-loop
   await funkyFn(...args);
 }
@@ -89,8 +90,9 @@ for (const funkyFn of context.getFunctionsOfType('funky')) {
 
 ## Queries and mutations
 
-To register just one function, `context.queries` or `context.mutations` can be used instead of `functionsByType`. In this case, the plugin simply documents that it expects to find a function with a particular name.
+To register just one function, `context.queries` or `context.mutations` can be used instead of `functionsByType`. In this case, the plugin simply documents that it expects to find a function with a particular name. 
 
 For example, for a function named "expireCarts" on `context.mutations`, call `context.mutations.expireCarts`. Just as with `functionsByType`, the plugin that calls the function must document what arguments it will provide and what return value and/or side effects it expects. If your query or mutation function is intended to be called only by other plugins, you do not need to add it to your GraphQL schema or create a GraphQL resolver for it.
 
 > **Note**: If more than one plugin registers a query or mutation function, the last one registered will "win" and override prior registrations. There is no error or warning thrown in this case. Being able to override these functions in a custom plugin is a feature of Mailchimp Open Commerce.
+
