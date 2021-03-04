@@ -19,10 +19,88 @@ console.log('hii');
 ```
 
 ```graphql title=query.gql
+# Query
 {
   order {
     shop {
       _id
+    }
+  }
+}
+```
+
+```graphql title=query.gql
+# Response
+{
+  "data": {
+    "order": {
+      "shop": {
+        "_id": "abcd"
+      }
+    }
+  }
+}
+```
+
+```graphql title=query.gql
+{
+  order {
+    shop {
+      _id
+    }
+  }
+}
+
+# Response
+{
+  "data": {
+    "order": {
+      "shop": {
+        "_id": "abcd"
+      }
+    }
+  }
+}
+```
+
+```graphql title=query.gql
+# Query
+{
+  order {
+    shop {
+      _id
+    }
+  }
+}
+
+# Response
+{
+  "data": {
+    "order": {
+      "shop": {
+        "_id": "abcd"
+      }
+    }
+  }
+}
+```
+
+```graphql title=query.gql
+# Query
+{
+  order {
+    shop {
+      _id
+    }
+  }
+}
+
+{
+  "data": {
+    "order": {
+      "shop": {
+        "_id": "abcd"
+      }
     }
   }
 }
