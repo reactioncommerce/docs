@@ -18,8 +18,14 @@ const bar = (props) => {
 console.log('hii');
 ```
 
-```python title=foo/bar.py
-print('hello world')
+```graphql title=query.gql
+{
+  order {
+    shop {
+      _id
+    }
+  }
+}
 ```
 
 ## note section
