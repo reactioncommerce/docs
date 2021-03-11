@@ -85,6 +85,7 @@ Products published to the Catalog cannot be unpublished, though they may be set 
 Visibility settings are available for the top-level product, each variant and each option. Hiding the product will hide the entire product—including all of its variants—from the storefront. Hiding a variant will hide that variant and all of its options, while hiding an individual option will affect only that option.
 
 > **Note**: In some cases, logged-in administrators may be able to see hidden products on the storefront—even though they are hidden from customers.
+
 ## Duplicating products
 
 Duplicating a product, variant, or option will create a new copy of that item, including its children. It can be a useful tool for speeding up creation of similar products, variants, or options.
