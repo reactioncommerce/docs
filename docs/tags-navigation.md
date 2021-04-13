@@ -4,8 +4,6 @@ Open Commerce gives you a flexible way to organize your products with tags. Tags
 
 Tags are also the basis for creating navigation items, which appear when browsing the shop. Each navigation item is linked to a particular tag, and navigation items can be nested within one another to create a hierarchy. The navigation hierarchy is also reflected in the breadcrumbs shown on each product detail page.
 
-![Shop navigation](tags-navigation--shop-navigation.png)
-
 In this documentation, we’ll cover how to create tags, organize them, and use them to build hierarchical navigation. 
 
 ## Creating and assigning tags
