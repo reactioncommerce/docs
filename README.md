@@ -46,7 +46,7 @@ If a blockquote begins with `**Note**: `, e.g.:
 
 <pre>
 > **Note**: hello there
-> </pre>
+</pre>
 
 it will be rendered as follows:
 
