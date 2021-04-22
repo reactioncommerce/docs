@@ -55,7 +55,7 @@ it will be rendered as follows:
 Other blockquotes, e.g.:
 
 <pre>
-> hello there
+> Hello there
 </pre> 
 
 will be rendered normally:
