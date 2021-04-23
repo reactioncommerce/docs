@@ -18,7 +18,7 @@ The handler is also expected to examine the options passed in from each plugin a
 
 For example, a tax service might expect a `pluginTaxService`, and ask any custom tax widget to provide `pluginTaxService` as part of its registration: 
 
-```
+```js
 export function registerPluginHandlerForTaxes({ name: pluginName, taxServices: pluginTaxServices }) {
   if (Array.isArray(pluginTaxServices)) {
     for (const pluginTaxService of pluginTaxServices) {
