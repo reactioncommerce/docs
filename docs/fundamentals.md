@@ -26,7 +26,7 @@ The development platform has several `make` scripts that automatically pull the 
 
 ## Plugins
 
-All of Open Commerce’s features, including the [API core](https://github.com/reactioncommerce/api-core), are provided by first-party plugins—the [main project](https://github.com/reactioncommerce/reaction) is a shell that that imports all of the required NPM packages. This structure gives you complete control over what plugins and features are active in your installation.
+All of Open Commerce’s features, including the [API core](https://github.com/reactioncommerce/api-core), are provided by first-party plugins—the [main project](https://github.com/reactioncommerce/reaction) is a shell that that imports all of the required NPM packages. This structure gives you complete control over what plugins and features are active in your installation. For more information on customizing these plugins or creating your own, check out the [Build an API Plugin guide](/open-commerce/guides/build-api-plugin/).
 
 A wide range of first-party plugins covers all the basic platform features, including handling backend services, shop configuration, and the shopper experience. You can view a list of the plugins active in your instance in the admin dashboard under **Settings > System Information**.
 
@@ -69,8 +69,6 @@ A wide range of first-party plugins covers all the basic platform features, incl
 |[`api-plugin-taxes`](https://github.com/reactioncommerce/api-plugin-taxes)|Manages tax rates based on location, product type, and more.|
 |[`api-plugin-taxes-flat-rate`](https://github.com/reactioncommerce/api-plugin-taxes-flat-rate)|Allows for setting a single tax rate.|
 |[`api-plugin-translations`](https://github.com/reactioncommerce/api-plugin-translations)|Supplies translations of terms used in the API in over 20 languages.|
-
-For more information on customizing these plugins or creating your own, check out the [Build an API Plugin guide](/open-commerce/guides/build-api-plugin/).
 
 ## Environment variables
 
