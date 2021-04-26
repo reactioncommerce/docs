@@ -54,7 +54,7 @@ To create an option:
 
 1. Hover over the variant you'd like to create an option for. Click the **⋯** button to the right of its name and then click **Create variant**.
 
-2. Add the option’s information as you would when [creating a top-level variant](#configuring-a-variant). 
+2. Add the option’s information as you would when [creating a top-level variant](#configure-a-variant). 
 
 3. To make the option visible, hover over the variant name, click the **⋯** button, and then click **Make Visible**. 
 
