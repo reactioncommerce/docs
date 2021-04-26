@@ -4,7 +4,7 @@ Most of Open Commerce’s features are implemented via plugins, so it’s common
 
 * [Plugin handlers](#plugin-handlers) are the most flexible way to share code or any other information. They can provide dependency and sorting information, track which plugin registered a function, or include additional metadata.
 * [Functions by type](#functions-by-type) allows sharing multiple related functions. This approach does not provide the additional information and tracking that plugin handlers can.
-* [Queries and mutations](#queries-mutations) can register a single function with a particular name.
+* [Queries and mutations](#queries-and-mutations) can register a single function with a particular name.
 
 You will find all three approaches throughout the Open Commerce codebase, but due to their flexibility, plugin handlers are the recommended way to write new code.
 
