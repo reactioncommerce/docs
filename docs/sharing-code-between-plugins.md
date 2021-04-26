@@ -8,7 +8,7 @@ Most of Open Commerce’s features are implemented via plugins, so it’s common
 
 You will find all three approaches throughout the Open Commerce codebase, but due to their flexibility, plugin handlers are the recommended way to write new code.
 
-In this documentation, we’ll describe all three approaches with example code. For more information on creating plugins, see the [Build an API Plugin](tk) guide.
+In this documentation, we’ll describe all three approaches with example code. For more information on creating plugins, see the [Build an API Plugin](/open-commerce/guides/build-api-plugin/) guide.
 
 ## Plugin handlers
 
