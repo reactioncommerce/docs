@@ -8,7 +8,7 @@ In this documentation, we’ll cover configuring your email server and the types
 
 ## Email configuration and logs
 
-To send transactional emails from Open Commerce, you need to configure an SMTP email provider. Open Commerce will send emails from the address that you set in the `MAIL_URL` [environment variable](https://mailchimp.com/developer/open-commerce/docs/fundamentals/#environment-variables):
+To send transactional emails from Open Commerce, you need to configure an SMTP email provider. Open Commerce will send emails from the address that you set in the `MAIL_URL` [environment variable](/open-commerce/docs/fundamentals/#environment-variables):
 
 `MAIL_URL="smtp://username:password@example.com:465"`
 
