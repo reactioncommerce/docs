@@ -18,7 +18,7 @@ The developer site does support some Markdown-compatible custom components:
 
 ### Code snippets
 
-Delimit code blocks with triple backticks as in standard Markdown. You can optionally add a [GitHub-flavored Markdown language] (https://docs.github.com/en/github/writing-on-github/creating-and-highlighting-code-blocks#syntax-highlighting) and a `title` parameter:
+Delimit code blocks with triple backticks as in standard Markdown. You can optionally add a [GitHub-flavored Markdown language](https://docs.github.com/en/github/writing-on-github/creating-and-highlighting-code-blocks#syntax-highlighting) and a `title` parameter:
 
 <pre>
 ```js title=Example
