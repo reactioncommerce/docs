@@ -5,6 +5,7 @@ Open Commerce lets you send transactional emails for a variety of reasons, such 
 In this documentation, we’ll cover configuring your email server and the types of templates that are available.
 
 >**Note**: If you need to connect to a service that sends transactional messages at scale, check out [Mailchimp Transactional](https://mailchimp.com/developer/transactional/docs/fundamentals/). 
+
 ## Email configuration and logs
 
 To send transactional emails from Open Commerce, you need to configure an SMTP email provider. Open Commerce will send emails from the address that you set in the `MAIL_URL` [environment variable](https://mailchimp.com/developer/open-commerce/docs/fundamentals/#environment-variables):
