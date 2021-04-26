@@ -4,17 +4,21 @@
   </a>
 </p>
 
-# Mailchimp Open Commerce Docs
+# Mailchimp Open Commerce docs
 
-The open source documentation repo for [Mailchimp Open Commerce](https://mailchimp.com/developer/open-commerce/) (formerly Reaction Commerce).
+This repo hosts the open source documentation for [Mailchimp Open Commerce](https://mailchimp.com/developer/open-commerce/) (formerly Reaction Commerce). Previous versions of the Reaction Commerce docs are archived in [a separate repo](https://github.com/reactioncommerce/reaction-docs).
 
-## Custom Syntax
+## Markdown and custom syntax
 
-All docs should be valid Markdown. In addition to this, we use some specialized syntax to allow for embedding custom components in the documentation at [https://mailchimp.com/developer/open-commerce/docs/](https://mailchimp.com/developer/open-commerce/docs/). These custom syntaxes are documented below.
+The files in this repo are the source content for the [Open Commerce docs](https://mailchimp.com/developer/open-commerce/docs/) on the [Mailchimp Developer](https://mailchimp.com/developer/) site. 
+
+To render properly on the developer site, all docs should be written in Markdown. Some standard Markdown elements are not supported: **avoid** H3, H4, H5, and H6 headers, as well as nested lists. 
+
+The developer site does support some Markdown-compatible custom components:
 
 ### Code snippets
 
-If a vanilla code block receives a valid ([GFM-flavored](https://docs.github.com/en/github/writing-on-github/creating-and-highlighting-code-blocks#syntax-highlighting)) language as well as a `title` param, e.g.:
+Delimit code blocks with triple backticks as in standard Markdown. You can optionally add a [GitHub-flavored Markdown language] (https://docs.github.com/en/github/writing-on-github/creating-and-highlighting-code-blocks#syntax-highlighting) and a `title` parameter:
 
 <pre>
 ```js title=Example
@@ -22,11 +26,11 @@ console.log('hello world');
 ```
 </pre>
 
-Will be rendered on the docs site as follows:
-
 ![Custom code block](docs/_assets/readme-custom-code-block.jpg)
 
-Code blocks without a language and title, e.g.:
+The title parameter [cannot contain whitespace](https://github.com/mdx-js/mdx/issues/702), so we recommend only using it for filenames, indicating the location of the referenced code.
+
+Code blocks without a language and title are rendered in a plain module:
 
 <pre>
 ```
@@ -34,34 +38,28 @@ testing 1 2 3
 ```
 </pre>
 
-Will be rendered as follows:
-
-![Vanilla code block](docs/_assets/readme-vanilla-code-block.jpg)
-
-Note: Currently, the title param cannot contain any spaces, though periods, hyphens, and some other punctuation is allowed. This is a limitation of MDX, specifically in the way the metastring is parsed. See [this issue](https://github.com/mdx-js/mdx/issues/702) in the MDX repo for more context.
+![Plain code block](docs/_assets/readme-vanilla-code-block.jpg)
 
 ### Note blocks
 
-If a blockquote begins with `**Note**: `, e.g.:
+Create custom note blocks by starting a blockquote with the string `**Note**: `:
 
 <pre>
 > **Note**: hello there
 </pre>
 
-it will be rendered as follows:
-
 ![Custom note block](docs/_assets/readme-custom-note-block.jpg)
 
-Other blockquotes, e.g.:
+Other blockquotes will be rendered normally:
 
 <pre>
 > Hello there
 </pre> 
 
-will be rendered normally:
-
-![Vanilla block quote](docs/_assets/readme-vanilla-block-quote.jpg)
+![Plain block quote](docs/_assets/readme-vanilla-block-quote.jpg)
 
 ## Contributing
 
 Contributions to this repo are welcome. Please submit an issue or pull request if you feel any information is incomplete or inaccurate.
+
+Approved changes will also be published on the Mailchimp Developer site, although they will not appear there immediately.
