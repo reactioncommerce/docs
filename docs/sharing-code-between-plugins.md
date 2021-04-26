@@ -32,7 +32,7 @@ export function registerPluginHandlerForTaxes({ name: pluginName, taxServices: p
 
 To use a handler in your plugin, include a file named `registration.js` that defines and exports not only `registerPluginHandler` but also any related data required by other files in the plugin. For example, the `reaction-catalog` plugin's `registration.js` file looks like this:
 
-```js
+```js title=registration.js
 export const customPublishedProductFields = [];
 export const customPublishedProductVariantFields = [];
 
