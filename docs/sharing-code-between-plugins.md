@@ -79,7 +79,7 @@ await app.registerPlugin({
 
 To provide a function to another plugin for a specific purpose, pass it to `registerPlugin` in the `functionsByType` list. The plugin that calls the functions must document the arguments it will provide and the expected return value and/or side effects. 
 
-For example, this plugin registers functions of type "funky":
+For example, this plugin registers functions of type “funky”:
 
 ```js
 import funkyFn from "./funkyFn";
@@ -93,7 +93,7 @@ await app.registerPlugin({
 });
 ```
 
-Another plugin can then loop through and call all "funky" functions that were registered by this plugin (or any other):
+Another plugin can then loop through and call all “funky” functions that were registered by this plugin (or any other):
 
 ```js
 for (const funkyFn of context.getFunctionsOfType("funky")) {
@@ -106,6 +106,6 @@ for (const funkyFn of context.getFunctionsOfType("funky")) {
 
 If you need to register just one function, you can use `context.queries` or `context.mutations` instead of `functionsByType`. When you use this approach, the plugin only expects to find a function with a particular name. For example, for a function named `expireCarts` on `context.mutations`, call `context.mutations.expireCarts`. 
 
->**Note**: We don’t recommend adding functions this way, because it’s the most limited approach. Additionally, if more than one plugin registers a query or mutation function, the one listed last in `plugins.json` will "win" and override prior registrations, and no error or warning will be thrown.
+>**Note**: We don’t recommend adding functions this way, because it’s the most limited approach. Additionally, if more than one plugin registers a query or mutation function, the one listed last in `plugins.json` will “win” and override prior registrations, and no error or warning will be thrown.
 
 Just as with `functionsByType`, the plugin that calls the function must document the arguments it will provide and the expected return value and/or side effects. You should also add your query or mutation function to your GraphQL schema or create a GraphQL resolver for it, unless you intend it to be called only by _other_ plugins.
