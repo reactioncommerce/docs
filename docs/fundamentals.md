@@ -8,15 +8,15 @@ Open Commerce is open-source-licensed, freely available software. You can explor
 
 Whether you’re a business owner running a shop or a developer setting up a custom implementation, it’s easy to get a shop up and running with the Open Commerce development platform and build from there.
 
-Every shop is built around a catalog of products. You can [set up your products](/open-commerce/docs/creating-organizing-products/) in the admin dashboard  and then organize them with [tags](/open-commerce/docs/tags-navigation/) to help shoppers navigate your catalog. Once shoppers have found what they want and make a purchase, you’ll [fulfill their orders](/open-commerce/docs/fulfilling-orders/) by accepting payments and delivering their items.
+Every shop is built around a catalog of products. You can [set up your products](/open-commerce/docs/creating-organizing-products/) in the admin dashboard  and then [organize them with tags](/open-commerce/docs/tags-navigation/) to help shoppers navigate your catalog. Once shoppers have found what they want and make a purchase, you’ll [fulfill their orders](/open-commerce/docs/fulfilling-orders/) by accepting payments and delivering their items.
 
-Developers can customize any part of the administrator or shopper experience by [writing plugins](/open-commerce/guides/build-api-plugin/). Because Open Commerce is fully modular, you’ll often want to [share code between plugins](/open-commerce/docs/sharing-code-between-plugins/) so features are available across the entire platform. If you’ve created a new plugin or modified an existing one and you want to share it with other developers, you can contribute to the [Open Commerce community](#community).
+Developers can customize any part of the administrator or shopper experience by [writing plugins](/open-commerce/guides/build-api-plugin/). Because Open Commerce is fully modular, you’ll often want to [share code between plugins](/open-commerce/docs/sharing-code-between-plugins/) so features are available across the entire platform. If you’ve created a new plugin or modified an existing one and you want to share it with other developers, you can contribute to the [Open Commerce community](#community). When committing to existing Open Commerce repos, you should follow the [testing requirements](/open-commerce/docs/testing-requirements/)
 
 ### Open Commerce vs Reaction Commerce
 
-Open Commerce was formerly known as Reaction Commerce. You may see references to Reaction throughout the guides and docs, especially in code—all Open Commerce repos are under the [`reactioncommerce` GitHub organization](https://github.com/reactioncommerce). 
+Open Commerce was formerly known as Reaction Commerce. You may see references to Reaction throughout the guides and docs, especially in code—all Open Commerce repos are under the [`reactioncommerce`](https://github.com/reactioncommerce) GitHub organization. 
 
-As we continue the renaming process, we’ll announce any future breaking changes in the [release notes](/release-notes/?filter=open-commerce).
+As we continue the renaming process, we’ll announce any future breaking changes in the [release notes](/release-notes/).
 
 ## Development platform
 
@@ -28,7 +28,7 @@ The development platform has several `make` scripts that automatically pull the 
 
 All of Open Commerce’s features, including the [API core](https://github.com/reactioncommerce/api-core), are provided by first-party plugins—the [main project](https://github.com/reactioncommerce/reaction) is a shell that that imports all of the required NPM packages. This structure gives you complete control over what plugins and features are active in your installation. For more information on customizing these plugins or creating your own, check out the [Build an API Plugin guide](/open-commerce/guides/build-api-plugin/).
 
-A wide range of first-party plugins covers all the basic platform features, including handling backend services, shop configuration, and the shopper experience. You can view a list of the plugins active in your instance in the admin dashboard under **Settings > System Information**.
+A wide range of first-party plugins covers all the basic platform features, including handling backend services, shop configuration, and the shopper experience. You can view a list of the plugins active in your instance in the admin dashboard under **Settings > System Information**. The plugins included with the development platform are:
 
 |Plugin|Description|
 |------|-----------|
