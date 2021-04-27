@@ -18,21 +18,20 @@ All emails sent by Open Commerce are logged: to view them, go to **Settings > Em
 
 ## Editing email templates
 
-The following email templates are preloaded into the `Templates` collection when Open Commerce starts up:
+A range of email templates are preloaded into the `Templates` collection when Open Commerce starts up.
 
+Accounts:
+- Invite Shop Member – New User Account
+- Reset Password
+- Verify Account (via LaunchDock)
+- Verify Updated Email Address
+- Welcome Email
 
-
-- Accounts
-	- Invite Shop Member – New User Account
-	- Reset Password
-	- Verify Account (via LaunchDock)
-	- Verify Updated Email Address
-	- Welcome Email
-- Orders
-	- New Order Placed
-	- Order Item Refunded
-	- Order Refunded
-	- Order Shipped
+Orders:
+- New Order Placed
+- Order Item Refunded
+- Order Refunded
+- Order Shipped
 
 To customize a template, go to **Settings > Email Templates** in the admin dashboard. There are several fields that define each template: 
 
