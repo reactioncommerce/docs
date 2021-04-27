@@ -5,24 +5,25 @@ You can create products, variants, and options in the Open Commerce admin dashbo
 
 This documentation outlines the structure of products, how to set up new products from scratch, and how to manage existing products within your store.
 
-### Product structure
-A product in Open Commerce represents a single type of item that you want to list in your store’s catalog, while variants are properties of that item. Every product must have at least one variant, because some information is set at the product level and some is set at the variant level. Depending on what you are selling—and how you want to organize and manage your inventory—each product might have a single variant or multiple variants. 
+### Products and variants
+A product in Open Commerce represents a single type of item that you want to list in your store’s catalog; variants are properties of that item. Every product must have at least one variant, because some information is set at the product level and some is set at the variant level. Depending on what you are selling—and how you want to organize and manage your inventory—each product might have a single variant or multiple variants. 
 
 For example, you could have a particular design of t-shirt (the product) that has multiple sizes (its variants). In that case, the design would appear as a single entry on catalog pages, and the variants would be visible on the product page. 
 
 In another example, a bookseller could carry a particular book title in hardcover, paperback, and e-book editions. Different businesses might make different choices: you might want all three as variants of a single product, you might group the physical books in one product and the e-book in another, or you might set up all three as separate products. Pricing is set at the variant level, so all three book editions could be sold at different prices in any of these product/variant configurations.
 
-Open Commerce provides yet another level of organizational flexibility with options. If you include options in a product, the customer must make a choice at each variant level. These choices uniquely identify an exact product configuration, called a terminal variant—and only terminal variants can be added to carts and ordered. If a variant does not contain options, then it is also a terminal variant.
+### Options
+Open Commerce provides yet another level of organizational flexibility with options. If you include options in a product, the customer must make a choice at each variant level. These choices uniquely identify an exact product configuration, called a terminal variant—and only terminal variants can be added to carts. If a variant does not contain options, then it is also a terminal variant.
 
 Expanding our t-shirt example, a particular design (product) could be printed on two different colors of shirt (variants), each of which comes in three sizes (options). To order one of these shirts a customer has make two choices to specify their desired terminal variant. Ordering just a red shirt without specifying a size, or just a large shirt without specifying a color wouldn’t make any more sense in an Open Commerce store than it would in a bricks-and-mortar store!
 
 ## Create a product
 To create a product, log in to the Open Commerce admin dashboard, click **Products** in the left sidebar, and then click **Create product**. You’ll add details about the product on various cards: 
 
-Enter the product information—such as title, permalink, subtitle, vendor, description, and origin country—in the **Details** card.
-To add images, click **Drag image or click to upload** in the **Media Gallery** card. Once uploaded, you can use the Order fields to set the order that the images appear in.
-Customize the product’s social sharing messages under the **Social** card.
-Add tags by clicking on the **+** button in the **Tags** card. Select tags from the dropdown menu in the dialog, and then click **Add tags to products**. (See the [Tags and Navigation documentation](/open-commerce/docs/tags-navigation) for further information on creating new tags.)
+- Enter the product information in the **Details** card.
+- To add images, click **Drag image or click to upload** in the **Media Gallery** card. Once uploaded, you can use the Order fields to set the order that the images appear in.
+- Customize the product’s social sharing messages under the **Social** card.
+- Add tags by clicking on the **+** button in the **Tags** card. Select tags from the dropdown menu in the dialog, and then click **Add tags to products**. (See the [Tags and Navigation documentation](/open-commerce/docs/tags-navigation) for further information on creating new tags.)
 
 Make sure to click **Save changes** in each card where you have entered new information.
 
@@ -35,24 +36,24 @@ To create additional variants, click the **⋯** button next to the product's na
 
 | Field | Description |
 | ----- | ----------- |
-| Attribute label | Required. The attribute label describes the category of variant, for example, "Color" or "Size". |
-| Short title | The short title describes this particular variant within the category set by the attribute label. For example, a variant with the attribute label "Color" might have the short title "Red". This is usually shown in a drop-down list or button on the product detail page in your shop. |
-| Title | The full title is usually shown on carts, checkout pages, order summary pages, and invoices. It should fully describe the configured variant. For example, if this is an option with the short title "Large", its parent variant has a short title "Red", and the product title is "Fancy T-Shirt", then a good title would be "Fancy T-Shirt – Red – Large". |
+| Attribute label | Required. The attribute label describes the category of variant, for example, “Color” or “Size”. |
+| Short title | The short title describes this particular variant within the category set by the attribute label. For example, a variant with the attribute label “Color” might have the short title “Red”. This is usually shown in a drop-down list or button on the product detail page in your shop. |
+| Title | The full title is usually shown on carts, checkout pages, order summary pages, and invoices. It should fully describe the configured variant. For example, if this is an option with the short title “Large”, its parent variant has a short title “Red”, and the product title is “Fancy T-Shirt”, then a good title would be “Fancy T-Shirt – Red – Large”. |
 | Origin country | Optional. |
 | Width, Length, Height, Weight | Optional. Units for these measurements can be changed under **Settings > Shop Localization**. |
 | Price | Required. Enter a number without currency symbols. |
 | Compare at price | Optional. Use this to display a price other than what you are currently selling a product for, such as a suggested retail price or the regular price of an item that is on sale. |
-| Manage inventory | Optional. If you'd like to track the item in your inventory, check this box. <ul><li>**Quantity** – Optional. Enter your current inventory quantity.</li><li>**Warn at** – Optional. When the item’s quantity is lower than this number, "Limited Supply" notifications will be displayed on product pages.</li><li>**Allow backorder** – Optional. When enabled, customers can order the product even if the inventory quantity is 0.</li></ul>|
+| Manage inventory | Optional. If you’d like to track the item in your inventory, check this box. <ul><li>**Quantity** – Optional. Enter your current inventory quantity.</li><li>**Warn at** – Optional. When the item’s quantity is lower than this number, “Limited Supply” notifications will be displayed on product pages.</li><li>**Allow backorder** – Optional. When enabled, customers can order the product even if the inventory quantity is 0.</li></ul>|
 | Taxable | Optional. Check this box to automatically add tax to this item when purchased. When checked, you can optionally add a variant-specific tax code or leave the Tax Code field blank to use the code set in **Settings > Taxes > Default tax code for products**. |
 
-Once you’ve added the variant’s information, make the variant visible by clicking the **⋯** button next to the variant’s name and then clicking "Make Visible." As a reminder, you can’t publish a new product unless the product itself and all of its variants are made visible.
+Once you’ve added the variant’s information, make the variant visible by clicking the **⋯** button next to the variant’s name and then clicking “Make Visible.” As a reminder, you can’t publish a new product unless the product itself and all of its variants are made visible.
 
 ## Add options to a variant
 Options provide a second layer of customization within each variant. For instance, in addition to carrying shirts in multiple colors, you may also want to carry multiple size options for each color. 
 
 To create an option:
 
-1. Hover over the variant you'd like to create an option for. Click the **⋯** button to the right of its name and then click **Create variant**.
+1. Hover over the variant you’d like to create an option for. Click the **⋯** button to the right of its name and then click **Create variant**.
 
 2. Add the option’s information as you would when [creating a top-level variant](#configure-a-variant). 
 
@@ -83,9 +84,9 @@ You can perform bulk actions on multiple products at once, either by selecting t
 
 You can also filter by product ID:
 
-1. Create a CSV file with a comma-separated list of product IDs you'd like to filter. 
+1. Create a CSV file with a comma-separated list of product IDs you’d like to filter. 
 2. Click the **Actions** menu and choose **Filter by file**.
-3. Click **Import** and choose the CSV file you'd like to use.
+3. Click **Import** and choose the CSV file you’d like to use.
 4. Click **Filter products**.
 
 Once you’ve filtered the products, you can use the **Actions** menu to perform bulk actions on them, including adding or removing tags, publishing, hiding or showing, duplicating, or archiving them.
