@@ -8,11 +8,11 @@ When changing code in an Open Commerce repository, you should test your code bef
 
 All unit and integration tests should use the [Jest framework](https://jestjs.io). When submitting a pull request, [CircleCI](https://circleci.com) automatically runs unit and integration tests and will not allow merging until they all pass. Acceptance tests verify app functionality from a user’s perspective and can be done with a script or manually.
 
-In this documentation, we’ll cover how to create and run unit and integration tests so your code can be accepted into the Open Commerce codebase.
+In this documentation, we’ll cover how to create and run unit and integration tests so your code can be accepted into the [Open Commerce codebase](https://github.com/reactioncommerce).
 
 ### Unit vs integration tests
 
-Because many Open Commerce services integrate with others, there’s no sharp divide between unit and integration tests. Think of the terms "unit" and "integration" as two ends of a spectrum, where the "unit" end mocks everything and tests in complete isolation, while the "integration" end mocks nothing and is essentially like running the Open Commerce app itself.
+Because many Open Commerce services integrate with others, there’s no sharp divide between unit and integration tests. Think of the terms “unit” and “integration” as two ends of a spectrum, where the “unit” end mocks everything and tests in complete isolation, while the “integration” end mocks nothing and is essentially like running the Open Commerce app itself.
 
 In practice, the primary distinction is: 
 
@@ -38,7 +38,7 @@ When writing your test:
 - Always use `test()` instead of `it()` to define test functions.
 - Do not import `describe`, `test`, `jest`, `jasmine`, or `expect`. They are automatic globals in all test files.
 - Use arrow functions for all `describe` and `test` functions.
-- Use Jest's [built-in `expect` function](https://jestjs.io/docs/en/expect.html) for assertions.
+- Use Jest’s [built-in `expect` function](https://jestjs.io/docs/en/expect.html) for assertions.
 
 You might need to [test asynchronous code](https://jestjs.io/docs/en/asynchronous.html): functions that either return a Promise or take a callback argument. You should use Promises unless you need to use a callback, such as when the API of another package requires it. When using callbacks, make sure to add a `done` argument to your test function and call `done` when all testing is complete.
 
@@ -48,8 +48,8 @@ To write unit tests for modules that depend on other modules, you need to supply
 
 There are several ways to mock data in Open Commerce:
 
-- Use [Jest's mocking capabilities](https://jestjs.io/docs/en/mock-functions.html). 
-- Use the [rewire-exports](https://www.npmjs.com/package/babel-plugin-rewire-exports) Babel plugin, which can temporarily replace anything that another file exports. This is useful for mocking functions that are imported by the function that you're testing.
+- Use [Jest’s mocking capabilities](https://jestjs.io/docs/en/mock-functions.html). 
+- Use the [rewire-exports](https://www.npmjs.com/package/babel-plugin-rewire-exports) Babel plugin, which can temporarily replace anything that another file exports. This is useful for mocking functions that are imported by the function that you’re testing.
 - Use the built-in [`Factory` test utility](https://github.com/reactioncommerce/data-factory), which uses `@reactioncommerce/data-factory` to attach all core schemas to the `Factory` object. You need to add the schema to the `Factory` prior to use, or it will evaluate to an empty object.
 
 > **Note**: `Factory` should primarily be used for backend-specific testing, such as integration testing at the API server level or unit testing at the plugin level.
@@ -239,13 +239,13 @@ test("primaryShop query returns a shop", async () => {
 
 The following code snippets are examples of common tasks to include in GraphQL integration tests. `mockAccount` may either be an account document that you’ve already inserted or one that the test server will insert for you. Either way, it must have an `_id` property, which will be used to set the `user` and `account` properties of the GraphQL context for all test queries.
 
-**Insert a primary shop**
+To insert a primary shop:
 
 ```js
 const shopId = await testApp.insertPrimaryShop();
 ```
 
-**Create a mock user**
+To create a mock user:
 
 ```js
 mockAccount = Factory.Accounts.makeOne({
@@ -254,7 +254,7 @@ mockAccount = Factory.Accounts.makeOne({
 await testApp.createUserAndAccount(mockAccount);
 ```
 
-**Create a mock admin user**
+To create a mock admin user:
 
 ```js
 mockAdminAccount = Factory.Accounts.makeOne({
@@ -263,7 +263,7 @@ mockAdminAccount = Factory.Accounts.makeOne({
 await testApp.createUserAndAccount(mockAdminAccount, ["owner"]);
 ```
 
-**Set and clear the mock user**
+To set and clear the mock user:
 
 ```js
 beforeAll(async () => {
