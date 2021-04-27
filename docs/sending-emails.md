@@ -42,6 +42,6 @@ To customize a template, go to **Settings > Email Templates** in the admin dashb
 |Subject|The email subject line. [Handlebars expressions](https://handlebarsjs.com/guide/) are allowed, as long as they are passed to the server-side rendering function.|
 |HTML|The body of the email. [Handlebars expressions](https://handlebarsjs.com/guide/) are allowed, as long as they are passed to the server-side rendering function.|
 |Name|Not editable. The name of the function that is used to trigger the email.|
-|Language|Not editable. The language that is set for the shop under **Settings > Shop Localization**. The language can't be changed on a per-template basis.|
+|Language|Not editable. The language that is set for the shop under **Settings > Shop Localization**. The language can’t be changed on a per-template basis.|
 
 
