@@ -4,6 +4,8 @@ Mailchimp Open Commerce is an API-first, modular commerce stack. The API impleme
 
 Open Commerce is open-source-licensed, freely available software. You can explore the platform’s [repos on GitHub](https://github.com/reactioncommerce), or follow the [Quick Start guide](/open-commerce/guides/quick-start/) to install the development platform on your computer. If you’re interested in contributing to Open Commerce, be sure to read and follow the [code of conduct](https://github.com/reactioncommerce/reaction-docs/blob/trunk/public-docs/code-of-conduct.md/) and check out the [community resources](#community).
 
+Like the code, the documentation is also [open source](https://github.com/reactioncommerce/docs), and previous versions of the Reaction Commerce docs are [archived on GitHub](https://github.com/reactioncommerce/reaction-docs).
+
 ### Using Open Commerce
 
 Whether you’re a business owner running a shop or a developer setting up a custom implementation, it’s easy to get a shop up and running with the Open Commerce development platform and build from there.
