@@ -16,7 +16,7 @@ Developers can customize any part of the administrator or shopper experience by 
 
 Open Commerce was formerly known as Reaction Commerce. You may see references to Reaction throughout the guides and docs, especially in code—all Open Commerce repos are under the [`reactioncommerce`](https://github.com/reactioncommerce) GitHub organization. 
 
-As we continue the renaming process, we’ll announce any future breaking changes in the [release notes](/release-notes/).
+As we continue the renaming process, we’ll announce any future breaking changes in the [release notes](/release-notes/?filter=open-commerce).
 
 ## Development platform
 
@@ -84,6 +84,6 @@ In some cases, projects may look for additional environment variables that are n
 
 Open Commerce has a global team of contributors to its [projects on GitHub](https://github.com/reactioncommerce). New contributors are always welcome, and they should read and abide by the [code of conduct](https://github.com/reactioncommerce/reaction-docs/blob/trunk/public-docs/code-of-conduct.md/).
 
-If you have questions about implementing Open Commerce, customizing code for your own purposes, or contributing to a project, check out the [developer forum](https://forums.reactioncommerce.com) and [Gitter chat](https://gitter.im/reactioncommerce/reaction/). For bug reports and feature requests, you can create a new issue directly in the appropriate repo.
+If you have questions about implementing Open Commerce, customizing code for your own purposes, or contributing to a project, check out the [developer forum](https://forums.reactioncommerce.com) and [Discord server](https://discord.gg/Bwm63tBcQY). For bug reports and feature requests, you can create a new issue directly in the appropriate repo.
 
 For more information on getting your code ready to commit, check out the [ESLint configuration](https://github.com/reactioncommerce/reaction-eslint-config) project and the [Testing Requirements](/open-commerce/docs/testing-requirements/) doc.
