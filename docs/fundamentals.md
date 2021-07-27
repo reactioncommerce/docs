@@ -74,7 +74,6 @@ A wide range of first-party plugins covers all the basic platform features, incl
 
 ## Environment variables
 
-Find the list of all environment variables used [here](/open-commerce/docs/environment-variables/)
 Much of the platform-wide configuration of Open Commerce is set via environment variables—either to pass information from one service to another or simply to customize the platform to meet your needs.
 
 You can set variables in the `.env` file within each plugin, which is used by Docker Compose when starting the system and loading plugins. Each Open Commerce repo contains a `.env.example` file that lists the environment variables and default values for that project. You can run the `bin/setup` script within the project to automatically copy the contents of `.env.example` to `.env` (although it will not overwrite existing values). Your `.env` files will contain personalized and potentially sensitive information, so you should never commit them to a public GitHub repo.
