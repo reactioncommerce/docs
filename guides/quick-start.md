@@ -23,10 +23,11 @@ git clone https://github.com/reactioncommerce/reaction-development-platform.git
 cd reaction-development-platform
 make
 ```    
+> **Note**: `make` starts containers in production mode, so you won't be able to make changes to the code and see them. For running in development mode, use `make init-dev`. See list of all commands [here](https://github.com/reactioncommerce/reaction-development-platform#project-commands)
     
 > **Note**: On Windows, you may need to replace `make` with `sudo make`. Then run `chown -R` on the `reaction-development-platform` directory to set your user as the owner of all the files it contains.
 
-Behind the scenes, the `make` process clones all of the relevant Open Commerce software repositories, sets up each environment, and pulls, builds, and starts each Docker container. 
+Behind the scenes, the `make` process clones all of the relevant Open Commerce software repositories, sets up each environment, and pulls, builds, and starts each Docker container in production mode. 
 
 When `make` completes, five services will be running on `localhost`:
 
@@ -59,3 +60,4 @@ You can also view your Open Commerce storefront at `localhost:4000`.
 Now that you’re up and running, you can start managing your store by creating products or building a custom storefront on top of the GraphQL API. The local instance also provides everything you need to code your own plugins for use with Open Commerce; for more information, see the [Build an API Plugin](/developer/open-commerce/guides/build-api-plugin/) guide.
 
 When you’re done exploring Open Commerce, navigate to your `reaction-development-platform` directory and run `make stop`. This ensures that Docker properly saves all your data for the next time you want to run the system. To restart the system, simply run `make` again in the same directory.
+
