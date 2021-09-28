@@ -12,7 +12,7 @@ Whether you’re a business owner running a shop or a developer setting up a cus
 
 Every shop is built around a catalog of products. You can [set up your products](/open-commerce/docs/creating-organizing-products/) in the admin dashboard and then [organize them with tags](/open-commerce/docs/tags-navigation/) to help shoppers navigate your catalog. Once shoppers have found what they want and make a purchase, you’ll [fulfill their orders](/open-commerce/docs/fulfilling-orders/) by accepting payments and delivering their items.
 
-Developers can customize any part of the administrator or shopper experience by manipulating existing [plugins and environment variables](/open-commerce/docs/plugins-environment-variables/) or by [writing their own plugins](/open-commerce/guides/build-api-plugin/). Because Open Commerce is fully modular, you’ll often want to [share code between plugins](/open-commerce/docs/sharing-code-between-plugins/) so features are available across the entire platform. If you’ve created a new plugin or modified an existing one and you want to share it with other developers, you can contribute to the [Open Commerce community](#community). When committing to existing Open Commerce repos, you should follow the [testing requirements](/open-commerce/docs/testing-requirements/)
+Developers can customize any part of the administrator or shopper experience by manipulating existing [plugins and environment variables](/open-commerce/docs/plugins-environment-variables/) or by [writing their own plugins](/open-commerce/guides/build-api-plugin/). Because Open Commerce is fully modular, you’ll often want to [share code between plugins](/open-commerce/docs/sharing-code-between-plugins/) so features are available across the entire platform. If you’ve created a new plugin or modified an existing one and you want to share it with other developers, you can contribute to the [Open Commerce community](#community). When committing to existing Open Commerce repos, you should follow the [testing requirements](/open-commerce/docs/testing-requirements/).
 
 ### Open Commerce vs Reaction Commerce
 
@@ -20,11 +20,43 @@ Open Commerce was formerly known as Reaction Commerce. You may see references to
 
 As we continue the renaming process, we’ll announce any future breaking changes in the [release notes](/release-notes/?filter=open-commerce).
 
-## Development platform
+### Local GraphQL playground
 
-The Open Commerce development platform is the simplest way to set up the API and its supporting services on your local machine. The development platform is containerized and uses public Docker images by default, though you can also choose to run the platform in development mode, which uses local images that can be updated on the fly as you make edits to a running plugin.
+One of the development platform services is a local instance of the [GraphQL playground](/open-commerce/playground/). When using the playground, some queries—such as `ping`—don't require authentication, but many others do. Running them without authenticating will return an error or incorrect results. 
 
-The development platform has several `make` scripts that automatically pull the latest version of Open Commerce and start all of the required services using Docker Compose. The development platform runs on `localhost`; see the [Quick Start guide](/open-commerce/guides/quick-start/#clone-and-start-the-platform) for a list of ports where you can access its various services. For details on specific `make` commands for controlling and customizing the development platform, see the [development platform project documentation](https://github.com/reactioncommerce/reaction-development-platform#project-commands) on GitHub.
+For example, if you try to retrieve the viewer’s email address without authenticating, you will receive a `null` result:
+
+```graphql
+# Query
+{
+  viewer {
+    emailRecords {
+      address
+    }
+  }
+}
+
+# Response
+{
+  "data": {
+    "viewer": null
+  }
+}
+```
+
+To authenticate, you need an access token based on the SHA256 hash of your account password. To get that hash, open a terminal window and run `echo -n "YOUR_PASSWORD" | shasum -a 256`. Then pass the hash in the `authenticate` mutation to generate the access token:
+
+ ```graphql
+    mutation {
+      authenticate(serviceName: "password", params: { user: { email: "YOUR_EMAIL_ADDRESS"}, password: "YOUR_HASHED_PASSWORD" }) {
+        tokens {
+          accessToken
+        }
+      }
+    }
+ ```
+
+Click **HTTP HEADERS** at the bottom of the playground and add the access token as the value of `"Authorization"` in the header JSON object. Now you should be able to perform queries and mutations that require authentication.
 
 ## Community
 
