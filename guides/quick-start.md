@@ -36,10 +36,6 @@ When `make` completes, five services will be running on `localhost`:
 
   * [Admin dashboard](https://github.com/reactioncommerce/reaction-admin) (port 4080), used to manage shop settings, accounts, products, and orders.
 
-  * [Identity](https://github.com/reactioncommerce/reaction-identity) (port 4100), which handles Open Commerce customer and shop manager accounts.
-
-  * [Hydra OAuth2 Server](https://github.com/reactioncommerce/reaction-hydra) (port 4444), which can connect to external user accounts.
-
 > **Note**: You can manage individual pieces of the system by changing directories into a subproject and running Docker compose commands (e.g., `cd reaction-admin && docker-compose logs -f`).
 
 ## Access the dashboard, playground, and storefront
