@@ -1,6 +1,6 @@
 # Order
 
-Orders plugin deals with order creation, fetching orders by order ID, reference ID or payment ID, cancelling order, refunds. 
+Orders plugin deals with order creation, fetching orders by order ID, reference ID or payment ID, cancelling order and refunds. 
 
 ## Types
 
@@ -68,9 +68,9 @@ Query the Orders collection for an order. It requires both referenceId (as id) a
 
 3. **createRefund** : Use this mutation to create a refund on an order payment.
 
-4. moveOrderItems : Use this mutation to move one or more items between existing order fulfillment groups.
-5. placeOrder : Create all authorized payments for a potential order
-6. sendOrderEmail : A mutation that compiles and server-side renders the email template with order data, and sends the email
-7. splitOrderItem : Use this mutation to reduce the quantity of one item of an order and create a new item for the remaining quantity in the same fulfillment group, and with the same item status. You may want to do this if you are only able to partially fulfill the item order right now.
-8. updateOrder : Use this mutation to update order status, email, and other properties
-9. updateOrderFulfillmentGroup : Use this mutation to update an order fulfillment group status and tracking information
+4. **moveOrderItems** : This mutation is used to change the fulfillment group of an order.
+5. **placeOrder** : Used it place the final order. The input for this mutation `PlaceOrderInput` takes order and payments information. The order will be placed only if authorization is successful for all submitted payments.
+6. **sendOrderEmail** : A mutation that compiles and server-side renders the email template with order data, and sends the email. Email is triggered upon creation of order, when shipped, creation of order refund refund and creation of item refund.
+7. **splitOrderItem** : Use this mutation to reduce the quantity of one item of an order and create a new item for the remaining quantity in the same fulfillment group, and with the same item status. You may want to do this if you are only able to partially fulfill the item order right now. It required ItemId and quantity of the item to be split.
+8. **updateOrder** : Use this mutation to update order status, email, and other properties
+9. **updateOrderFulfillmentGroup** : Use this mutation to update an order fulfillment group status and tracking information
