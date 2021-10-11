@@ -20,11 +20,11 @@ Another keys related to product are the following:
 
 ### Creating products
 
-in order to create products we need to call the mutation `createProduct` to create a base product with no variants. the parameter `shouldCreateFirstVariant`  in the `CreateProductInput` field can help create a first placeholder variant with the product creation.
+In order to create products you need to call the mutation `createProduct` to create a base product with no variants. The parameter `shouldCreateFirstVariant` in the `CreateProductInput` field can help create a first placeholder variant with the product creation.
 
 ### Creating Variants
 
-Take a look at the `createProductVariant` mutation. by defining a `CreateProductVariantInput`, which is comprised of a productID and a shopID.
+To create variants take a look at the `createProductVariant` mutation. You must need to define a `CreateProductVariantInput`, comprised of a productID and a shopID.
 
 ### Create, Clone & Archive
 
