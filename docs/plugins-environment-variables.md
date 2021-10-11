@@ -1,0 +1,115 @@
+## The basics
+
+All of Mailchimp Open Commerce's features are provided by plugins, either first-party or third-party. This structure gives you complete control over what plugins and features are active in your installation. First-party Open Commerce services are distributed as Docker images, or can be customized and then built into your own Docker image. 
+
+Much of the platform-wide configuration of Open Commerce is set via environment variables—either to pass information from one service to another or simply to customize the platform to meet your needs. Some environment variable values are required, while others are optional. Each plugin should supply sensible defaults for required values, and the development platform's `make` scripts automatically set up required `.env` files for you.
+
+This documentation outlines the plugins included in the development platform, as well as common environment variables and their functions. For more information about making data available throughout your Open Commerce installation, see the [Sharing Code Between Plugins](/open-commerce/docs/sharing-code-between-plugins/) doc.
+
+
+## Plugins
+
+A wide range of first-party plugins covers all the basic platform features, including the [API core](https://github.com/reactioncommerce/api-core), handling backend services, shop configuration, and the shopper experience. You can view a list of the plugins active in your instance in the admin dashboard under **Settings > System Information**. 
+
+The plugins included with the development platform are:
+
+| Plugin                                                                                                         | Description                                                                                                               |
+| -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| [`api-plugin-accounts`](https://github.com/reactioncommerce/api-plugin-accounts)                               | Manages internal accounts for shop operators and shoppers.                                                                |
+| [`api-plugin-address-validation`](https://github.com/reactioncommerce/api-plugin-address-validation)           | Validates shopper addresses during checkout.                                                                              |
+| [`api-plugin-address-validation-test`](https://github.com/reactioncommerce/api-plugin-address-validation-test) | A template for creating a new address validation plugin.                                                                  |
+| [`api-plugin-authentication`](https://github.com/reactioncommerce/api-plugin-authentication)                   | Connects the Identity service to the Open Commerce API.                                                                   |
+| [`api-plugin-authorization-simple`](https://github.com/reactioncommerce/api-plugin-authorization-simple)       | Checks account permissions to allow or deny actions.                                                                      |
+| [`api-plugin-carts`](https://github.com/reactioncommerce/api-plugin-carts)                                     | Handles shopping cart objects.                                                                                            |
+| [`api-plugin-catalogs`](https://github.com/reactioncommerce/api-plugin-catalogs)                               | Handles product catalogs.                                                                                                 |
+| [`api-plugin-discounts`](https://github.com/reactioncommerce/api-plugin-discounts)                             | Handles discounting products.                                                                                             |
+| [`api-plugin-discounts-codes`](https://github.com/reactioncommerce/api-plugin-discounts-codes)                 | Enables discount codes that shoppers can enter at checkout.                                                               |
+| [`api-plugin-email`](https://github.com/reactioncommerce/api-plugin-email)                                     | Sends transactional emails.                                                                                               |
+| [`api-plugin-email-smtp`](https://github.com/reactioncommerce/api-plugin-email-smtp)                           | Manages the SMTP connection for outgoing transactional emails.                                                            |
+| [`api-plugin-email-templates`](https://github.com/reactioncommerce/api-plugin-email-templates)                 | Provides transactional email templates that shop operators can customize.                                                 |
+| [`api-plugin-files`](https://github.com/reactioncommerce/api-plugin-files)                                     | Manages file uploads for a shop.                                                                                          |
+| [`api-plugin-i18n`](https://github.com/reactioncommerce/api-plugin-i18n)                                       | Handles internationalization options for a shop.                                                                          |
+| [`api-plugin-inventory`](https://github.com/reactioncommerce/api-plugin-inventory)                             | Tracks inventory counts for product variants.                                                                             |
+| [`api-plugin-inventory-simple`](https://github.com/reactioncommerce/api-plugin-inventory-simple)               | Determines product availability status based on inventory counts.                                                         |
+| [`api-plugin-job-queue`](https://github.com/reactioncommerce/api-plugin-job-queue)                             | Manages job queuing and execution.                                                                                        |
+| [`api-plugin-navigation`](https://github.com/reactioncommerce/api-plugin-navigation)                           | Allows for the creation of hierarchical navigation in a shop.                                                             |
+| [`api-plugin-notifications`](https://github.com/reactioncommerce/api-plugin-notifications)                     | Sends messages about order statuses.                                                                                      |
+| [`api-plugin-orders`](https://github.com/reactioncommerce/api-plugin-orders)                                   | Handles orders, including fulfillment groups.                                                                             |
+| [`api-plugin-payments`](https://github.com/reactioncommerce/api-plugin-payments)                               | Manages all payment methods for a shop.                                                                                   |
+| [`api-plugin-payments-example`](https://github.com/reactioncommerce/api-plugin-payments-example)               | A template for creating a new payment handler.                                                                            |
+| [`api-plugin-payments-stripe`](https://github.com/reactioncommerce/api-plugin-payments-stripe)                 | Processes payments with Stripe.                                                                                           |
+| [`api-plugin-pricing-simple`](https://github.com/reactioncommerce/api-plugin-pricing-simple)                   | Enables setting prices on product variants.                                                                               |
+| [`api-plugin-products`](https://github.com/reactioncommerce/api-plugin-products)                               | Creates products and manages their information.                                                                           |
+| [`api-plugin-settings`](https://github.com/reactioncommerce/api-plugin-settings)                               | Manages shop settings like those available in the admin dashboard.                                                        |
+| [`api-plugin-shipments`](https://github.com/reactioncommerce/api-plugin-shipments)                             | Handles shipment types, including allowing or denying shipment methods for products or orders that meet certain criteria. |
+| [`api-plugin-shipments-flat-rate`](https://github.com/reactioncommerce/api-plugin-shipments-flat-rate)         | Handles shipment types that always cost the same amount.                                                                  |
+| [`api-plugin-shops`](https://github.com/reactioncommerce/api-plugin-shops)                                     | Allows creation and management of shops within an Open Commerce instance.                                                 |
+| [`api-plugin-simple-schema`](https://github.com/reactioncommerce/api-plugin-simple-schema)                     | Implements [SimpleSchema](https://github.com/longshotlabs/simpl-schema) to validate data for MongoDB documents.           |
+| [`api-plugin-sitemap-generator`](https://github.com/reactioncommerce/api-plugin-sitemap-generator)             | Creates sitemap files for search engines at a specified time interval.                                                    |
+| [`api-plugin-surcharges`](https://github.com/reactioncommerce/api-plugin-surcharges)                           | Allows applying surcharges to a cart.                                                                                     |
+| [`api-plugin-system-information`](https://github.com/reactioncommerce/api-plugin-system-information)           | Provides information about the running instance of Open Commerce, including registered plugins.                           |
+| [`api-plugin-tags`](https://github.com/reactioncommerce/api-plugin-tags)                                       | Handles tag creation and organization.                                                                                    |
+| [`api-plugin-taxes`](https://github.com/reactioncommerce/api-plugin-taxes)                                     | Manages tax rates based on location, product type, and more.                                                              |
+| [`api-plugin-taxes-flat-rate`](https://github.com/reactioncommerce/api-plugin-taxes-flat-rate)                 | Allows for setting a single tax rate.                                                                                     |
+| [`api-plugin-translations`](https://github.com/reactioncommerce/api-plugin-translations)                       | Supplies translations of terms used in the API in over 20 languages.    
+
+
+## Environment variables
+
+You can set variables in each service's `.env` file, which is used by Docker Compose when starting the system and loading plugins. Each Open Commerce repo contains a `.env.example` file that lists the environment variables and default values for that project. You can run the `bin/setup` script within the project to automatically copy the contents of `.env.example` to `.env` (although it will not overwrite existing values). Your `.env` files will contain personalized and potentially sensitive information, so you should never commit them to a public GitHub repo.
+
+In some cases, projects may look for additional environment variables that are not listed in `.env.example` because they are optional and have default values set in the code. You can find these optional variables by searching for `cleanEnv` within a Node project.
+
+The following tables detail the environment variables used by the API core, storefront, and admin services.
+
+### API
+
+| Variable Name                                    | Description                                                                                                                                                                                        | Default                              |
+| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| `GRAPHQL_INTROSPECTION_ENABLED`                  | Allow introspection of the GraphQL API.                                                                                                                                                            | `true`                               |
+| `GRAPHQL_PLAYGROUND_ENABLED`                     | Serve the GraphQL Playground at `/graphql`.                                                                                                                                                        | `true`                               |
+| `MONGO_URL`                                      | The MongoDB connection string URL, including the name of the database you want to use.                                                                                                             | `mongodb://localhost:27017/reaction` |
+| `MONGO_USE_UNIFIED_TOPOLOGY`                     | MongoDB’s [`useUnifiedTopology`](https://mongodb.github.io/node-mongodb-native/3.3/reference/unified-topology/) option.                                                                            | `true`                               |
+| `PORT`                                           | Port to serve the API on.                                                                                                                                                                          | `3000`                               |
+| `REACTION_LOG_LEVEL`                             | Control how much is [printed in the logs](https://github.com/reactioncommerce/logger#log-levels). Possible values, from most to least verbose: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`. | `DEBUG`                              |
+| `REACTION_APOLLO_FEDERATION_ENABLED`             | Enable [Apollo Federation](https://www.apollographql.com/docs/federation/) support.                                                                                                                | `false`                              |
+| `REACTION_ADMIN_PUBLIC_ACCOUNT_REGISTRATION_URL` | The registration URL to be used in new account invitation emails.                                                                                                                                  | `http://localhost:4080`              |
+| `REACTION_GRAPHQL_SUBSCRIPTIONS_ENABLED`         | Enable [GraphQL subscriptions](https://www.apollographql.com/docs/apollo-server/data/subscriptions/) over WebSockets.                                                                              | `true`                               |
+| `REACTION_SHOULD_INIT_REPLICA_SET`               | Automatically initialize a MongoDB replica set on startup if one isn’t found.                                                                                                                      | `true`                               |
+| `REACTION_WORKERS_ENABLED`                       | Enable background job workers. If set to `false`, features that require background jobs, such as emailing and file uploads, won't work.                                                            | `true`                               |
+| `VERBOSE_JOBS`                                   | Enable logging of jobs to the console.                                                                                                                                                             | `false`                              |
+| `ROOT_URL`                                       | The root URL (including protocol) for the API.                                                                                                                                                     | `http://localhost:3000`              |
+| `STRIPE_API_KEY`                                 | The secret key from your Stripe account dashboard. Required for using Stripe payments.                                                                                                             | `YOUR_PRIVATE_STRIPE_API_KEY`        |
+| `MAIL_URL`                                       | An SMTP URL (e.g. `smtp://user:pass@example.com:465`) that is used to send all transactional emails from the `email-smtp` plugin.                                                                  | none                                 |
+| `EMAIL_DEBUG`                                    | Enable email plugin logging.                                                                                                                                                                       | `false`                              |
+| `REACTION_SHOULD_ENCODE_IDS`                     | Transform internal IDs to opaque IDs using the `encodeOpaqueId` function.                                                                                                                          | `true`                               |
+| `STORE_URL`                                      | The URL for the storefront.                                                                                                                                                                        | `http://localhost:4000`              |
+
+### Example Storefront
+
+| Variable Name           | Description                                                                                                  | Default               |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------ | --------------------- |
+| `CANONICAL_URL`         | The canonical root public URL for your storefront.                                                           | none                  |
+| `BUILD_GRAPHQL_URL`     | A URL for creating a build outside of CI/CD.                                                                 | none                  |
+| `EXTERNAL_GRAPHQL_URL`  | The public GraphQL API URL used by Next.js.                                                                  | none                  |
+| `INTERNAL_GRAPHQL_URL`  | The URL used by the frontend server to reach GraphQL for the build process.                                  | none                  |
+| `NODE_ENV`              | Node environment designation, usually `production` or `development`.                                         | none                  |
+| `PORT`                  | Port to run the storefront server on.                                                                        | `4000`                |
+| `SESSION_MAX_AGE_MS`    | The maximum age in milliseconds for the storefront session cookie, which is used for authentication.         | `86400000` (24 hours) |
+| `SESSION_SECRET`        | A unique key for [cookie session](https://www.npmjs.com/package/cookie-session#secret) verification.         | none                  |
+| `STRIPE_PUBLIC_API_KEY` | The public/client key from your Stripe dashboard.                                                            | none                  |
+| `SITEMAP_MAX_AGE`       | The `max-age` value in seconds for the `Cache-Control` header included when serving the `sitemap.xml` file.  | `43200` (12 hours)    |
+| `IS_BUILDING_NEXTJS`    | If `true`, serve the API from `BUILD_GRAPHQL_URL`; if `false`, serve the API from `INTERNAL_GRAPHQL_URL`.    | `false`               |
+
+### Admin
+
+| Variable Name                 | Description                                                                                                                                                                                                                                         | Default |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `PUBLIC_GRAPHQL_API_URL_HTTP` | An API URL that is accessible from browsers and accepts GraphQL POST requests over HTTP.                                                                                                                                                            | none    |
+| `PUBLIC_GRAPHQL_API_URL_WS`   | An API URL that is accessible from browsers and accepts GraphQL WebSocket connections. Enables GraphQL subscriptions on the client. The location is usually the same as `PUBLIC_GRAPHQL_API_URL_HTTP` but using the `ws` protocol instead of `http`.| none    |
+| `PUBLIC_FILES_BASE_URL`       | A full public URL that has `/assets/uploads` and `/assets/files` endpoints for uploading and downloading files. Usually the same as the API service root URL.                                                                                       | none    |
+| `PUBLIC_I18N_BASE_URL`        | Required. A full public URL that has `/locales/namespaces.json` and `/locales/resources.json` endpoints for loading translations. Usually the same as the API service root URL.                                                                     | none    |
+| `PUBLIC_STOREFRONT_HOME_URL`  | Required. The URL for the storefront home page. This is only used as fallback if a storefront URL isn’t set within the admin dashboard.                                                                                                             | none    |
+| `ROOT_URL`                    | The canonical root public URL for the admin server.                                                                                                                                                                                                 | none    |
+| `PORT`                        | The port to run the Node server on. We recommend using `4080`.                                                                                                                                                                                      | none    |
+| `MONGO_ALLOW_DISK_USE`        | Allow MongoDB to use [temporary files on disk](https://docs.mongodb.com/manual/reference/method/cursor.allowDiskUse/).                                                                                                                              | `false` |
