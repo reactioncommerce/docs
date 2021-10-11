@@ -1,9 +1,9 @@
 ## Overview 
 Products is one of the most used entities in Mailchimp Open Commerce. It is basically what you offer in the store to sell, it can be tangible or intangible, it can also represent a physical product or service.
 
-Products can have 2 levels of variants, for example, a t-shirt can be sold by size and color.
+Products can have 2 levels of variants, for example, a t-shirt can be sold by size and color. [More about Products & Variants](https://github.com/reactioncommerce/reaction-docs/blob/trunk/public-docs/concepts-products.md)
 
-By default, each product have at least one variant, where it holds pircing and inventory information.
+By default, each product have at least one variant, where it holds pricing and inventory information.
 ### Types
 
 The type `Product` is  the source of truth of Shop Administrators, it is what gets created/updated/archived in the database. When a `Product` gets published it becomes a `CatalogProduct`, which is what should be displayed to shoppers who browse that catalog.
