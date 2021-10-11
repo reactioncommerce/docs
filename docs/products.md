@@ -42,7 +42,6 @@ shouldCreateFirstVariant:Boolean = true
 
 #### type ProductInput fields 
 ```graphql 
-
 _id:String
 
 description:String
