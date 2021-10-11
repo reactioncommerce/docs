@@ -28,7 +28,7 @@ Take a look at the `createProductVariant` mutation. by defining a `CreateProduct
 
 ### Create, Clone & Archive
 
-Most of the create mutations also have a clone and an archive equivalent, to allow the fast creation of full CRUD-based operations. For example, `cloneProducts`,  `CloneProductVariants` and `archiveProducts` are available.
+Most of the create mutations also have a clone and an archive equivalent, to allow the fast creation of full CRUD-based operations. Fgi or example, `cloneProducts`,  `CloneProductVariants` and `archiveProducts` are available.
 
 
 #### mutation CreateProduct fields
