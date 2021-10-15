@@ -1,6 +1,6 @@
 # Order
 
-Orders plugin deals with order creation, fetching orders by order ID, reference ID or payment ID, cancelling order and refunds. 
+Orders plugin deals with order creation, fetching orders by order ID, reference ID or payment ID, cancelling order and refunds. Creation of an order is bound to payment completion. A payment has to be authorized successfully for creating an order.
 
 ## Types
 
@@ -53,9 +53,9 @@ Query the Orders collection for an order. It requires both orderId (as id) and s
 
 
 3. **orderByReferenceId**   
-Query the Orders collection for an order. It requires both referenceId (as id) and shopId as query parameters. A token string can be used as a parameter for annonymous orders not linked with an account. ReferenceId id the one displayed to the customer. 
+Query the Orders collection for an order. It requires both referenceId (as id) and shopId as query parameters. A token string can be used as a parameter for annonymous orders not linked with an account. ReferenceId id the one displayed to the customer on the storefront or in the order confirmation email after successfully placing an order.
 
-4. **ordersByAccountId** : Query the Orders collection for orders for a single account. Requires both accountId and shopIds.
+4. **ordersByAccountId** : Query the Orders collection for orders for a single account. Requires both accountId and shopIds. An account can have multiple orders per shop. Anonymous orders do not have an account associated with it. 
 
 5. **refunds** : Query the Orders collection for an order, and returns refunds applied to payments associated with this order. Requires both orderId and shopId. [More on refunds](https://github.com/reactioncommerce/docs/blob/3860ad31862c515dc9a9bcf8d9f86d781ad85f17/docs/fulfilling-orders.md#refunds).
 
@@ -66,11 +66,16 @@ Query the Orders collection for an order. It requires both referenceId (as id) a
 
 2. **cancelOrderItem** : Use this mutation to cancel one item of an order, either for the full ordered quantity or for a partial quantity. If partial, the item will be split into two items and the original item will have a lower quantity and will be canceled. If this results in all items in a fulfillment group being canceled, the group will also be canceled. If this results in all fulfillment groups being canceled, the full order will also be canceled.
 
-3. **createRefund** : Use this mutation to create a refund on an order payment.
+3. **createRefund** : Use this mutation to create a refund on an order payment. A refund maybe partial or full and needs to be supported by the payment method. A successful refund is reflected in the order page. 
 
-4. **moveOrderItems** : This mutation is used to change the fulfillment group of an order.
+4. **moveOrderItems** : This mutation is used to change the fulfillment group of an order. Each fulfillment group has atlease one fulfillment type and the fulfillment type describes the method of delivery of the item.
+
 5. **placeOrder** : Used it place the final order. The input for this mutation `PlaceOrderInput` takes order and payments information. The order will be placed only if authorization is successful for all submitted payments.
+
 6. **sendOrderEmail** : A mutation that compiles and server-side renders the email template with order data, and sends the email. Email is triggered upon creation of order, when shipped, creation of order refund refund and creation of item refund.
+
 7. **splitOrderItem** : Use this mutation to reduce the quantity of one item of an order and create a new item for the remaining quantity in the same fulfillment group, and with the same item status. You may want to do this if you are only able to partially fulfill the item order right now. It required ItemId and quantity of the item to be split.
-8. **updateOrder** : Use this mutation to update order status, email, and other properties
-9. **updateOrderFulfillmentGroup** : Use this mutation to update an order fulfillment group status and tracking information
+
+8. **updateOrder** : Use this mutation to update order status, email, and other properties.
+
+9. **updateOrderFulfillmentGroup** : Use this mutation to update an order fulfillment group status and tracking information.
