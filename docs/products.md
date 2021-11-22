@@ -31,7 +31,7 @@ To create variants take a look at the `createProductVariant` mutation. You must 
 Most of the create mutations also have a clone and an archive equivalent, to allow the fast creation of full CRUD-based operations. For example, `cloneProducts`,  `CloneProductVariants` and `archiveProducts` are available.
 
 
-#### mutation CreateProduct fields
+#### Mutation CreateProduct fields
 
 ```product:ProductInput
 
@@ -40,7 +40,7 @@ shopId:ID!
 shouldCreateFirstVariant:Boolean = true
 ```
 
-#### type ProductInput fields 
+#### Type ProductInput fields 
 ```graphql 
 _id:String
 
@@ -82,11 +82,11 @@ vendor:String
 
 ```
 
-### publishing a product
+### Publishing a product
 
 the mutation `publishProductsToCatalog` will publish to your current catalog, provided an array of productIDs. If correctly formed it will return an Array of `CatalogItemProducts`, similar to `ItemProduct` but now as part of the published catalog.
 
-#### mutation publishProductsToCatalog
+#### Mutation publishProductsToCatalog
 
 ```graphql
 
