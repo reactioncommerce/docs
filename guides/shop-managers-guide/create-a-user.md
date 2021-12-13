@@ -1,4 +1,0 @@
-# Create a user
-
-Congratulations on a successful installation of Open Commerce. Now you should have the admin portal available at http://localhost:4080/
-To create a user click on the profile icon in the top right corner on the screen. It will show you options to Sign In or Create Account. Click on Create Account to bring up the sign up window. This will require an email ID and a password. There is no password requirements enforced but we suggest you use a strong password.The first user created is by default added to the account-manager, system-manager and awner groups. Any consecutive users created do not directly qualify into any permission groups. The shop owner can assign the role for the rest of the users.
