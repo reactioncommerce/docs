@@ -18,6 +18,8 @@ Open Commerce provides yet another level of organizational flexibility with opti
 Expanding our t-shirt example, a particular design (product) could be printed on two different colors of shirt (variants), each of which comes in three sizes (options). To order one of these shirts a customer has make two choices to specify their desired terminal variant. Ordering just a red shirt without specifying a size, or just a large shirt without specifying a color wouldn’t make any more sense in an Open Commerce store than it would in a bricks-and-mortar store!
 
 ## Create a product
+
+![Admin Products](_assets/operator-ui-product-list.png)
 To create a product, log in to the Open Commerce admin dashboard, click **Products** in the left sidebar, and then click **Create product**. You’ll add details about the product on various cards: 
 
 - Enter the product information in the **Details** card.
@@ -33,6 +35,8 @@ Once you’re finished, make your product visible by clicking the **⋯** button
 Variants allow you to create different versions of the same base product. Because it’s mandatory to have at least one variant to publish a product, every product comes filled with one default, required variant. 
 
 To create additional variants, click the **⋯** button next to the product's name, click **Create variant**, and fill out the following fields:
+
+![Create variant](_assets/reaction-admin-product-variant-add.png)
 
 | Field | Description |
 | ----- | ----------- |
@@ -50,6 +54,7 @@ Once you’ve added the variant’s information, make the variant visible by cli
 
 ## Add options to a variant
 Options provide a second layer of customization within each variant. For instance, in addition to carrying shirts in multiple colors, you may also want to carry multiple size options for each color. 
+![Add option](_assets/reaction-admin-product-option-add.png)
 
 To create an option:
 
@@ -62,8 +67,10 @@ To create an option:
 
 ## Publishing, hiding, and showing
 Configuring products and variants do not make them immediately visible to customers. Products can be marked as visible or hidden, which determines whether customers can see them in your shop. When you click **Publish**, all your saved changes will become visible to customers. 
+![Publish product](_assets/reaction-admin-product-publish.png)
 
 Products published to the catalog cannot be unpublished, though they may be set as hidden, so customers can’t see them in the storefront. To change change the visibility of a product, variant, or option, click the **⋯** button next to the product title in the left sidebar and select **Make Hidden** or **Make Visible**.
+![Make Visible](_assets/reaction-admin-product-make-visible.png)
 
 Visibility settings are available for the top-level product, each variant, and each option. Hiding the product will also hide the product’s variants and options from the storefront. Hiding a variant will hide that variant and all of its options, while hiding an individual option will affect only that option.
 
@@ -71,12 +78,12 @@ Visibility settings are available for the top-level product, each variant, and e
 
 ## Duplicating products
 Duplicating a product, variant, or option will create a new copy of that item, including its children. This can be a useful tool for speeding up creation of similar products, variants, or options.
-
+![Duplicate Product](_assets/reaction-admin-product-duplicate.png)
 To duplicate a product, variant, or option, click the **⋯** button next to the product title and select **Duplicate**. Click the **Publish** button at the top right of the window to make your changes appear on the shop.
 
 ## Archiving products
 You can archive a product to remove it from both the storefront and the admin dashboard. Archiving a product is immediate upon confirmation and is not reversible from the admin dashboard. If you think you may want to use the product again in the future, it may be better to make the product hidden instead. 
-
+![Archive product](_assets/reaction-admin-product-archive-select.png)
 To remove a product, variant, or option from your shop, click on the **⋯** button next to the product, variant, or option title, and select **Archive**.
 
 ## Bulk actions and filtering
