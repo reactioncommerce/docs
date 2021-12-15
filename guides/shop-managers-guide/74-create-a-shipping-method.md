@@ -1,9 +1,9 @@
 # Shipping method
 
 
-![Admin Shipping setings](_assets/74-admin-shipping-method-find-settings.png)
+![Admin Shipping settings](_assets/74-admin-shipping-method-find-settings.png)
 
-To create a Shipping method go to admin and select Settings in the side bar and select Shipping. The section named Flat Rate (below Default Parcel Size) is where you can create, modify and view all the shipping methods. 
+To create a Shipping method, go to admin and select Settings in the side bar and select Shipping. The section named Flat Rate (below Default Parcel Size) is where you can create, modify and view all the shipping methods.
 
 To add a new shipping method click on the '+' icon on the bottom right. This opens a form to input information related to the shipping method.
 ![New Shipping Method](_assets/74-admin-shipping-flat-rate-form.png)
