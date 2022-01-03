@@ -51,12 +51,6 @@ type MyPaymentMethodPaymentData {
 extend union PaymentData = MyPaymentMethodPaymentData
 ```
 
-### Payment React Component
-
-This is shown during checkout. It can be whatever you want, so long as it ends up providing the information you need to request an authorization from the payment provider. It could also just be a collection of information necessary to later create and send an invoice.
-
-This component is then used as the `InputComponent` property of your payment method in the `paymentMethods` array that you pass to the [PaymentsCheckoutAction](https://designsystem.reactioncommerce.com/#!/PaymentsCheckoutAction) component. You may want to start with a provided `InputComponent`, such as [ExampleIOUPaymentForm](https://designsystem.reactioncommerce.com/#!/ExampleIOUPaymentForm) and modify it to meet your needs.
-
 ### Action Functions
 
 Your plugin must define functions for the following actions:
@@ -199,26 +193,6 @@ The `displayName` is used in the operator UI, in the Payment panel, where each r
 The `name` is the key used to identify a payment as being of this method. The `name` property of the payment object returned from your authorize function must exactly match this.
 
 The `canRefund` option is `true` by default, but if your method does not support refunds, you must set `canRefund: false` in its config.
-
-#### Settings UI
-
-If your plugin needs any settings that it will not get from environment variables, register the React component in the `registry` array:
-
-```js
-export default async function register(app) {
-  await app.registerPlugin({
-    registry: [
-      {
-        label: "Acme Payments",
-        provides: ["paymentSettings"],
-        container: "dashboard",
-        template: "AcmePaymentsPluginSettings"
-      }
-    ]
-    // other props
-  });
-}
-```
 
 The `label` is shown in the operator UI to group the settings for each payment plugin. The `provides` property must be an array containing `"paymentSettings"`. Set `template` to the name of your React component, which you must register with `registerComponent` in client code.
 
