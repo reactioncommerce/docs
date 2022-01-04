@@ -1,6 +1,4 @@
----
-title: How To: Add an Address Validation Service
----
+# How To: Add an Address Validation Service
 
 ## Prerequisite Reading
 - [Understanding Plugins](../guides/developers-guide/core/build-api-plugin.md)
