@@ -2,6 +2,7 @@
 
 ## Prerequisite Reading
 - [Understanding Plugins](../guides/developers-guide/core/build-api-plugin.md)
+- [Extending Schemas](./extend-an-existing-schema.md)
 
 ## Overview
 For reporting, integrations, or other reasons, you may want to store additional fields when placing an order. This might be data from the client placing the order, data you can or must generate on the server, or some combination of the two.
