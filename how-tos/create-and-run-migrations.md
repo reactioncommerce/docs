@@ -41,4 +41,3 @@ Option 2: You can set up a CI task for this repo:
 2. Add the necessary `MONGO_URL`s to your CI environment/secrets.
 3. When config file changes are merged to the main branch, run `npx migrator migrate <env> -y` as a CI task with `MONGO_URL` set to the correct database for that environment. Do this for each Reaction environment (database) you have.
     - Ensure that your CI Docker image uses at least the version of Node that's in the `.nvmrc` file.
-    
