@@ -47,7 +47,8 @@ The plugin function:
 - May throw a `ReactionError` if anything goes wrong
 - Performs the actual database mutations or queries
 
-TIP: If you’re confused about where to draw the line, imagine what would have to change if we decided to add a REST API. All of that stuff goes in the resolver, while everything that would be shared between GraphQL and REST goes in the plugin function.
+TIP: If you’re confused about where to draw the line, generally resolvers are for _transforming_ data (both inbound and outbound) 
+while plugin functions read or write data and perform business logic.
 
 ## The Endpoint
 
@@ -71,8 +72,8 @@ import mockContext from "/imports/test-utils/helpers/mockContext";
 ```
 
 Here’s what's on the context object:
-- Queries registered by plugins: `context.queries[queryFunctionName]`
-- Mutations registered by plugins: `context.mutations[mutationFunctionName]`
+- Queries registered by plugins: `context.queries<queryFunctionName>`
+- Mutations registered by plugins: `context.mutations<mutationFunctionName>`
 - The current user: `context.user`
 - The current user’s ID: `context.userId`
 - The current account: `context.account`
@@ -80,7 +81,7 @@ Here’s what's on the context object:
 - The default shop ID (this may go away): `context.shopId`
 - To check permissions: `context.userHasPermission(role, shopId)` (returns true or false)
 - To check permissions and throw error: `context.checkPermissions(role, shopId)`
-- MongoDB collections: `context.collections[CollectionName]`
+- MongoDB collections: `context.collections<CollectionName>`
 - The `ReactionAPI` instance: `context.app`
 - App events object:
     - To emit: `context.appEvents.emit`
@@ -118,12 +119,6 @@ In most cases, actual internal data IDs are in MongoDB collections, so they are 
 To convert internal IDs to opaque UUIDs, we first prefix them with "reaction/\<namespace\>" and then base64 encode them. The primary transformation functions that handle this are in the `api-utils` package.
 
 The GraphQL resolver functions are the place where ID encoding and decoding happens. They then call out to plugin functions that deal exclusively with internal IDs. Any IDs returned by such functions must also be transformed before returning them, although this typically and preferably happens in a type resolver.
-
-## Using MongoDB in GraphQL
-
-The source-of-truth database for most data used by GraphQL resolvers is currently MongoDB. The MongoDB Node driver collections API is documented here: http://mongodb.github.io/node-mongodb-native/3.1/api/Collection.html
-
-All collections registered by any plugin are available on the `context` object as `context.collections`.
 
 ### Checking whether an operation was successful
 
@@ -174,7 +169,7 @@ Normally the `shop` relationship would result in a database query, but if `order
 
 ## Documenting GraphQL Functions
 
-Reaction GraphQL resolver functions, like all JavaScript functions in all Reaction code, must have JSDoc comments above them. See the [JSDoc Style Guide](jsdoc-style-guide.md)
+Reaction GraphQL resolver functions, like all JavaScript functions in all Reaction code, must have JSDoc comments above them. See the [JSDoc Style Guide](../../../docs/jsdoc-style-guide.md)
 
 ## Writing Tests
 

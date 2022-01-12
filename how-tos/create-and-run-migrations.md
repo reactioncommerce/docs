@@ -4,12 +4,20 @@
 Must be running node 14.17 or later
 
 ## Adding a migration to an API plugin package
-To add a migration to an API plugin package, there are four main steps:
+You can look at the [simple-authorization](https://github.com/reactioncommerce/plugin-simple-authorization) plugin code for an example to follow.
+To add a migration to an API plugin package, follow the below steps:
 
-1. Add the migration code in the plugin package, in a `migrations` folder alongside the `src` folder.
-2. Add `export { default as migrations } from "./migrations/index.js";` in your plugin entry point file.
-3. Add the latest version of the `@reactioncommerce/db-version-check` NPM package as a dependency.
-4. Add and register a `preStartup` function in the plugin source. In it, call `doesDatabaseVersionMatch` to prevent API startup if the data isn't compatible with the code.
+1. In the plugin package create a `migrations` folder alongside the `src` folder.
+2. Create `migrationsNamespace.js` and add the line `export const migrationsNamespace = "<package-name>";`.
+3. Create `<n>.js` which will house the `up()` and `down()`. The `up` and `down` functions should do whatever they need to do to move data from your N-1 or N+1 schema to your N schema. Both types of functions receive a migration context, which has a connection to the MongoDB database and a progress function for reporting progress. The keys of the migration object are the database version numbers. These must be a single number (2) or two numbers separated by a dash (2-1) if you need to branch off your main migration path to support previous major releases. Only one branch level is allowed.
+4. Create `index.js` which exports the namespace and migration script.
+5. Add `export { default as migrations } from "./migrations/index.js";` in your plugin entry point file i.e, `<api-plugin-package>/index.js`.
+6. Add the latest version of the `@reactioncommerce/db-version-check` NPM package as a dependency using `npm install @reactioncommerce/db-version-check@latest`.
+7. Add and register a `preStartup` function in `src/index.js`. In it, call `doesDatabaseVersionMatch` to prevent API startup if the data isn't compatible with the code. The preStartup.js is responsible for identifying version mismatch. It throws an error if a migration is required and prevents api from running.
+
+### In api-migrations
+1. Add the new track to `api-migrations/migrator.config.js` following the existing syntax. The app looks at this file to pick the desired version and checks against the migrations table in the DB to identify the current version.
+2. Install the plugin package using `npm install @reactioncommerce/<api-plugin-package>
 
 These steps are explained in more detail [here](https://github.com/reactioncommerce/migrator#how-to-publish-a-package-with-migrations), and you can look at the [simple-authorization](https://github.com/reactioncommerce/plugin-simple-authorization) plugin code for an example to follow.
 

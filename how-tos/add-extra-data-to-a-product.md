@@ -92,7 +92,7 @@ export default async function register(app) {
 }
 ```
 
-Where the `publishProductToCatalog` function looks something like this:
+Where the `publishProductToCatalog` function adds the required fields to `catalogProduct`. For example:
 
 ```js
 export default function publishProductToCatalog(catalogProduct, { context, product, shop, variants }) {
@@ -103,4 +103,4 @@ export default function publishProductToCatalog(catalogProduct, { context, produ
 
 ### Create a GraphQL mutation for setting your custom property value
 
-Refer to [How To: Create a new GraphQL mutation](./create-graphql-mutation.md). After mutating the `Product` document in your function, you must also call `context.mutations.hashProduct(productId, context.collections, false)`. This will update the current product hash, causing the operator UI to indicate that there are changes needing publishing.
+Refer to [How To: Create a new GraphQL mutation](./create-graphql-mutation.md). After mutating the `Product` document in your function, you must also call `context.mutations.hashProduct(<productId>, context.collections, false)`. This will update the current product hash, causing the operator UI to indicate that there are changes needing publishing.

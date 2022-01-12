@@ -21,8 +21,6 @@ The `collections` object key is where you will access this collection on `contex
 
 The example above will make `context.collections.MyCustomCollection` available in all query and mutation functions, and all functions that receive `context`, such as startup functions. Note that usually MongoDB will not actually create the collection until the first time you insert into it.
 
-If you need to ensure indexes on any fields in your collection, see the next section.
-
 ## Ensure MongoDB collection indexes from a plugin
 
 You can add indexes for your MongoDB collection in the same place you define your collection, the `collections` object of your `registerPlugin` call:
