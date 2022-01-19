@@ -1,21 +1,21 @@
 ## The basics
-Every Mailchimp Open Commerce store is built around products: the items in your store. Every product must have at least one variant—a descriptive aspect of the product, such as size, color, or model—and depending on how you organize your store, products can also have second-level variants, which are called options.
+A Mailchimp Open Commerce store is built around products, which are the items in your store. Each product must include at least one variant, which is a descriptive aspect of the product, such as size, color, or model. Products may also include second-level variants called options.
 
-You can create products, variants, and options in the Open Commerce admin dashboard without making them live on your site, though for products to be added to your catalog, you first need to publish the products and then make them visible to customers. If you no longer want to offer a product for sale, you can hide it from customers or archive it to remove it from your store permanently.
+You can create products, variants, and options in the Open Commerce admin dashboard without making them live on your site. In order to add products to your catalog, though, you first need to publish the products and then make them visible to customers. If you no longer want to offer a product for sale, you can hide it from customers or archive it to remove it from your store permanently.
 
 This documentation outlines the structure of products, how to set up new products from scratch, and how to manage existing products within your store.
 
 ### Products and variants
-A product in Open Commerce represents a single type of item that you want to list in your store’s catalog; variants are properties of that item. Every product must have at least one variant, because some information is set at the product level and some is set at the variant level. Depending on what you are selling—and how you want to organize and manage your inventory—each product might have a single variant or multiple variants.
+A product in Open Commerce represents a single type of item that you want to list in your store’s catalog; variants are properties of that item. Every product must have at least one variant, because some information is set at the product level and some is set at the variant level. Depending on your products and how you want to organize and manage your inventory, you can choose to assign additional variants to products.
 
 For example, you could have a particular design of T-shirt (the product) that has multiple sizes (its variants). In that case, the design would appear as a single entry on catalog pages, and the variants would be visible on the product page.
 
 In another example, a bookseller could carry a particular book title in hardcover, paperback, and e-book editions. Different businesses might make different choices: you might want all three as variants of a single product; you might group the physical books in one product and the e-book in another; or you might set up all three as separate products. Pricing is set at the variant level, so all three book editions could be sold at different prices in any of these product/variant configurations.
 
 ### Options
-Open Commerce provides yet another level of organizational flexibility with options. If you include options in a product, the customer must make a choice at each variant level. These choices uniquely identify an exact product configuration, called a terminal variant—and only terminal variants can be added to carts. If a variant does not contain options, then it is also a terminal variant.
+Open Commerce provides an additional level of organizational flexibility with *options*. If you include options in a product, the customer must make a choice at each variant level. These choices uniquely identify an exact product configuration, called a *terminal variant*. Only terminal variants can be added to carts. If a variant does not contain options, then it is also a terminal variant.
 
-Expanding our t-shirt example, a particular design (product) could be printed on two different colors of shirt (variants), each of which comes in three sizes (options). To order one of these shirts, a customer has to make two choices to specify their desired terminal variant. Ordering just a red shirt without specifying a size, or just a large shirt without specifying a color wouldn’t make any more sense in an Open Commerce store than it would in a bricks-and-mortar store!
+Expanding our t-shirt example, a particular design (product) could be printed on two different colors of shirt (variants), each of which comes in three sizes (options). To order one of these shirts, a customer has to make two choices to specify their desired terminal variant. Ordering just a red shirt without specifying a size, or just a large shirt without specifying a color wouldn’t make any more sense in an Open Commerce store than it would in a brick-and-mortar store!
 
 ## Create a product
 
@@ -27,9 +27,9 @@ To create a product, log in to the Open Commerce admin dashboard, click **Produc
 - Customize the product’s social sharing messages under the **Social** card.
 - Add tags by clicking on the **+** button in the **Tags** card. Select tags from the dropdown menu in the dialog, and then click **Add tags to products**. (See the [Tags and Navigation documentation](/open-commerce/docs/tags-navigation) for further information on creating new tags.)
 
-Make sure to click **Save changes** on each card where you have entered the new information.
+Be sure to click **Save changes** for each card where you've entered new information.
 
-Once you’re finished, make your product visible by clicking the **⋯** button next to its name and then clicking **Make Visible**. This creates the product, but it can’t be published yet—to be publishable, it will need to have at least one variant.
+Once you’re finished, make your product visible by clicking the **⋯** button next to its name and then clicking **Make Visible**. This creates the product, but you'll still need to add at least one variant before you can publish it.
 
 ## Configure a variant
 Variants allow you to create different versions of the same base product. Because it’s mandatory to have at least one variant to publish a product, every product comes filled with one default, required variant.
@@ -47,26 +47,20 @@ To create additional variants, click the **⋯** button next to the product's na
 | Width, Length, Height, Weight | Optional. Units for these measurements can be changed under **Settings > Shop Localization**. |
 | Price | Required. Enter a number without currency symbols. |
 | Compare at price | Optional. Use this to display a price other than what you are currently selling a product for, such as a suggested retail price or the regular price of an item that is on sale. |
-| Manage inventory | Optional. If you’d like to track the item in your inventory, check this box. **Quantity** – Optional. Enter your current inventory quantity.**Warn at** – Optional. When the item’s quantity is lower than this number, “Limited Supply” notifications will be displayed on product pages.**Allow backorder** – Optional. When enabled, customers can order the product even if the inventory quantity is 0.|
+| Manage inventory | Optional. To track the item in your inventory, check this box. **Quantity** – Optional. Enter your current inventory quantity.**Warn at** – Optional. When the item’s quantity is lower than this number, “Limited Supply” notifications will be displayed on product pages.**Allow backorder** – Optional. When enabled, customers can order the product even if the inventory quantity is 0.|
 | Taxable | Optional. Check this box to automatically add tax to this item when purchased. When checked, you can optionally add a variant-specific tax code or leave the Tax Code field blank to use the code set in **Settings > Taxes > Default tax code for products**. |
 
 Once you’ve added the variant’s information, make the variant visible by clicking the **⋯** button next to the variant’s name and then clicking “Make Visible.” As a reminder, you can’t publish a new product unless the product itself and all of its variants are made visible.
 
 ## Add options to a variant
-Options provide a second layer of customization within each variant. For instance, in addition to carrying shirts in multiple colors, you may also want to carry multiple size options for each color.
+Options provide a second level of customization to the parent variant. For example, in addition to carrying shirts in multiple colors, you may also want to carry multiple size options for each color.
 ![Add option](_assets/reaction-admin-product-option-add.png)
 
-To create an option:
-
-1. Hover over the variant you’d like to create an option for. Click the **⋯** button to the right of its name and then click **Create variant**.
-
-2. Add the option’s information as you would when [creating a top-level variant](#configure-a-variant).
-
-3. To make the option visible, hover over the variant name, click the **⋯** button, and then click **Make Visible**.
+To create an option hover over the variant you’d like to create an option for. Click the **⋯** button to the right of its name and then click **Create variant**. Add the option’s information as you would when [creating a top-level variant](#configure-a-variant). To make the option visible, hover over the variant name, click the **⋯** button, and then click **Make Visible**.
 
 
 ## Publishing, hiding, and showing
-Configuring products and variants do not make them immediately visible to customers. Products can be marked as visible or hidden, which determines whether customers can see them in your shop. When you click **Publish**, all your saved changes will become visible to customers.
+Creating and configuring products, variants, or options does not make them immediately visible to customers. You can mark products as *visible* or *hidden*, which determines whether customers can see them in your shop. Clicking **Publish** makes any changes you've made and saved visible to customers.
 ![Publish product](_assets/reaction-admin-product-publish.png)
 
 Products published to the catalog cannot be unpublished, though they may be set as hidden, so customers can’t see them in the storefront. To change change the visibility of a product, variant, or option, click the **⋯** button next to the product title in the left sidebar and select **Make Hidden** or **Make Visible**.
@@ -74,7 +68,7 @@ Products published to the catalog cannot be unpublished, though they may be set 
 
 Visibility settings are available for the top-level product, each variant, and each option. Hiding the product will also hide the product’s variants and options from the storefront. Hiding a variant will hide that variant and all of its options, while hiding an individual option will affect only that option.
 
-> **Note**: In some cases, logged-in administrators may be able to see hidden products on public store pages—even though they are hidden from customers.
+Note: In some cases, logged-in administrators may be able to see hidden products on public store pages even though they are hidden from customers.
 
 ## Duplicating products
 Duplicating a product, variant, or option will create a new copy of that item, including its children. This can be a useful tool for speeding up creation of similar products, variants, or options.
@@ -82,7 +76,7 @@ Duplicating a product, variant, or option will create a new copy of that item, i
 To duplicate a product, variant, or option, click the **⋯** button next to the product title and select **Duplicate**. Click the **Publish** button at the top right of the window to make your changes appear on the shop.
 
 ## Archiving products
-You can archive a product to remove it from both the storefront and the admin dashboard. Archiving a product is immediate upon confirmation and is not reversible from the admin dashboard. If you think you may want to use the product again in the future, it may be better to make the product hidden instead.
+You can archive a product to remove it from both the storefront and the admin dashboard. Archiving a product happens immediately after you confirm the action. It is not reversible from the admin dashboard. If you think you may want to use the product again in the future, it may be better to mark the product as hidden instead.
 ![Archive product](_assets/reaction-admin-product-archive-select.png)
 To remove a product, variant, or option from your shop, click on the **⋯** button next to the product, variant, or option title, and select **Archive**.
 
