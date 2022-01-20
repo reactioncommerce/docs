@@ -5,7 +5,6 @@
 - [Address Validation Operator Guide](../guides/shop-managers-guide/configuring-address-validation.md) FIXME:
 
 ## Background
-
 Many types of services such as tax or shipping require that the address be validated so that they know the prices/rates they are quoting
 are valid. You don't necessarily need to build a separate plugin for an address validation service if it's provided by your tax/shipping provider
 although it could be considered a best practice.
