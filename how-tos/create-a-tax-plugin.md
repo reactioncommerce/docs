@@ -2,7 +2,7 @@
 # How To: Add a Tax Service plugin
 
 ## Prerequisites
-- Understanding how to create and integrate a plugin
+- [Understanding how to create and integrate a plugin](/developer/open-commerce/guides/build-api-plugin/)
 
 ## Overview
 In general, to add a tax service you must do the following:
@@ -92,7 +92,7 @@ Where each item in the `taxes` arrays has this shape:
   tax: 1, // Total amount due for this type of tax only, in `order.currencyCode`
   taxableAmount: 1, // Total deemed taxable for this type of tax only, in `order.currencyCode`
   taxName: "CA Sales Tax", // A human-readable string for showing to operators and customers in the UI
-  taxRate: 3.5, // The tax rate for this type of tax, used for this calculation
+  taxRate: 3.5, // The tax rate for this type of tax, used for this calculation expressed as a percentage
   customFields: {} // Optionally, anything else you need to store per tax line item
 }
 ```
