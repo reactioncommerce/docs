@@ -8,6 +8,7 @@ You can get the access token on GraphQL Playground by running the below mutation
 ```
 mutation authenticate($serviceName: String!, $params: AuthenticateParamsInput!) {
   authenticate(serviceName: $serviceName, params: $params) {
+    sessionID
     tokens {
       accessToken
     }
@@ -37,6 +38,8 @@ Once you run this mutation you can run other queries and mutation from the playg
     "Authorization": "<accessToken from above>"
 }
 ```
+
+>NOTE: Open commerce uses session based authentication. When the first login request is sent, a session is created on the server. You can see the sesson ID in the result of the above mutation.
 
 ## Express Middleware
 
