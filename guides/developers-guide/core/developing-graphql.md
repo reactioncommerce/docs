@@ -55,7 +55,7 @@ while plugin functions read or write data and perform business logic.
 The GraphQL server and `/graphql` endpoint is configured and returned by the `createApolloServer` function, which is called from the `ReactionAPI` class instance.
 
 `createApolloServer` does pretty standard configuration of an Express app using `apollo-server-express`. The main things it does are:
-- Checks the identity token using Express middleware
+- Checks the access token using Express middleware
 - Builds the `context` object that’s available in all resolver functions. See [The Reaction GraphQL Context](#the-reaction-graphql-context)
 - Formats the `errors` array that is returned to clients, to make errors as helpful as possible
 - Provides the merged GraphQL schema
@@ -107,12 +107,6 @@ In particular, note that "it is not intended to be human‐readable". You should
 Note also that the server specification does not necessarily care whether an ID is globally unique. However, we intend compatibility with both Relay and Apollo for client-side frameworks, and [the Relay specification](https://facebook.github.io/relay/graphql/objectidentification.htm#sec-Node-Interface) does have a requirement here:
 
 > This `id` should be a globally unique identifier for this object, and given just this `id`, the server should be able to refetch the object.
-
-Additionally, the [Apollo caching docs](https://www.apollographql.com/docs/react/advanced/caching/#normalization) have this to say:
-
-> By default, InMemoryCache will attempt to use the commonly found primary keys of `id` and `_id` for the unique identifier if they exist
-
-This does not specifically require global uniqueness since it also uses `__typename`, but because Relay does, we've opted to ensure IDs are globally unique.
 
 In most cases, actual internal data IDs are in MongoDB collections, so they are guaranteed unique within the collection, but not among all collections. To add that extra layer of uniqueness, we concatenate the namespace with the internal ID, and then to keep it looking like a "not human‐readable" ID, we base64 encode.
 

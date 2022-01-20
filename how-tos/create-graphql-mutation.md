@@ -109,8 +109,6 @@ test("expect to return a Promise that resolves to null", async () => {
 });
 ```
 
-This of course should be updated with tests that are appropriate for whatever your mutation does.
-
 ## Step 7: Create the GraphQL mutation resolver file
 
 1. If it doesn't already exist, create `resolvers` folder in the plugin, and add an `index.js` file there.

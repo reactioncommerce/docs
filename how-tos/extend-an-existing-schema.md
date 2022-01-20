@@ -2,7 +2,7 @@
 
 ## Background
 
-While Reaction uses a (mostly) schemaless database, we do value data validation and do that by using the package [SimpleSchema](https://www.npmjs.com/package/simpl-schema) which provides
+While Open Commerce uses a (mostly) schemaless database, we do value data validation and do that by using the package [SimpleSchema](https://www.npmjs.com/package/simpl-schema) which provides
 sophisticated data type checking not available in something like traditional SQL schemas or something like JSON schema. However, when
 adding functionality via plugins it can often be necessary to modify or extend these schemas to store extra data. This doc explains how to do that.
 
@@ -63,4 +63,4 @@ export default function extendSchemas(context) {
 }
  ```
 
-Since `context` here serves as a giant Singleton that is shared throughout the entire app, your now mutated schema is not available everywhere.
+Since `context` here serves as a giant Singleton that is shared throughout the entire app, your now mutated schema is now available everywhere.

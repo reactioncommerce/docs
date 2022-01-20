@@ -3,7 +3,7 @@
 ## Background:
 
 AppEvents is a simple interface that allows you to build a more event-drive approach. This allows one part of the app to announce that something important has happened, and other parts of the app
-to "react" without the emitter needing to know anything about the listeners. We call sending events "emitting" and listeners "handlers". A simple example of where RC uses appEvents is that when
+to "react" without the emitter needing to know anything about the listeners. We call sending events "emitting" and listeners "handlers". A simple example of where OC uses appEvents is that when
 an order is created an event is emitted for "orderPlaced". Currently there is a listener that listens for this event and sends an email. But what if you wanted to also send a text and a Slack message?
 Using a listener in your plugin you could listen for this same event and do whatever action you like without need to modify the original code, providing a convenient way of keeping these uncoupled.
 
@@ -21,10 +21,11 @@ Emit app events in API code using `appEvents.emit`. The `emit` function takes at
 
 ### Function parameters and options
 
-- *Event name*: The first argument is the event name, as a string. There is currently no limit to what event name you can emit, but generally try to follow established patterns for naming. See events table below.
+- *Event name*: The first argument is the event name, as a string. There is currently no limit to what event name you can emit, but generally try to follow established patterns for naming.
 - *Payload*: The second argument, the `payload`, should always be an object, and not an entity object. Rather than passing `order` in directly, pass it in an object: `{ order }`, so that more fields can be added or removed from the payload more easily.
 - *Option arguments*: The last argument is an array of arguments to pass to each function from `payload`.
-- *Using `await`*: Using the method with `await` will not resolve until all registered handler methods have resolved.
+
+> **Note**: Using `await`*: Using the method with `await` will not resolve until all registered handler methods have resolved.
 
 ## Emit an app event
 

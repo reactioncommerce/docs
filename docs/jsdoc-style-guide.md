@@ -1,7 +1,4 @@
----
-id: jsdoc-style-guide
-title: JSDoc Style Guide
----
+# JSDoc Style Guide
 
 ## The basics
 

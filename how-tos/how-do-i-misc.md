@@ -42,8 +42,6 @@ await context.mutations.createNotification(context, {
 ```
 
 
-Each item in the `indexes` array is an array of arguments that will be passed to the Mongo `createIndex` function. The `background` option is always set to `true` so you need not include that.
-
 ## Loop over async function results
 
 Often you have a list of functions that return a Promise, and you need to loop through the list and call each function. The recommended way to do this depends on whether the functions are expecting to be called in series or can be safely called in parallel.

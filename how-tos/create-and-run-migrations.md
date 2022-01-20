@@ -17,7 +17,7 @@ To add a migration to an API plugin package, follow the below steps:
 
 ### In api-migrations
 1. Add the new track to `api-migrations/migrator.config.js` following the existing syntax. The app looks at this file to pick the desired version and checks against the migrations table in the DB to identify the current version.
-2. Install the plugin package using `npm install @reactioncommerce/<api-plugin-package>
+2. Install the plugin package using `npm install @reactioncommerce/<api-plugin-package>`
 
 These steps are explained in more detail [here](https://github.com/reactioncommerce/migrator#how-to-publish-a-package-with-migrations), and you can look at the [simple-authorization](https://github.com/reactioncommerce/plugin-simple-authorization) plugin code for an example to follow.
 

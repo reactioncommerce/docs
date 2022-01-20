@@ -28,3 +28,6 @@ export default async function register(app) {
 }
 ```
 
+If you want to run certain code before startup functions run (for example to check if something exists before the full startup begins)
+you can use `preStartup` the same way you use `startup`. If you want to run something **after** all startup functions have completed you
+can use 
