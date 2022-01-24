@@ -7,12 +7,12 @@ Some API plugins are included in the API codebase, but in general you should cre
 At a high level, an API plugin package is one where the main export is an async function that accepts a `ReactionAPI` instance and calls `api.registerPlugin` before returning. In a Reaction API project, your plugin package will be imported and used like this:
 
 ```js
-import registerSomePlugin from "some-plugin";
+import registerYourPlugin from "<your-plugin>";
 
 const api = new ReactionAPI();
 
 async function startAPI() {
-  await registerSomePlugin(api);
+  await registerYourPlugin(api);
   await api.start();
 }
 ```
@@ -27,7 +27,7 @@ export default async function register(app) {
   await app.registerPlugin({
     label: "Plugin Example",
     name: "plugin-example",
-    version: pkg.version,
+    version: "<package-version>",
   });
 }
 ```
@@ -60,7 +60,9 @@ auth: {
 ```
 
 - `accountByUserId`: An async function with signature `(context, userId)` that must return an account document for the given `userId`, or `null` if one cannot be found. This will be used to set `context.account` and `context.accountId`.
+
 - `getHasPermissionFunctionForUser`: An async function with signature `(context)`, which must return an async function that checks permissions for `context.user` and returns a boolean. The signature of the returned function must be `(permissions, shopId)`, where `permissions` is an array of strings and `shopId` is an optional permission filter. The function must return `true` only if the context user has ANY of the permissions.
+
 - `getShopsUserHasPermissionForFunctionForUser`: An async function with signature `(context)`, which must return an async function that checks shop access for `context.user` and returns a boolean. The signature of the returned function must be `(permission)`, where `permission` is a permission string. The function must return an array of shop IDs for which the context user has the given permission.
 
 ### collections
@@ -84,6 +86,8 @@ app.registerPlugin({
 // in startup fn or anywhere you have context
 console.log(context.something); // "custom_value"
 ```
+
+_Note:_ Another plugin can override the keys that you added. So it's a good idea to namespace your keys like "myPluginName:myKey".
 
 ### expressMiddleware
 
