@@ -225,29 +225,7 @@ query {
 
 We’ve done everything we need to add volume data to our backpacks and query that information across our store. That’s useful to Leader of the Pack’s store administrators, but we also need to get that information to customers. This will require some design work on our product pages, which are dependent on the storefront plugin that we’re using. Generally, this will involve making sure that our product query includes the new `volume` field and that the information is passed to the `render()` function in the file that describes our product detail page. For more information, see the [Creating and Organizing Products doc](/developer/open-commerce/docs/creating-organizing-products/).
 
-## Link multiples packages with package configuration file
-
-Before running the `bin/package-link` script, create a `yalc-packages` file from the example.
-
-```sh
-cp yalc-packages.example yalc-packages
-```
-
-Then run the link script without any arguments
-```sh
-./bin/package-link
-```
-
-This will link every package in the `yalc-packages` file to your api app. If you don't want every plugin to be linked, edit `yalc-packages` and set the packages you want disabled and unlinked to `false`.
-
-Format: `path=true|false`
-```
-../api-plugins/api-core=true
-../api-plugins/api-plugin-accounts=true
-```
-(You must have a blank line at the end of the file, otherwise your last plugin will be omitted)
-
-## Link multiples packages with package configuration file
+## Link multiple packages with package configuration file
 
 Before running the `bin/package-link` script, create a `yalc-packages` file from the example.
 
