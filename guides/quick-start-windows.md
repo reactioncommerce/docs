@@ -1,17 +1,28 @@
-## Install Mailchimp Open Commerce on Windows 10/11
+## At a glance
 
-### Install WSL2
-  - https://docs.microsoft.com/en-us/windows/wsl/install-win10
+In this guide, You'll configure WSL2 for Windows, a necessary tool to run Mailchimp Open Commerce.
+
+## What you’ll need
+
+- [Docker](https://www.docker.com/)
+
+- [Docker Compose](https://docs.docker.com/compose/)
+
+- [WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install-win10) and [Docker for WSL](https://docs.docker.com/docker-for-windows/wsl/)
+
+## Install WSL2
+
+Download it at the [official WSL microsoft site](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
   
 
 > **Note**: The automatic Windows Insider install comes with the Ubuntu distro. If you have manually installed WSL2, you can pick another Linux distro. This guide assumes you picked Ubuntu.
 
-### Install Docker Desktop WSL2 backend
+## Install Docker Desktop WSL2 backend
   - https://docs.docker.com/desktop/windows/wsl/
   - Open Docker, goto `Settings>Resources>WSL Integration` and verify that everything on that page is activated.
   - Under `Experimental Features` enable `Use Docker Compose v2 candidate`
 
-### Start Ubuntu and install Open Commerce
+## Start Ubuntu and install Open Commerce
   - You should be root (`root@` is visible in commandline), if not execute 
     ```bash
     sudo su
