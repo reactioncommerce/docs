@@ -1,4 +1,4 @@
-# Plugins Reference
+# The basics
 
 All of Mailchimp Open Commerce's features are provided by plugins, either first-party or third-party. This structure gives you complete control over what plugins and features are active in your installation. First-party Open Commerce services are distributed as Docker images, or can be customized and then built into your own Docker image.
 
