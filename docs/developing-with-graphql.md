@@ -1,4 +1,6 @@
-# Developing the GraphQL API
+# Developing with GraphQL
+
+## The basics
 
 ## Extending and Modifying the GraphQL API
 
