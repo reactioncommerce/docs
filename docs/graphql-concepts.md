@@ -127,11 +127,6 @@ Here’s what's on the context object:
 - To retrieve all functions registered as a specific type of function: `context.getFunctionsOfType(type)`
 - The app root URL: `context.rootUrl`
 - To convert a relative URL to absolute (prefix with the root URL): `context.getAbsoluteUrl(path)`
-
-## How Auth Works
-
-Refer to [Developer Concepts: Authentication](./developer-authentication)
-
 ## IDs in GraphQL
 
 All IDs are exposed in GraphQL as globally unique IDs on fields named `_id`. When we finalize the GraphQL API, we may change this field name to `id`, which is more commonly used in the GraphQL world.
