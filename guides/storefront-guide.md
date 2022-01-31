@@ -2,9 +2,9 @@
 
 Mailchimp Open Commerce (MOC) is a headless commerce platform, which means that its focus is on providing a top-notch server API rather than on UI. But this doesn't mean you're completely on your own.
 
-For your storefront — your public-facing website or app on which consumers browse your catalog, manage their account, and purchase items — MOC assumes that you will build your own UI to meet your needs. For those who want to get going fast, Reaction plans to provide example storefronts that you can use as starting points. These are UI projects that we expect you to fork and modify. Currently, there is one such project, the [example storefront](https://github.com/reactioncommerce/example-storefront).
+For your storefront — your public-facing website or app on which consumers browse your catalog, manage their account, and purchase items — MOC assumes that you will build your own UI to meet your needs. For those who want to get going fast, MOC plans to provide example storefronts that you can use as starting points. These are UI projects that we expect you to fork and modify. Currently, there is one such project, the [example storefront](https://github.com/reactioncommerce/example-storefront).
 
-However, if you already have a storefront UI or if the example projects are not to your liking, then you can connect any UI of your choosing to the Reaction API. If this describes your organization, then this guide is for you. It will walk you through everything that is necessary to build or adapt a storefront to use Reaction for its data.
+However, if you already have a storefront UI or if the example projects are not to your liking, then you can connect any UI of your choosing to the MOC API. If this describes your organization, then this guide is for you. It will walk you through everything that is necessary to build or adapt a storefront to use MOC for its data.
 
 ## What you’ll need
 
@@ -24,10 +24,10 @@ In general, you'll want to do the following tasks in roughly this order:
 
 This guide will walk you through how to complete these tasks in a general, framework-agnostic way. While we don't care which UI framework you use, which component libraries you use, or how you manage app state, we do have one recommendation that will save you time: 
 
-- Use [Apollo Client](https://www.apollographql.com/docs/react/) to interact with the Reaction GraphQL API when possible.
+- Use [Apollo Client](https://www.apollographql.com/docs/react/) to interact with the MOC GraphQL API when possible.
 
 ## Add and configure Apollo Client
-To add Apollo Client to your UI app, read the [excellent Apollo docs](https://www.apollographql.com/docs/react/essentials/get-started.html). For local development, the Reaction GraphQL endpoint `uri` is `http://localhost:3000/graphql`, but we recommend storing that value in app config where it can be set differently per environment.
+To add Apollo Client to your UI app, read the [excellent Apollo docs](https://www.apollographql.com/docs/react/essentials/get-started.html). For local development, the MOC GraphQL endpoint `uri` is `http://localhost:3000/graphql`, but we recommend storing that value in app config where it can be set differently per environment.
 
 For your test query, try this:
 
@@ -266,7 +266,7 @@ You're free to add any additional pages you want using whatever method your rout
 
 After you have created several types of pages, you're ready to add links to them in a navigation component. For a very simple storefront with few navigation links, you may want to design this as a static component. This may be easier in the short term, but remember that it will require a code change and redeployment every time navigation changes are needed.
 
-Most storefronts require more complex and dynamic navigation menus. For this purpose, the Reaction operator UI allows those with proper permissions to build navigation menus and then publish them to one or more storefronts.
+Most storefronts require more complex and dynamic navigation menus. For this purpose, the MOC admin allows those with proper permissions to build navigation menus and then publish them to one or more storefronts.
 
 On the storefront UI side, you only need to query for the navigation menu that you want when initially loading the UI. Then use that data to dynamically build whatever menu design you need.
 
@@ -323,7 +323,7 @@ Each navigation item has the following information:
 
 ## Add a way to add an item to a cart
 
-In Reaction, there are anonymous carts and account carts. For more information, refer to [Concepts: Carts](../developers-guide/concepts/carts.md). Since we haven't added a way to log in to the storefront yet, we're going to work only with anonymous carts in this section.
+In MOC, there are anonymous carts and account carts. Since we haven't added a way to log in to the storefront yet, we're going to work only with anonymous carts in this section.
 
 In your UI, on product list items, the product detail page, or both, you will add a button, which usually says something like "Add to Cart". This button must invoke logic that decides which GraphQL mutation to use:
 - If you already have an anonymous cart ID and token in your application state, call the `addCartItems` mutation.
@@ -511,7 +511,7 @@ It's time to support checking out a cart. You have a lot of freedom in how you d
 
 > At the end of a checkout flow, your goal is to place a valid order using the `placeOrder` GraphQL mutation. This can be done without ever even having a cart! The cart exists as an in-progress or potential order and nothing more. After you create the order, you delete the related cart.
 
-So as you collect information during checkout, you must decide where to store it until the order is placed. Some information can be stored on the cart by mutating it. Some you may want to store in `localStorage` or a cookie. Other sensitive information you may want to store only in memory and have the shopper re-enter it if they refresh or navigate away. Some related data you may even store directly in custom or third-party systems using their own APIs. As long as you can gather all the necessary information when it's time to call `placeOrder` in your UI client code, Reaction does not care where it comes from.
+So as you collect information during checkout, you must decide where to store it until the order is placed. Some information can be stored on the cart by mutating it. Some you may want to store in `localStorage` or a cookie. Other sensitive information you may want to store only in memory and have the shopper re-enter it if they refresh or navigate away. Some related data you may even store directly in custom or third-party systems using their own APIs. As long as you can gather all the necessary information when it's time to call `placeOrder` in your UI client code, MOC does not care where it comes from.
 
 In the following sections, we'll assume that you have an anonymous cart with some items in it and the user has clicked a "Checkout" button somewhere in the UI. You navigate to a checkout page, on which you will implement all of these checkout steps.
 
@@ -542,7 +542,7 @@ The `CartItems` React component can be used to show a list of items in a cart. Y
 This is necessary only if you have fulfillment groups of the “shipping” type. If your client UI displays multiple fulfillment groups, then you may need to have a shipping address form for each, or you can have a single form and set the same address on every “shipping” group.
 
 ### Example Storefront Component Library components
-- The `AddressForm` allows a user to enter a new address or edit an existing one. It outputs an address object matching the Reaction Commerce address schema.
+- The `AddressForm` allows a user to enter a new address or edit an existing one. It outputs an address object matching the MOC Commerce address schema.
 - You can use the `ShippingAddressCheckoutAction` component with an action supplied to the `CheckoutActions` component to collect a shipping address as part of a step-by-step checkout flow. This wraps `AddressForm` and takes care of some of the complexity for you, versus using `AddressForm` directly.
 
 ### GraphQL
