@@ -5,6 +5,8 @@ To use GraphQL, just POST to `/graphql`.
 
 The GraphQL server is implemented using [Apollo Server](https://www.apollographql.com/docs/apollo-server/). It is compatible with [Apollo Client](https://www.apollographql.com/docs/react/) or [Relay Modern](https://facebook.github.io/relay/) for client development.
 
+As you follow the guides for GraphQL, you'll find the concepts in this guide very valuable.
+
 ## GraphQL Clients
 
 We recommend using a standalone GraphQL client to connect and make requests. Here are a few popular ones:
@@ -14,11 +16,8 @@ We recommend using a standalone GraphQL client to connect and make requests. Her
 
 ### Making Queries
 
-As long as you use POST method (not GET) and use the `/graphql` path as the URL, requests from any GraphQL client should work. Many queries and mutations will check identity and authorization, and therefore require you to send a bearer token along with your request. Standalone GraphQL clients have a “Headers” option where you can specify this manually. See [Identity and Authorization](#identity-and-authorization).
+As long as you use POST method (not GET) and use the `/graphql` path as the URL, requests from any GraphQL client should work. Many queries and mutations will check identity and authorization, and therefore require you to send a bearer token along with your request. Standalone GraphQL clients have a “Headers” option where you can specify this manually.
 
-## Identity and Authorization
-
-Refer to [Developer Concepts: Authentication](./developer-authentication)
 
 ## Understanding the Schema
 
