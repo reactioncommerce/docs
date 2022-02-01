@@ -78,3 +78,15 @@ If you are interested in being able to quickly debug and develop Mailchimp Open 
 - [GraphQL Playground](https://github.com/prismagraphql/graphql-playground)
 - [Altair GraphQL Client](https://altair.sirmuel.design/)
 - [GraphiQL Standalone App](https://github.com/skevy/graphiql-app)
+
+## Troubleshooting
+due to misconfiguration, missing dependencies, operating system differences, and software bugs. Here are some tips for diagnosing and fixing these issues.
+
+### Docker Issues
+
+These are potential issues you might encounter when running Reaction within a local Docker environment using Docker Compose and the docker-compose.yml file.
+
+### Memory errors or errors about "Meteor rawLogs"
+
+Make sure that you are allowing Docker sufficient memory to run. In your Docker preferences, we suggest adjusting the `Memory` setting to allow at least `3.0Gb`, and the `Swap` setting to allow at least `1.5Gb`. If you are running many containers, make these as high as possible as long as it doesn't negatively affect the performance of your computer.
+
