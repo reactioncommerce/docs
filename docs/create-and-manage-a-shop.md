@@ -7,7 +7,6 @@ Congratulations on a successful installation of Open Commerce. Now, you can acce
 ## Create a user
 To create a user, click the profile icon in the top right corner of the screen and select **Create Account**.
 
-
 Click **Create Account** to bring up the sign-up window.
 
 You'll need a valid email to use as your ID. Open Commerce does not enforce any password requirements but we recommend you use a strong password. The first user you create is automatically added to the *account-manager*, *system-manager*, and *owner* groups. The shop owner can assign roles to any subsequent users, but they are not added to any groups automatically.
@@ -29,10 +28,10 @@ Once you have created a user and set up a shop, the admin portal will look like 
 
 You'll find account management and settings options by clicking Accounts in the side menu of the Open Commerce Admin portal.
 
-Within Accounts you can access the following options::
+Within Accounts you can access the following options:
 - Staff Members: View and modify the accounts involved with shop management and the different permission groups to which they belong. The first account created is populated under Owner. You can also create additional groups and invite users here.
-- Customers: View customers of the shop..
-- Invitations: View the outstanding sent invitations. Once the user accepts an invitation it is no longer shown here.
+- Customers: View customers of the shop.
+- Invitations: View outstanding sent invitations. Once the staff member accepts an invitation it is no longer shown here.
 
 ### Create Group
 
@@ -50,13 +49,13 @@ You can invite people to be a part of your shop management by clicking Invite St
 
 Once you've successfully sent the invitation, the recipient should receive an email.
 
-> Note: You'll need to set up an email service to send out invitations. See [Email Configuration](75-email-configuration.md) for more information.
+> Note: You'll need to set up an email service to send out invitations. See [Sending Emails](https://mailchimp.com/developer/open-commerce/docs/sending-emails/) for more information.
 
 ## Payments
 
-To set up Payments, go to Settings > Payments in the admin dashboard. Click to enable or disable a payment method. Enabled payment methods are visible to the customer at checkout.
+To set up Payments, go to **Settings > Payments** in the admin dashboard. Click to enable or disable a payment method. Enabled payment methods are visible to the customer at checkout.
 You can use the IOU Example payment method to test your store before enabling your actual payment method, like Stripe or another supported payment processor.
-Open Commerce includes a [Stripe](https://stripe.com/) plugin for payments. The new plugin is [SCA complient](https://stripe.com/docs/strong-customer-authentication).
+Open Commerce includes a [Stripe](https://stripe.com/) plugin for payments. The new plugin is [SCA compliant](https://stripe.com/docs/strong-customer-authentication).
 
 ## Taxes
 
@@ -93,7 +92,7 @@ Shipping methods enabled at storefront on checkout.
 
 ## Address validation
 
-You can find settings for the for Address Validation under **Settings > Address Validation** on the admin dashboard.
+You can find settings for the Address Validation under **Settings > Address Validation** on the admin dashboard.
 
 To add a new address validation service, click **Add Address Validation Services** and fill in the information on the pop-up modal.
 
