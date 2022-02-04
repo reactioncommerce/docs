@@ -7,13 +7,13 @@ When adding a new mutation, the first step is to decide which plugin should own 
 
 ## Understand the difference between a plugin mutation function and a GraphQL mutation resolver
 
-See [Resolver Mutations and Queries vs. Plugin Mutations and Queries](../guides/developers-guide/core/developing-graphql.md#resolver-mutations-and-queries-vs-plugin-mutations-and-queries)
+See [Resolver mutations and queries vs. plugin mutations and queries in the GraphQL concepts docs](.docs/graphql-concepts.md)
 
 ## Define the mutation in the schema
 
-1. If it doesn't already exist, create `schemas` folder in the plugin, and add an `index.js` file there.
-1. If it doesn't already exist, create `schema.graphql` in `schemas` in the plugin.
-1. Import the GraphQL file into `index.js` and default export it in an array:
+- If it doesn't already exist, create `schemas` folder in the plugin, and add an `index.js` file there.
+- If it doesn't already exist, create `schema.graphql` in `schemas` in the plugin.
+- Import the GraphQL file into `index.js` and default export it in an array:
 
     ```js
     import importAsString from "@reactioncommerce/api-utils/importAsString.js";
@@ -25,14 +25,14 @@ See [Resolver Mutations and Queries vs. Plugin Mutations and Queries](../guides/
 
    > NOTE: For large plugins, you can split to multiple `.graphql` files and export a multi-item array.
 
-1. In the `.graphql` file, add your mutation within `extend type Mutation { }`. Add an `extend type Mutation` section near the top if the file doesn't have it yet.
-1. Follow [the Relay recommendations](https://facebook.github.io/relay/graphql/mutations.htm) for mutation input arguments, which is to have only one argument named `input` that takes an input type that is the capitalized mutation name plus the suffix "Input", and to return a type that is the capitalized mutation name plus the suffix "Payload".
+- In the `.graphql` file, add your mutation within `extend type Mutation { }`. Add an `extend type Mutation` section near the top if the file doesn't have it yet.
+- Follow [the Relay recommendations](https://facebook.github.io/relay/graphql/mutations.htm) for mutation input arguments, which is to have only one argument named `input` that takes an input type that is the capitalized mutation name plus the suffix "Input", and to return a type that is the capitalized mutation name plus the suffix "Payload".
 
    Example: `addAccountEmailRecord(input: AddAccountEmailRecordInput!): AddAccountEmailRecordPayload`
 
-1. Add the Input and Payload types to the schema. Both must have `clientMutationId: String` field and may have any other fields as necessary. The mutation response payload should include whatever object was mutated.
-1. Document your mutation, the new types, and all fields in those types using string literals. See [Documenting a GraphQL Schema](../guides/developers-guide/core/developing-graphql.md#documenting-a-graphql-schema).
-1. If not already done, register your schemas in the plugin's `index.js` file:
+- Add the Input and Payload types to the schema. Both must have `clientMutationId: String` field and may have any other fields as necessary. The mutation response payload should include whatever object was mutated.
+- Document your mutation, the new types, and all fields in those types using string literals.
+- If not already done, register your schemas in the plugin's `index.js` file:
 
     ```js
     import schemas from "./schemas";
@@ -49,8 +49,8 @@ See [Resolver Mutations and Queries vs. Plugin Mutations and Queries](../guides/
 
 ## Create the plugin mutation file
 
-1. If it doesn't already exist, create `mutations` folder in the plugin, and add an `index.js` file there.
-2. In `mutations`, create a file for the mutation, e.g. `createSomething.js` for the `createSomething` mutation. The file should look something like this:
+- If it doesn't already exist, create `mutations` folder in the plugin, and add an `index.js` file there.
+- In `mutations`, create a file for the mutation, e.g. `createSomething.js` for the `createSomething` mutation. The file should look something like this:
 
 ```js
 import Logger from "@reactioncommerce/logger";
@@ -112,9 +112,9 @@ test("expect to return a Promise that resolves to null", async () => {
 
 ## Create the GraphQL mutation resolver file
 
-1. If it doesn't already exist, create `resolvers` folder in the plugin, and add an `index.js` file there.
-2. If it doesn't already exist, create `resolvers/Mutation` folder in the plugin, and add an `index.js` file there. "Mutation" must be capitalized.
-3. In `resolvers/Mutation`, create a file for the mutation resolver, e.g. `createSomething.js` for the `createSomething` mutation. The file should look something like this initially:
+- If it doesn't already exist, create `resolvers` folder in the plugin, and add an `index.js` file there.
+- If it doesn't already exist, create `resolvers/Mutation` folder in the plugin, and add an `index.js` file there. "Mutation" must be capitalized.
+- In `resolvers/Mutation`, create a file for the mutation resolver, e.g. `createSomething.js` for the `createSomething` mutation. The file should look something like this initially:
 
 ```js
 /**
