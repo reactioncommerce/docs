@@ -1,6 +1,7 @@
 ## At a glance
 
 If you need to migrate your API to a newer version or your plugin needs to add new elements to the core schema, this guide will help you in the process. 
+
 ## What you’ll need
 
 You must be running node 14.17 or later
