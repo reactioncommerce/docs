@@ -1,7 +1,6 @@
-# Developing with GraphQL
-
 ## The basics
 
+GraphQL is a query language and runtime that can provide a common interface between client and server applications for fetching and manipulating data. This document will show you important concepts to keep in mind when you build and consume GraphQL APIs.
 ## Extending and Modifying the GraphQL API
 
 The GraphQL schema is written in multiple `.graphql` files, which contain type definitions in the GraphQL schema language. These files live in the plugins to which they relate, in a `schemas` folder. Refer to one of the How To articles:
@@ -165,7 +164,7 @@ Normally the `shop` relationship would result in a database query, but if `order
 
 ## Documenting GraphQL Functions
 
-Reaction GraphQL resolver functions, like all JavaScript functions in all Reaction code, must have JSDoc comments above them. See the [JSDoc Style Guide](../../../docs/jsdoc-style-guide.md)
+Reaction GraphQL resolver functions, like all JavaScript functions in all Reaction code, must have JSDoc comments above them. See the [JSDoc Style Guide](./jsdoc-style-guide.md)
 
 ## Writing Tests
 
