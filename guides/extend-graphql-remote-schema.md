@@ -1,4 +1,4 @@
-# How To: Extend GraphQL with Remote Schema Delegation
+## At a glance
 
 If you have an external service providing a GraphQL interface and you would like to make it available via the main Open Commerce GraphQL API, here's how to do it. For this example, we'll use the [public sample Pokemon GraphQL API](https://github.com/lucasbento/graphql-pokemon) from `https://graphql-pokemon.now.sh`.
 
@@ -75,3 +75,7 @@ Once your plugin is loading properly, execute the additional queries from your r
   }
 }
 ```
+## More resources
+
+[Build an API plugin guide](https://mailchimp.com/developer/open-commerce/guides/build-api-plugin/)
+[GraphQL Federation](https://www.apollographql.com/docs/federation/entities/)
