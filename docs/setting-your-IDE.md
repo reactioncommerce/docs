@@ -4,7 +4,6 @@ If you are interested in being able to quickly debug and develop Mailchimp Open 
 
 - You should use [nvm](https://github.com/nvm-sh/nvm) to install and manage NodeJS.
 - Visual Studio Code is a preferred text editor but you can use Sublime Text, Emacs, Vim or any other editor of your choice.
-- [Kadira](https://github.com/kadira-open/kadira-server) can help you optimize performance of a Meteor app.
 
 ## Browser Extensions
 
