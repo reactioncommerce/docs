@@ -12,6 +12,30 @@ In this guide, we’ll set up a full local instance of the Open Commerce platfor
 
 - Windows users: [WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install-win10) and [Docker for WSL](https://docs.docker.com/docker-for-windows/wsl/)
 
+## Install WSL2 (for Windows users)
+
+Download it at the [official WSL microsoft site](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+  
+
+> NOTE: The automatic Windows Insider install comes with the Ubuntu distro. If you have manually installed WSL2, you can pick another Linux distro. This guide assumes you picked Ubuntu.
+
+## Install Docker Desktop WSL2 backend (for Windows users)
+  - [Download it at the official Docker documentation site](https://docs.docker.com/desktop/windows/wsl/).
+  - Open Docker, goto `Settings > Resources > WSL Integration` and verify that everything on that page is activated.
+  - Under `Experimental Features` enable `Use Docker Compose v2 candidate`.
+
+
+## Start Ubuntu (for Windows users)
+  - You should be root (`root@` is visible in commandline), if not execute 
+    ```bash
+    sudo su
+    ```
+  - Install the *make* package 
+    ```bash
+    apt install make
+    ````
+> NOTE: During the build process Windows will open a firewall window. You got to accept this by clicking *Allow Access* when it pops up.
+
 ## Clone and start the platform
 
 The simplest way to get an instance up and running on your local machine is by using the [development platform](https://github.com/reactioncommerce/reaction-development-platform), a set of `make` scripts that coordinates all of the different pieces of the Open Commerce software system.
