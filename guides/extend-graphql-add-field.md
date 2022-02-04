@@ -1,12 +1,12 @@
-# How To: Extend GraphQL to add a field
+# At a glance
 
 Sometimes you only need to extend GraphQL to add a field to an existing type. Here's how to do it.
 
 ## Extend the schema
 
-1. If it doesn't already exist, create `schemas` folder in the plugin, and add an `index.js` file there.
-1. If it doesn't already exist, create `schema.graphql` in `schemas` in the plugin.
-1. Import the GraphQL file into `index.js` and default export it in an array:
+- If it doesn't already exist, create `schemas` folder in the plugin, and add an `index.js` file there.
+- If it doesn't already exist, create `schema.graphql` in `schemas` in the plugin.
+- Import the GraphQL file into `index.js` and default export it in an array:
 
 ```js
 import schema from "./schema.graphql";
@@ -16,7 +16,7 @@ export default [schema];
 
 > NOTE: For large plugins, you can split to multiple `.graphql` files and export a multi-item array.
 
-1. In the `.graphql` file, use GraphQL language to extend the type with your custom field.
+- In the `.graphql` file, use GraphQL language to extend the type with your custom field.
 
  ```graphql
 extend type SomeType {
@@ -25,8 +25,8 @@ extend type SomeType {
 }
 ```
 
-1. Document all fields you add using string literals. See [Documenting a GraphQL Schema](../guides/developers-guide/core/developing-graphql.md#documenting-a-graphql-schema).
-1. If not already done, register your schemas in the plugin's `register.js` file:
+- Document all fields you add using string literals. See [Documenting a GraphQL Schema](../guides/developers-guide/core/developing-graphql.md#documenting-a-graphql-schema).
+- If not already done, register your schemas in the plugin's `register.js` file:
 
 ```js
 import schemas from "./schemas";
@@ -47,8 +47,8 @@ If your field is not stored in the database in the same schema, such as if it is
 
 ### Create the resolver
 
-1. If it doesn't already exist, create `resolvers` folder in the plugin, and add an `index.js` file there.
-3. In `resolvers`, create a file for the field resolver with the same name as the type the field is for, e.g. `Tag.js` if you extended the `Tag` type. The file should look something like this initially:
+- If it doesn't already exist, create `resolvers` folder in the plugin, and add an `index.js` file there.
+- In `resolvers`, create a file for the field resolver with the same name as the type the field is for, e.g. `Tag.js` if you extended the `Tag` type. The file should look something like this initially:
 
 ```js
 export default {
@@ -60,7 +60,7 @@ export default {
 
 Replace `return null` with whatever logic you need to derive the custom field value and return it. You may make the resolver function `async` if necessary.
 
-> You have some freedom here to structure the `resolvers` folder in whatever way works best for your plugin. For an explanation and recommendations, refer to [Understanding the Resolvers File Structure](../guides/developers-guide/core/graphql-resolvers-file-structure.md)
+> NOTE: You have some freedom here to structure the `resolvers` folder in whatever way works best for your plugin. For an explanation and recommendations, refer to [GraphQL concepts doc](../docs/graphql-concepts.md)
 
 ## Register the resolver
 
@@ -92,3 +92,7 @@ export default async function register(app) {
 ```
 
 You should now be able to query for your custom field using GraphQL.
+
+## More resources
+
+[Build an API plugin guide](https://mailchimp.com/developer/open-commerce/guides/build-api-plugin/)
