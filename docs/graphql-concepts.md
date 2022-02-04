@@ -12,7 +12,7 @@ As you follow the guides for GraphQL, you'll find the concepts in this guide ver
 We recommend using a standalone GraphQL client to connect and make requests. Here are a few popular ones:
 - [GraphQL Playground](https://github.com/prismagraphql/graphql-playground)
 - [Altair GraphQL Client](https://altair.sirmuel.design/)
-- [GraphiQL Standalone App](https://github.com/skevy/graphiql-app)
+- [GraphiQL Standalone App](https://github.com/skevy/graphiql-app#readme)
 
 ### Making Queries
 
@@ -29,9 +29,8 @@ All queries, mutations, and types in the Reaction GraphQL schema are documented 
 
 ### Nodes and IDs
 
-The GraphQL specification recommends globally unique IDs, and IDs in Reaction GraphQL follow this recommendation. These IDs are opaque, meaningless, and unsorted, so you should not use them for anything other than identifying an object.
+The GraphQL specification recommends globally unique IDs, and IDs in Reaction GraphQL follow this recommendation. Every type that has an ID implements the `Node` interface, these IDs are opaque, meaningless, and unsorted, so you should not use them for anything other than identifying an object.
 
-Every type that has an ID implements the `Node` interface. You will eventually be able to use the `Query.node` query to get back any Node type without even knowing which type it is.
 
 ## Query Pagination
 
@@ -57,11 +56,11 @@ External references:
 - [GraphQL "description" spec](https://facebook.github.io/graphql/draft/#sec-Documentation)
 - [Apollo Server: Documenting Your Schema](https://www.apollographql.com/docs/apollo-server/schema/schema/#documentation-strings)
 
-## Where Resolvers are Defined
+## Where Resolvers are defined
 
 Every plugin that extends the GraphQL schema should also have a `resolvers` folder, which should have an `index.js` file in which the default export is the full `resolvers` object. This object should be built by importing other files and folders in that directory, such that the folder and file tree looks the same as the `resolvers` object tree.
 
-For example, there are typically folders named `Mutation` and `Query`. In the `accounts` plugin there is also an `Account` folder, where resolvers for that type live. You may choose either folders or single files, depending on how many resolvers there are and how complex they are.
+For example, there are typically folders named `Mutation` and `Query`. In the `accounts` [plugin](https://github.com/reactioncommerce/api-plugin-accounts) there is also an `Account` folder, where resolvers for that type live. You may choose either folders or single files, depending on how many resolvers there are and how complex they are.
 
 The `resolvers` object for each plugin is deep merged with all the `resolvers` exported by all the other plugins, and the result is the full resolver function tree.
 
@@ -132,17 +131,17 @@ All IDs are exposed in GraphQL as globally unique IDs on fields named `_id`. Whe
 
 The GraphQL server specification has no opinion on what a type's ID field should look like, but it does provide [a built-in ID type](https://graphql.github.io/graphql-spec/draft/#sec-ID).
 
-> The ID scalar type represents a unique identifier, often used to refetch an object or as the key for a cache. The ID type is serialized in the same way as a String; however, it is not intended to be human‐readable. While it is often numeric, it should always serialize as a String.
+> NOTE: The ID scalar type represents a unique identifier, often used to refetch an object or as the key for a cache. The ID type is serialized in the same way as a String; however, it is not intended to be human‐readable. While it is often numeric, it should always serialize as a String.
 
 In particular, note that "it is not intended to be human‐readable". You should never display a field of type `ID` anywhere. They are only for references. If your data comes over from another system and has IDs with some meaning, then you should also store them on a different field where the raw value will not be obfuscated by the GraphQL layer.
 
 Note also that the server specification does not necessarily care whether an ID is globally unique. However, we intend compatibility with both Relay and Apollo for client-side frameworks, and [the Relay specification](https://facebook.github.io/relay/graphql/objectidentification.htm#sec-Node-Interface) does have a requirement here:
 
-> This `id` should be a globally unique identifier for this object, and given just this `id`, the server should be able to refetch the object.
+> NOTE: This `id` should be a globally unique identifier for this object, and given just this `id`, the server should be able to refetch the object.
 
 Additionally, the [Apollo caching docs](https://www.apollographql.com/docs/react/advanced/caching/#normalization) have this to say:
 
-> By default, InMemoryCache will attempt to use the commonly found primary keys of `id` and `_id` for the unique identifier if they exist
+> NOTE: By default, InMemoryCache will attempt to use the commonly found primary keys of `id` and `_id` for the unique identifier if they exist
 
 This does not specifically require global uniqueness since it also uses `__typename`, but because Relay does, we've opted to ensure IDs are globally unique.
 
@@ -207,7 +206,7 @@ Normally the `shop` relationship would result in a database query, but if `order
 
 ## Documenting GraphQL Functions
 
-Reaction GraphQL resolver functions, like all JavaScript functions in all Reaction code, must have JSDoc comments above them. See the [JSDoc Style Guide](jsdoc-style-guide.md)
+Reaction GraphQL resolver functions, like all JavaScript functions in all Reaction code, must have JSDoc comments above them. See the [JSDoc Style Guide](./jsdoc-style-guide.md)
 
 ## Writing Tests
 
