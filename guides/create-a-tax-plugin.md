@@ -1,10 +1,8 @@
+## At a Glance
+Most companies need to collect and report sales tax, and because of the complexities of understanding
+the tax laws in each locality, most companies use external tax providers. This guide will walk you through
+creating a plugin that will interface with the tax rate provider and integrate into checkout.
 
-# How To: Add a Tax Service plugin
-
-## Prerequisites
-- [Understanding how to create and integrate a plugin](/developer/open-commerce/guides/build-api-plugin/)
-
-## Overview
 In general, to add a tax service you must do the following:
 - Create a plugin or modify an existing one
 - Create and register a tax calculation function
@@ -12,11 +10,17 @@ In general, to add a tax service you must do the following:
 - If necessary, extend the GraphQL API with mutations, queries, and types needed for operator UI
 - If necessary, create a React component for operators to enter and edit settings for your tax service
 
+## What you need
+- [Understanding how to create and integrate a plugin](/developer/open-commerce/guides/build-api-plugin/)
+- The documentation from your tax provider service
+- A development key from the provider if applicable
+
+
 > There is [one included plugin](https://github.com/reactioncommerce/api-plugin-taxes-flat-rate) that provides a "Custom Rates" tax service. Examine the files in this plugin if you are confused by any of the steps in this article.
 
-### Register a tax service
+## Register a tax service
 
-Tax services are registered by passing an array of them to the `taxServices` property of the `registerPlugin` options.
+Tax services are registered by passing an array of tax provider objects to the `taxServices` property of the `registerPlugin` options.
 
 ```js title=index.js
 import calculateOrderTaxes from "./util/calculateOrderTaxes";
@@ -24,12 +28,12 @@ import getTaxCodes from "./util/getTaxCodes";
 
 export default async function register(app) {
   await app.registerPlugin({
-    label: "Custom Rates",
-    name: "reaction-taxes-rates",
+    label: "My Tax Provider",
+    name: "reaction-taxes-my-provider",
     taxServices: [
       {
-        displayName: "Custom Rates",
-        name: "custom-rates",
+        displayName: "My Provider", // this is how this will show up in the admin panel when you configure it
+        name: "my-provider",
         functions: {
           calculateOrderTaxes,
           getTaxCodes
@@ -43,7 +47,7 @@ export default async function register(app) {
 
 See below for how to create the two functions.
 
-### Create a tax calculation function
+## Create a tax calculation function
 
 Every tax service is expected to register a function that calculates taxes for a single CommonOrder. The core `taxes` plugin calls it like this:
 
@@ -103,13 +107,13 @@ The `calculateOrderTaxes` function is called frequently, every time a cart chang
 
 > External tax APIs often require various addresses with various names. Do your best to provide what they require, but the shipping address is usually the most important. Reaction does not guarantee that all orders will have shipping or billing addresses. If you have one or the other, it is usually fine to substitute billing for shipping or vice versa in order to at least get a calculation and allow the order to be placed. If an order has neither address, you'll need to decide what action is proper based on the third-party API. There should always be an `originAddress` provided, and that may be enough to do a calculation in some cases.
 
-#### customFields
+### customFields
 
 Anything you store on `customFields` is not exposed through GraphQL by default. If you need any of the fields available on `Cart` or `Order` through GraphQL, you can create a custom plugin to `extend type CalculatedTax` with your properly typed custom fields and add resolvers as necessary.
 
 Primarily, though, this is intended to be used to store extra data that the third-party tax integrations need for later API calls.
 
-### Create a tax codes function
+## Create a tax codes function
 
 Tax services need not provide a tax codes function, but if you don't, shop operators will need to enter free text tax codes without a selection list. A tax codes function simply returns the current list of tax codes, with a `code` and `label` for each.
 
@@ -124,7 +128,7 @@ export default async function getTaxCodes() {
 
 This is a simple example, but you will likely need to query the third-party tax service and return that list mapped to this expected shape.
 
-### Extend the GraphQL API
+## Extend the GraphQL API
 
 This is necessary only for any operator actions you need to support, such as getting and modifying settings. Example queries and mutations:
 - `updateMyTaxServiceSettings` (mutation)
@@ -133,3 +137,4 @@ This is necessary only for any operator actions you need to support, such as get
 - `deleteTaxRule` (mutation)
 - `myTaxServiceSettings` (query)
 - `taxRules` (query)
+
