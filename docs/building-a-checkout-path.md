@@ -12,7 +12,7 @@ The `GuestForm` React component can be used to collect an email address for anon
 Use the `setEmailOnAnonymousCart` mutation if you have a cart and want to store the provided email address on it. This is recommended for data completeness and to avoid re-entry if the checkout flow is interrupted. However, you could also just cache this data on the client until you call the place order mutation.
 
 ## Display fulfillment groups and optionally allow moving items among them
-To create an order, each item must be in exactly one [fulfillment group](../developers-guide/concepts/fulfillment-groups.md). There can be any number of fulfillment groups, but at a minimum there must be one per unique combination of fulfillment type and shop ID.
+To create an order, each item must be in exactly one fulfillment group. There can be any number of fulfillment groups, but at a minimum there must be one per unique combination of fulfillment type and shop ID.
 
 Every item has a list of fulfillment types it is eligible for. A client should allow shoppers to choose one of these types for each item, and then sort the items into fulfillment groups based on their type and shop ID. If desired, a client could also allow the shopper to create additional fulfillment groups, for example by allowing them to split a “shipping” type group and enter a different shipping address for each group.
 

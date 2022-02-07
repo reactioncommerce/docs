@@ -27,6 +27,7 @@ This guide will walk you through how to complete these tasks in a general, frame
 - Use [Apollo Client](https://www.apollographql.com/docs/react/) to interact with the MOC GraphQL API when possible.
 
 ## Add and configure Apollo Client
+
 To add Apollo Client to your UI app, read the [excellent Apollo docs](https://www.apollographql.com/docs/react/essentials/get-started.html). For local development, the MOC GraphQL endpoint `uri` is `http://localhost:3000/graphql`, but we recommend storing that value in app config where it can be set differently per environment.
 
 For your test query, try this:
@@ -51,6 +52,7 @@ client
 Assuming your test query works, you're ready to start building your storefront UI. You will eventually need to configure authentication, but most of a storefront UI can be built without authenticating, so we'll do that later.
 
 ## Build a product listing page
+
 Product listing pages can vary among storefronts, but we'll focus on the one thing they all do: query the catalog for products with pagination.
 
 Using the Apollo Client reactive querying mechanism for your UI framework (e.g., a React `Query` component), start with the following GraphQL query to get the data for a product list:
@@ -111,7 +113,7 @@ const variables = {
 
 ## Add pagination
 
-If you have read [Using the GraphQL API](../developers-guide/core/using-a-graphql-client.md) and the linked resources, you should be familiar with how pagination works in general. Here's a specific example of how to paginate the `catalogItemsQuery` for a product list page.
+<!-- TODO: If you have read [Using the GraphQL API](../developers-guide/core/using-a-graphql-client.md) and the linked resources, you should be familiar with how pagination works in general. Here's a specific example of how to paginate the `catalogItemsQuery` for a product list page. -->
 
 First, you're going to want a place in application state where your list paging and sorting is saved. For a web app, that's almost always going to be in the URL. That way, visiting a shared URL will show the same page of the list. We'll leave the state details up to you, but assuming you have a reactive way of obtaining URL state variables, a React query would look something like this:
 
@@ -164,6 +166,7 @@ render() {
 `YourCustomListComponent` would have either previous/next buttons or infinite scrolling, as well as "sort by" and "sort order" select lists, that would properly change the reactive state (e.g., update the URL query string) and then call `refetchCatalogItems`.
 
 ## Build a product detail page
+
 A product detail page generally needs only one query for its data. For a more complex storefront, you may have additional queries to other systems for related data that appears on the page.
 
 Here's a typical query to start with:
@@ -260,6 +263,7 @@ The `slugOrId` variable will typically be a product slug from the URL. So for ex
 From there, it is simply a matter of arranging the data on the page to match your storefront design. You will eventually want an "Add to Cart" button somewhere on the page, but we'll add that later.
 
 ## Build navigation menus
+
 If you are building your storefront in the recommended order, at this point you have a product listing page and a product detail page. It's probably about time to add some navigation UI, a home page, and perhaps some additional pages.
 
 You're free to add any additional pages you want using whatever method your router prescribes. A home page may be a specific view of a product list, multiple product lists, static content, or whatever your storefront design spec requires.
@@ -519,7 +523,9 @@ Generally speaking, a checkout flow consists of a flow controller (some code tha
 
 > NOTE: Ensure that you've enabled anonymous checkout in the shop settings on your server. Even if you don't plan to enable anonymous checkout, it's usually easiest to start by building anonymous checkout. We'll later add support for logging in, at which point you'd just need to force the user to log in anytime during the checkout flow, prior to placing the order. After you have all of that working, you can disable anonymous checkout in the shop settings on your server.
 
-Please refer to the [documentation on building a checkout path](../docs/building-a-checkout-path.md) for more detailed information.
+<!-- TODO: Please refer to the [documentation on building a checkout path](../docs/building-a-checkout-path.md) for more detailed information. -->
+
+
 
 ## Build an order view page
 
@@ -654,44 +660,17 @@ query orderByReferenceId($id: ID!, $shopId: ID!, $token: String) {
 ```
 ## Add ability to log in
 
-After you've implemented a storefront that allows anonymous shopping and checkout, you'll most likely want to add the ability to log in. For details, see [Developer Concepts: Users & Authentication](../developers-guide/concepts/users-and-authentification.md).
+After you've implemented a storefront that allows anonymous shopping and checkout, you'll most likely want to add the ability to log in. <!-- TODO: For details, see [Developer Concepts: Users & Authentication](../developers-guide/concepts/users-and-authentification.md). -->
 
 Actual implementation will vary depending on whether you're creating a single page app, an app with a server, a native app, or something else. For the purposes of this guide, we're just going to assume that you have an authentication flow working.
 
-### Authenticating GraphQL requests
+## Authenticating GraphQL requests
 
 A successful login flow will result in your application being given an access token. You should store this access token either in a cookie or in `localStorage` such that you retain it until it expires or until the user logs out.
 
 You then need to adjust your Apollo Client initialization code to pass the access token as the `Authorization` header with all requests. Refer to [their example code](https://www.apollographql.com/docs/react/recipes/authentication.html#Header).
 
-### Silent reauthentication
-
-If an access token has expired, you'll see a `401 Unauthorized response` for the next GraphQL request after the expiration. Anytime you see such a response, you should first attempt to silently reauthorize the token with the identity provider server. If that fails, you should clear the access token from wherever you store it and display the UI as if they are not logged in. You may also want to show a temporary message to explain that their session has expired and they'll need to log in again.
-
-With Apollo Client, you can use Apollo Link and code similar to the following to watch for 401 errors and attempt silent reauthentication.
-
-```js
-import { onError } from "apollo-link-error";
-
-const STATUS_UNAUTHORIZED = 401;
-
-const errorLink = onError(({ graphQLErrors, networkError }) => {
-  if (networkError) {
-    const errorCode = networkError.response && networkError.response.status;
-    if (errorCode === STATUS_UNAUTHORIZED) {
-      // If a 401 Unauthorized error occurred, redirect to /signin on the IDP host.
-      // This will re-authenticate the user without showing a login page and a new token is issued.
-      window.location = IDP_SIGN_IN_URL;
-      return;
-    }
-    console.error("Unable to access the GraphQL API. Is it running and accessible from the Storefront UI server?");
-  }
-});
-```
-
-This code will work in a browser. If your UI has a server handling URL requests, the idea is similar but you'll do something like a `302` redirect with the `Location` set to the `IDP_SIGN_IN_URL`.
-
-### Cart reconciliation
+## Cart reconciliation
 
 When a user logs in and every time your app loads, you must attempt to load either an anonymous cart or an account cart. The logic looks something like this:
 
