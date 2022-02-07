@@ -1,16 +1,15 @@
+## At a Glance
+In Open Commerce parlance, fulfillment generally means how the product gets into the hands of the consumer. This could be via shipping, download, or other.
+This guide will walk you through creating your own fulfillment plugin that will then be available in checkout.
 
-# How To: Create a Fulfillment Methods Plugin
-
-## Prerequisite Reading
-- [Concepts: Fulfillment](../guides/developers-guide/concepts/fulfillment-groups.md)
-- [Understanding Plugins](../guides/developers-guide/core/build-api-plugin.md)
-
-## Overview
 In general, to add a fulfillment method you must do the following:
 - Create a new plugin
 - Create a `getFulfillmentMethodsWithQuotes` function in your plugin
-- Create a React component for operators to enter and edit fulfillment method details, unless they'll be managed in an external system
-- Register the function and the React components using your plugin's `registerPlugin` call
+- Register that function via your new plugin
+
+
+## What you need
+- [Understanding Plugins]((/developer/open-commerce/guides/build-api-plugin/)
 
 Reaction ships with one such plugin, `shipping-rates`, which you can look at for inspiration. You will want to remove that plugin if adding your own, unless you're combining multiple fulfillment method sources
 
@@ -18,7 +17,7 @@ Reaction ships with one such plugin, `shipping-rates`, which you can look at for
 
 Your plugin must define a `getFulfillmentMethodsWithQuotes` function. This function must somehow query for a list of fulfillment methods that should be available based on the information passed in, and get quotes for those methods. It can be an `async` function.
 
-The signature of this function is `(context, commonOrder, previousQueryResults = [])`. See [Understanding CommonOrder](../guides/developers-guide/concepts/understanding-common-order.md).
+The signature of this function is `(context, commonOrder, previousQueryResults = [])`.
 
 You can extract `rates` and `retrialTargets` out of `previousQueryResults` like this:
 
@@ -59,8 +58,8 @@ rate: 5.99
 
 Everything needs to be registered to be seen by Reaction core.
 
-### Register the function
 
+First register the function:
 Pass your function in the `functionsByType` list:
 
 ```js title=index.js
@@ -77,3 +76,5 @@ export default async function register(app) {
   });
 }
 ```
+
+Once registered, your method should be available in the admin, and once enabled there should be available to consumers.
