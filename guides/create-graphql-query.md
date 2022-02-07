@@ -8,7 +8,7 @@ The complete Reaction Commerce GraphQL API is created by stitching together doma
 
 ## Understand the difference between a plugin query function and a GraphQL query resolver
 
-See [Resolver mutations and queries vs. plugin mutations and queries in the GraphQL concepts docs](.docs/graphql-concepts.md)
+See [Resolver mutations and queries vs. plugin mutations and queries in the GraphQL concepts docs](../docs/graphql-concepts.md)
 
 ## Name the query
 
