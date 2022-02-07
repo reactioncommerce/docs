@@ -1,22 +1,18 @@
-# How To: Add an Address Validation Service
+## At A Glance
+Having accurate address information is a critical part of marking sure your customers' product arrives on time and is delivered to the
+correct customer. In addition, some services such a shipping and tax providers may require you to have a validated address in a specific format. Should
+you need this service, this guide will help create a plugin that interfaces with an address validation service.
 
-## Prerequisite Reading
-- [Understanding Plugins](../guides/developers-guide/core/build-api-plugin.md)
-- [Address Validation Operator Guide](../guides/shop-managers-guide/configuring-address-validation.md) FIXME:
-
-## Background
-Many types of services such as tax or shipping require that the address be validated so that they know the prices/rates they are quoting
-are valid. You don't necessarily need to build a separate plugin for an address validation service if it's provided by your tax/shipping provider
-although it could be considered a best practice.
-
-## Overview
 In general, to add an address validation service you must do the following:
 - Create a plugin or modify an existing one
 - Create and register an address validation function
 
+## What you need
+- [Understanding Plugins](/developer/open-commerce/guides/build-api-plugin/)
+
 > There is [one example plugin](https://github.com/reactioncommerce/api-plugin-address-validation-test) that provides a "Test" address validation service. Examine the files in this plugin if you are confused by any of the steps in this article.
 
-### Register an address validation service
+## Register an address validation service
 
 Address validation services are registered by passing an array of them to the `addressValidationServices` property of the `registerPlugin` options.
 
@@ -53,7 +49,7 @@ available to Reaction's address service.
 
 After this step is completed, you can restart Reaction, enable your validation service from the Shop operator panel, and start testing your service via the `addressValidation` GraphQL query.
 
-### Create an address validation function
+## Create an address validation function
 
 Every address validation service is expected to register a function that validates an address. The core `api-plugin-address` plugin calls it like this:
 
@@ -90,7 +86,7 @@ export default async function addressValidation({ address }) {
 }
 ```
 
-#### Formatting validation results
+## Format validation results
 More than likely your validation solution returns similar data but in a different schema. In this case you'll need to create a transform function to normalize the data structure for the query. See the `Address` type in the GraphQL schema.
 
 Here's an example function with a results transform:
