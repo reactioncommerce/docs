@@ -32,7 +32,7 @@ Behind the scenes, the `make` process clones all of the relevant Open Commerce s
 
 When `make` completes, three services will be running on `localhost`:
 
-- Open Commerce API (port 3000), including the [core plugins](/developer/open-commerce/docs/fundamentals/#plugins). This service also contains the GraphQL playground at `localhost:3000/graphql`.
+- Open Commerce API (port 3000), including the [core plugins](/developer/open-commerce/docs/plugins-environment-variables/#plugins). This service also contains the GraphQL playground at `localhost:3000/graphql`.
 
 - [Example Storefront](https://github.com/reactioncommerce/example-storefront) (port 4000), which is built with [Next.js](https://nextjs.org/).
 
