@@ -2,10 +2,6 @@
 Tracking inventory is one of the critical elements to running a successful ecommerce site. Open Commerce already includes some facilities
 for tracking inventory, but should you need to extend or replace that functionality this guide will walk you through it.
 
-Before you create a custom inventory data provider plugin, make sure that you need one.
-- If your inventory system outputs periodic files but doesn't allow you to read inventory programmatically in real time, you may want to use the "Simple Inventory" plugin and only update the values. Refer to option 2 [here](./core-plugins-simple-inventory#how-to-sync-inventory-quantities-from-an-external-system).
-- If you use a well known third-party inventory system, there may be a community plugin already available for it. If not, consider making yours available as open source so that the community can help you maintain it.
-
 Once you're sure you need to create a custom inventory plugin, use the standard steps to create the plugin boilerplate. Beyond that, an inventory plugin needs to do the following:
 - Register an `inventoryForProductConfigurations` type function that returns current inventory in stock and other related data for a list of product configurations.
 - Optionally provide a way of editing the inventory in stock in the operator UI, by registering client components
@@ -14,6 +10,12 @@ Once you're sure you need to create a custom inventory plugin, use the standard 
 
 ## What you need
 - [Understanding Plugins]((/developer/open-commerce/guides/build-api-plugin/)
+
+## Understand what your inventory plugin needs to do
+Before you create a custom inventory data provider plugin, make sure that you need one.
+- If your inventory system outputs periodic files but doesn't allow you to read inventory programmatically in real time, you may want to use the "Simple Inventory" plugin and only update the values. Refer to option 2 [here](./core-plugins-simple-inventory#how-to-sync-inventory-quantities-from-an-external-system).
+- If you use a well known third-party inventory system, there may be a community plugin already available for it. If not, consider making yours available as open source so that the community can help you maintain it.
+
 
 ## Register an `inventoryForProductConfigurations` function
 
