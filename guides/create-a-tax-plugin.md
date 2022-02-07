@@ -107,8 +107,6 @@ The `calculateOrderTaxes` function is called frequently, every time a cart chang
 
 > External tax APIs often require various addresses with various names. Do your best to provide what they require, but the shipping address is usually the most important. Reaction does not guarantee that all orders will have shipping or billing addresses. If you have one or the other, it is usually fine to substitute billing for shipping or vice versa in order to at least get a calculation and allow the order to be placed. If an order has neither address, you'll need to decide what action is proper based on the third-party API. There should always be an `originAddress` provided, and that may be enough to do a calculation in some cases.
 
-### customFields
-
 Anything you store on `customFields` is not exposed through GraphQL by default. If you need any of the fields available on `Cart` or `Order` through GraphQL, you can create a custom plugin to `extend type CalculatedTax` with your properly typed custom fields and add resolvers as necessary.
 
 Primarily, though, this is intended to be used to store extra data that the third-party tax integrations need for later API calls.
