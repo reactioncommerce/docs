@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/reactioncommerce/docs.git"
+    "url": "git+https://github.com/postlight/mailchimp-open-commerce-docs.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/reactioncommerce/docs/issues"
+    "url": "https://github.com/postlight/mailchimp-open-commerce-docs/issues"
   },
-  "homepage": "https://github.com/reactioncommerce/docs#readme",
+  "homepage": "https://github.com/postlight/mailchimp-open-commerce-docs#readme",
   "devDependencies": {}
 }
