@@ -6,7 +6,7 @@ In this guide, we’ll guide you through the steps you need to create a successf
 
 The complete Reaction Commerce GraphQL API is created by stitching together domain-specific APIs from all of the API plugins. So when adding a new query, the first step is to decide which plugin should own it. This is usually obvious, but not always. You should think about whether any other plugins or services will need to call your query. If the query is fundamental to the system, then it may need to go in the "core" plugin, if no better alternative exists.
 
-## Understand the difference between a plugin mutation function and a GraphQL mutation resolver
+## Understand the difference between a plugin query function and a GraphQL query resolver
 
 See [Resolver mutations and queries vs. plugin mutations and queries in the GraphQL concepts docs](.docs/graphql-concepts.md)
 
