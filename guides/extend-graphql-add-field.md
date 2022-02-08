@@ -4,8 +4,6 @@ Sometimes you only need to extend GraphQL to add a field to an existing type. He
 
 ## Extend the schema
 
-- If it doesn't already exist, create `schemas` folder in the plugin, and add an `index.js` file there.
-- If it doesn't already exist, create `schema.graphql` in `schemas` in the plugin.
 - Import the GraphQL file into `index.js` and default export it in an array:
 
 ```js
