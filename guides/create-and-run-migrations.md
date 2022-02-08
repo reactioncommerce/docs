@@ -24,7 +24,7 @@ To add a migration to an API plugin package, follow the below steps:
 
 These steps are explained in more detail [here](https://github.com/reactioncommerce/migrator#how-to-publish-a-package-with-migrations), and you can look at the [simple-authorization](https://github.com/reactioncommerce/plugin-simple-authorization) plugin code for an example to follow.
 
-IMPORTANT: If the plugin you added a migration to is one that is built in to the stock Reaction API releases, then at the same time you bump the plugin package version in https://github.com/reactioncommerce/reaction `trunk` branch, you must also update the data version in the trunk branch of `migrator.config.js` in this repo.
+> IMPORTANT: If the plugin you added a migration to is one that is built in to the stock Reaction API releases, then at the same time you bump the plugin package version in https://github.com/reactioncommerce/reaction `trunk` branch, you must also update the data version in the trunk branch of `migrator.config.js` in this repo.
 
 ## Running migrations locally for development
 
