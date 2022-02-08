@@ -26,7 +26,7 @@ See [Resolver mutations and queries vs. plugin mutations and queries in the Grap
    > NOTE: For large plugins, you can split to multiple `.graphql` files and export a multi-item array.
 
 - In the `.graphql` file, add your mutation within `extend type Mutation { }`. Add an `extend type Mutation` section near the top if the file doesn't have it yet.
-- Follow [the Relay recommendations](https://facebook.github.io/relay/graphql/mutations.htm) for mutation input arguments, which is to have only one argument named `input` that takes an input type that is the capitalized mutation name plus the suffix "Input", and to return a type that is the capitalized mutation name plus the suffix "Payload".
+- Follow [Relay recommendations](https://relay.dev/docs/guided-tour/updating-data/graphql-mutations/) for mutation input arguments, which is to have only one argument named `input` that takes an input type that is the capitalized mutation name plus the suffix "Input", and to return a type that is the capitalized mutation name plus the suffix "Payload".
 
    Example: `addAccountEmailRecord(input: AddAccountEmailRecordInput!): AddAccountEmailRecordPayload`
 
