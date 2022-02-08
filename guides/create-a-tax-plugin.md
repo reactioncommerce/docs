@@ -1,7 +1,7 @@
 ## At a Glance
-Most companies need to collect and report sales tax, and because of the complexities of understanding
-the tax laws in each locality, most companies use external tax providers. This guide will walk you through
-creating a plugin that will interface with the tax rate provider and integrate into checkout.
+Most companies need to collect and report sales tax, and because of the complexities of understanding the tax laws
+in each locality, most companies use external tax providers. This guide will walk you through creating a plugin that
+will interface with the tax rate provider and integrate into checkout.
 
 In general, to add a tax service you must do the following:
 - Create a plugin or modify an existing one
@@ -14,7 +14,6 @@ In general, to add a tax service you must do the following:
 - [Understanding how to create and integrate a plugin](/developer/open-commerce/guides/build-api-plugin/)
 - The documentation from your tax provider service
 - A development key from the provider if applicable
-
 
 > There is [one included plugin](https://github.com/reactioncommerce/api-plugin-taxes-flat-rate) that provides a "Custom Rates" tax service. Examine the files in this plugin if you are confused by any of the steps in this article.
 
