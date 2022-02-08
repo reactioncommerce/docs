@@ -31,7 +31,7 @@ We recommend that you make at least **2GB of memory** available to each containe
 ## MongoDB Database
 
 In a development environment, a local MongoDB database is created for you. In production, you will need to set up a separate production-ready MongoDB server and create a database in it. You then provide this database connection string in an environment variable for services that need to connect to it.
-Because some services use change streams, your MongoDB server must be part of a replica set and must have oplog enabled. Because of the complexity of operating
+Since some services use change streams, your MongoDB server must be part of a replica set and must have oplog enabled. Due to the complexity of operating
 and managing a production database at scale, we recommend we use a hosting provider like [Atlas](https://www.mongodb.com/atlas)
 
 > Don't forget to set up periodic database backups. Do them as often as you can afford to do.
