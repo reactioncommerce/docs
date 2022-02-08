@@ -17,7 +17,7 @@ the concepts covered in the guided can be used to build a production grade deplo
 charts that should work with most major cloud providers. Complete instructions on how to utilize these charts are available [here](https://github.com/reactioncommerce/mailchimp-open-commerce-helm-chart/tree/develop/docs/cloud-deploy).
 If you want to try out deploying Open Commerce via these charts on a Mini version of K8, the instructions for that are available [here](https://github.com/reactioncommerce/mailchimp-open-commerce-helm-chart/tree/develop/docs/local-deploy)
 
-> Note! It is important to understand that Open Commerce provides these tools for your convenience and to help you get started but
+> **Note**: It is important to understand that Open Commerce provides these tools for your convenience and to help you get started but
 we do not and cannot provide any sort of support. It is up to each implementor to ensure that these tools are appropriate and well-understood.
 
 ## Docker Images
