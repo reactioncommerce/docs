@@ -1,6 +1,6 @@
 # Deploying Open Commerce
 
-Open Commerce is an open source eCommerce platform suitable for use in product. All services are either publicly available Docker images on DockerHub or are Git repositories that include a `Dockerfile` so that you can build your own Docker image after customizing the service. This means that you can deploy the Open Commerce system on any infrastructure that supports running a Docker container cluster with a shared network.
+Open Commerce is an open source eCommerce platform suitable for use in production. All services are either publicly available Docker images on DockerHub or are Git repositories that include a `Dockerfile` so that you can build your own Docker image after customizing the service. This means that you can deploy the Open Commerce system on any infrastructure that supports running a Docker container cluster with a shared network.
 
 ## Deploying Open Commerce on Digital Ocean
 
