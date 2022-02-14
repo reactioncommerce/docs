@@ -1,8 +1,8 @@
 ## At a glance
 
-Mailchimp Open Commerce (MOC) is a headless commerce platform, which means that its focus is on providing a top-notch server API rather than on UI. But this doesn't mean you're completely on your own.
+Mailchimp Open Commerce is a headless commerce platform, with a focus on providing a server API rather than a user interface. But this doesn't mean you're completely on your own for UI!
 
-For your storefront — your public-facing website or app on which consumers browse your catalog, manage their account, and purchase items — MOC assumes that you will build your own UI to meet your needs. For those who want to get going fast, MOC plans to provide example storefronts that you can use as starting points. These are UI projects that we expect you to fork and modify. Currently, there is one such project, the [example storefront](https://github.com/reactioncommerce/example-storefront).
+If you would rather not build your own public-facing website or app on which consumers browse your catalog, manage their account, and purchase items, Open Commerce currently offers the example storefront project, which you can fork and modify to meet your storefront needs.
 
 However, if you already have a storefront UI or if the example projects are not to your liking, then you can connect any UI of your choosing to the MOC API. If this describes your organization, then this guide is for you. It will walk you through everything that is necessary to build or adapt a storefront to use MOC for its data.
 
