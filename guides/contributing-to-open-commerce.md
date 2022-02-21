@@ -8,8 +8,7 @@ Anyone can contribute, you just need a GitHub account, and the willingness to ma
 
 ## Find or Open an Issue
 
-If we are talking about bugs, there are two places to start. Either find an existing open issue, or open a new issue. You can search issues by going to "Issues" on the appropriate repo and using the search box. Doing this is really 
-critical as opening multiple issues for the same problem doesn't allow us to see that this issue is impacting multiple users which may change its priority.
+If we are talking about bugs, there are two places to start. Either find an existing open issue, or open a new issue. You can search issues by going to "Issues" on the appropriate repo and using the search box. Doing this is really critical as opening multiple issues for the same problem doesn't allow us to see that this issue is impacting multiple users which may change its priority.
 
 If you find that no one has opened an issue then you can create a new one. Be sure to fill out the entire issue template or your issue may be closed due to lack of information. Filling only the subject and none of the template almost guarantees that your issue will be closed immediately.
 
@@ -24,7 +23,7 @@ Make sure you branch off `trunk` to create your PR.
 
 **Use Git commit message conventions**
 
-You will need to follow the [Git Style guide](../docs/git-style-guide/) for both your branch name and your commits. 
+You will need to follow the [Git Style guide](/developer/open-commerce/docs/git-style-guide/) for both your branch name and your commits. 
 We use the [semantic release](https://github. com/semantic-release/semantic-release) package to manage versioning so these commit messages are critical and not using the correct format will delay getting your PR merged.
 
 **Give your PR a good title**
@@ -32,8 +31,7 @@ We use the [semantic release](https://github. com/semantic-release/semantic-rele
 Make sure the PR title completely describes the new feature or bug fix.
 
 **Fill out the pull request template**
-Each of the items there is critical for us for to evaluate the code in your PR. If a section is completely 
-irrelevant (e.g. Testing instructions for fixing a typo in the docs) just remove it.
+Each of the items there is critical for us for to evaluate the code in your PR. If a section is completely irrelevant (e.g. Testing instructions for fixing a typo in the docs) just remove it.
 
 ## Pass all tests
 
