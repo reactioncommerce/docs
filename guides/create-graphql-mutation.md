@@ -1,10 +1,10 @@
 ## At a glance
 
-We're working on an implementation for Leader of the Pack, an outdoor equipment retailer. In the GraphQL query guide we described data we added that contains whether we can ship a category of products to a particular zip. But now we need a way to update that information. For this we will create a GraphQL mutation
+You're working on an implementation for Leader of the Pack, an outdoor equipment retailer. In the GraphQL query guide we described data we added that contains whether we can ship a category of products to a particular zip. But now we need a way to update that information. For this we will create a GraphQL mutation
 
 ## What you need 
 
-We need to understand what key you will use to query the data, and what the payload of the data is.
+You need to understand what key you will use to query the data, and what the payload of the data is.
 
 ## Identify which plugin owns the mutation
 
