@@ -64,8 +64,7 @@ We need to install **Helm** which, as mentioned above, works as the Kubernetes p
 
 Next, we need to clone the Open Commerce Helm chart locally prior to deployment.
 
-1.  Begin by creating a new local directory and then cloning the Helm
-    chart repository.
+1.  Begin by creating a new local directory and then cloning the Helm chart repository.
 
     ```sh
     mkdir helm
@@ -74,11 +73,7 @@ Next, we need to clone the Open Commerce Helm chart locally prior to deployment.
     ```
 ## Prepare Values File
 
-Now that we have the Helm chart available locally the next step is to
-prepare a values yaml file that contains all the necessary configuration
-for your deployment. Although the provided **values.yaml** file contains
-sensible defaults it will still require changes that are specific to
-your deployment and cloud infrastructure.
+Now that we have the Helm chart available locally the next step is to prepare a values yaml file that contains all the necessary configuration for your deployment. Although the provided **values.yaml** file contains sensible defaults it will still require changes that are specific to your deployment and cloud infrastructure.
 
 1. Begin by creating a copy of the provided values.yaml file.
 
@@ -128,20 +123,19 @@ your deployment and cloud infrastructure.
     api:
     ```
    
-    Again, of particular importance here is the **host** value, ensure
-    it is set to the FQDN you wish to use for accessing the Open
-    Commerce API endpoint.
+    Again, of particular importance here is the **host** value, ensure it is set to the FQDN you wish to use for accessing the Open Commerce API endpoint.
     
    ```yaml
     host: admin.example.shop
     ```   
 
     You may also wish to uncomment and set the **enableGraphQlPlayground** to true if you wish to explore the API via the GraphQL Playground (recommended for Dev deployments). 
-    ```yaml
-    ##
-    ## Serve the GraphQL Playground UI from /graphql
-    enableGraphQLPlayground: true
-    ```
+    
+   ```yaml
+   ##
+   ## Serve the GraphQL Playground UI from /graphql
+   enableGraphQLPlayground: true
+   ```
 
 6. Next move on to the **web** subsection. Which you may wish to disable completely if you only require a headless deployment of Open Commerce.
     ```yaml
@@ -152,9 +146,7 @@ your deployment and cloud infrastructure.
 
     The example storefront can be disabled via simply setting **enabled** to false. We shall leave as true for the sake of this deployment.
 
-    Once again, of particular importance here is the **host** value,
-    ensure it is set to the FQDN you wish to use for accessing the Open
-    Commerce example storefront.
+    Once again, of particular importance here is the **host** value, nsure it is set to the FQDN you wish to use for accessing the Open Commerce example storefront.
 
    ```yaml
     host: example.shop
@@ -190,8 +182,7 @@ your deployment and cloud infrastructure.
 
 ## Configure Your Ingress Controller
 
-As previously mentioned, this document assumes that an Ingress Controller is available on our Kubernetes environment.
-Dependent upon the Ingress Controller being used it may be that additional ingress annotation values need adding to our **my_values.yaml** file. For example, if using the Nginx ingress controller then the following annotations will need adding under the **admin**, **API**, and **web** subsections.
+As previously mentioned, this document assumes that an Ingress Controller is available on our Kubernetes environment. Depending upon the Ingress Controller being used it may be that additional ingress annotation values need adding to our **my_values.yaml** file. For example, if using the Nginx ingress controller then the following annotations will need adding under the **admin**, **API**, and **web** subsections.
 
 ```
 kubernetes.io/ingress.class: nginx
@@ -257,7 +248,7 @@ our Open Commerce Helm chart.
 
     When all the pods are "Running" and stable then the deployment is complete.
 
-## DNS
+## Configure DNS
 
 With our Open Commerce deployment completed we now need to create public DNS records, that match the configured FQDN's, so that the Admin, API and Web endpoints are publicly accessible.
 
@@ -272,13 +263,13 @@ You should see a **LoadBalancer** object that has an **EXTERNAL-IP** assigned. T
 You should create a public DNS record for each FQDN configured (Admin, API and Web) that uses the FQDN as the domain and the external IP as the target address.
 
 
-## Endpoints
+## Configure Endpoints
 
 Finally, with our Helm deployment complete and our external DNS records in place we can now test our Open Commerce endpoints are accessible using the FQDN's configured. If all is well then you should be able to access the Admin console, the example Storefront, and the API.
 
 Note: As we did not utilise SSL certificates for our deployment it is likely that the Web Browser will complain when connecting to our URL's, this warning can be ignored as this is not an example of a production grade deployment.
 
-## Custom Open Commerce Container Images
+## Use any Custom Open Commerce Container Images
 
 If you have developed your own custom Open Commerce images (most likely for the API service) and you wish to deploy them via the Helm chart, then you would simply need to host them on a publicly accessible container registry (such as Docker Hub) and update the
 **my_values.yaml** values to utilise the custom images tag and its repository.
