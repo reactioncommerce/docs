@@ -71,6 +71,7 @@ Next, we need to clone the Open Commerce Helm chart locally prior to deployment.
     cd helm
     git clone https://github.com/reactioncommerce/mailchimp-open-commerce-helm-chart
     ```
+
 ## Prepare Values File
 
 Now that we have the Helm chart available locally the next step is to prepare a values yaml file that contains all the necessary configuration for your deployment. Although the provided **values.yaml** file contains sensible defaults it will still require changes that are specific to your deployment and cloud infrastructure.
