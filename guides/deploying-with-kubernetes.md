@@ -1,7 +1,7 @@
 ## At a Glance
 
 Now that you've added your customizations, made your front-end look and perform great, what's next. Well it's time 
-to deploy your site to production. This guide walks you through the process of deploying your site using [Kubernetes]
+to deploy your site to the cloud. This guide walks you through the process of deploying your site using [Kubernetes]
 (https://kubernetes.io/) Google's technology for orchestrating Docker containers at scale.
 
 ## What you need
@@ -10,7 +10,7 @@ to deploy your site to production. This guide walks you through the process of d
 
 As this document is focused upon deploying MailChimp Open Commerce, using Helm, some working knowledge of your chosen cloud provider and Kubernetes is required. For example, you will need a cloud hosted Kubernetes environment, and relevant administration/deployment permissions to said environment, before being able to proceed with the below. You will also need **kubectl** installed and configured to proceed.
 
-This documentation has been written for and tested on Linux specifically (Fedora 35), but all the included tools and components are also available for other operating systems such as Windows and Mac. Please consult each components/tools bespoke documentation for guidance regarding non-Linux installation and configuration.
+This documentation has been written for and tested on Linux specifically, but all the included tools and components are also available for other operating systems such as Windows and Mac. Please consult each components/tools bespoke documentation for guidance regarding non-Linux installation and configuration.
 
 **Components**
 
@@ -30,7 +30,7 @@ Ingress exposes HTTP and HTTPS routes from outside the cluster to services withi
 ## Configure and Test Authentication to Kubernetes Cluster
 
 Prior to deploying a Helm chart, you must ensure that you have authentication configured to the target Kubernetes 
-cluster. Authentication configuration can be dependent upon your chosen cloud provider, but it typically involves the setup of your local \~/.kube/config file with relevant[**credentials**](https://kubernetes.io/docs/reference/access-authn-authz/authentication/) to connect to your Kubernetes cluster. Consult your cloud provider documentation for further information.
+cluster. Authentication configuration can be dependent upon your chosen cloud provider, but it typically involves the setup of your local \~/.kube/config file with relevant [**credentials**](https://kubernetes.io/docs/reference/access-authn-authz/authentication/) to connect to your Kubernetes cluster. Consult your cloud provider documentation for further information.
 
 Authentication can be confirmed using a simple command such as the following.
 
@@ -44,7 +44,7 @@ If a list of pods is returned, then you are successfully authenticated and conne
 
 We need to install **Helm** which, as mentioned above, works as the Kubernetes package framework for our Open Commerce deployment.
 
-1.  The simplest method of installing Helm upon Linux is via provided [**installation script**](https://helm.sh/docs/intro/install/#from-script). A benefit of using the install script is that it should work across the most popular Linux distro's and is not tied to a particular package manager such as **apt** or **dnf**.
+1.  The simplest method of installing Helm upon Linux is via a provided [**installation script**](https://helm.sh/docs/intro/install/#from-script). A benefit of using the install script is that it should work across the most popular Linux distro's and is not tied to a particular package manager such as **apt** or **dnf**.
 
 2.  Simply run the following commands to perform the Helm install.
 
@@ -79,7 +79,7 @@ Now that we have the Helm chart available locally the next step is to prepare a 
 1. Begin by creating a copy of the provided values.yaml file.
 
     ```sh
-    cd mailchimp-open-commerce-helm-chart/ && cp ./values.yaml
+    cd mailchimp-open-commerce-helm-chart/ && cp ./values.yaml ./my_values.yaml
     ```
 
 2. Open the **my_values.yaml** file in your editor of choice 
@@ -147,7 +147,7 @@ Now that we have the Helm chart available locally the next step is to prepare a 
 
     The example storefront can be disabled via simply setting **enabled** to false. We shall leave as true for the sake of this deployment.
 
-    Once again, of particular importance here is the **host** value, nsure it is set to the FQDN you wish to use for accessing the Open Commerce example storefront.
+    Once again, of particular importance here is the **host** value, ensure it is set to the FQDN you wish to use for accessing the Open Commerce example storefront.
 
    ```yaml
     host: example.shop
