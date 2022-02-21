@@ -19,12 +19,12 @@ This deployment guide's purpose is to provide a simple and easy guide on how to 
 
 ## Open Commerce Services Overview
 
- - Reaction GraphQL API
+ - Reaction GraphQL API -
    The [Reaction GraphQL API](https://github.com/reactioncommerce/reaction) service provides the interface to the Reaction core functionality.
- - Storefront
+ - Storefront -
    The [example storefront](https://github.com/reactioncommerce/example-storefront) service provides the public facing storefront interface that customers will interact with.
- - Reaction Admin
-   The [Reaction Admin](https://github.com/reactioncommerce/reaction-admin) service is a Meteor application that provides the admin UI to manage products, orders etc.
+ - Reaction Admin -
+   The [Reaction Admin](https://github.com/reactioncommerce/reaction-admin) service is a Meteor application that provides the administration UI to manage products, orders etc.
 
 ## Getting Started
 
@@ -33,7 +33,7 @@ is a cloud native router. Traefik will act as a reverse proxy that will route tr
 
 This guide will use the following sub-domains, where `example.com` will need to substitute it with your domain:
 
-| subdomain              | description                       |
+| Subdomain              | Description                       |
 | ---------------------- |-----------------------------------|
 | api.example.com        | The open Commerce GraphQL API     |
 | storefront.example.com | The example storefront            |
@@ -65,27 +65,13 @@ Install Ansible using [homebrew](https://brew.sh), this guide assumes some famil
 
 `brew install ansible`
 
-Also install python3 to avoid deprecation warnings,
-
-`brew install python3`
-
-###### Prepare the Control Node
-
-Ansible requires a control node, which is a computer that manages a remote host. This guide will assumes a Mac laptop/desktop as the control node.
-
-Install Ansible using [homebrew](https://brew.sh), this guide assumes some familiarity with Ansible, if you need an introduction to basic concepts click [here](https://www.ansibletutorials.com).
-
-`brew install ansible`
-
-Also install python3 to avoid deprecation warnings,
+Also install python3 to avoid deprecation warnings.
 
 `brew install python3`
 
 ## Configure the remote host to be managed with Ansible
 
-On the control node(i.e. a developer's machine) create an inventory file in which `python3` is specified as the interpreter. On your machine, create a new file at named `hosts` at `/etc/ansible`.
-
-Create inventory file
+On the control node (i.e. a developer's machine) create an inventory file in which `python3` is specified as the interpreter. On your machine, create a new file named `hosts` at `/etc/ansible` that shall act as your ansible inventory file.
 ```
 touch /etc/ansible/hosts
 ```
@@ -100,12 +86,12 @@ ansible_python_interpreter=/usr/bin/python3
 [web]
 ```
 
-Edit your hosts file
+Edit your hosts file (your local DNS hosts file, NOT your newly created Ansible hosts/inventory file)
 ```
 sudo vim /etc/hosts
 ```
 
-and add an entry for the DigitalOcean droplet,
+and add an entry for the DigitalOcean droplet, ensuring to substitude the XXX octet's for your droplets external IP address.
 
 ```
 XXX.XXX.XXX.XXX reaction.server
@@ -135,10 +121,10 @@ that need to be updated and a description of each.
 | Variable               | Description                                                                 |
 | ---------------------- | ----------------------------------------------------------------------------|
 | do_auth_token          | The Authentication token for the Digital Ocean API                          |
-| email                  | An email address to receive SSl certificate notifications                   |
+| email                  | An email address to receive SSL certificate notifications                   |
 | domain                 | Your registered domain                                                      |
 
-For the rest of the variables, the default values should be used, DO NOT change otherwise, the playbook might fail.
+For the rest of the variables, the default values should be used, DO NOT change otherwise the playbook might fail.
 
 ## Execute the playbook
 
