@@ -1,7 +1,6 @@
 ## At a glance
 
-You're working on a new implementation for Leader of the Pack, an outdoor equipment retailer. Let's say that you don't ship Kayaks to every location because of the logistical challenges of shipping something that large. So you need to add
-a query that will show you if a particular product can be shipped to a particular zip code. Once you have that data in the system you need to have a way to make it available to the client. This is usually done by creating a GraphQL query. In this guide, we’ll walk you through the steps you need to create a query in GraphQL and have it recognized by the system.
+You're working on a new implementation for Leader of the Pack, an outdoor equipment retailer. Let's say that you don't ship Kayaks to every location because of the logistical challenges of shipping something that large. So you need to add a query that will show you if a particular product can be shipped to a particular zip code. Once you have that data in the system you need to have a way to make it available to the client. This is usually done by creating a GraphQL query. In this guide, we’ll walk you through the steps you need to create a query in GraphQL and have it recognized by the system.
 
 ## What you need
 
