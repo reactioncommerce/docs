@@ -1,6 +1,8 @@
 ## At a Glance
 
-This deployment guide's purpose is to provide a simple and easy guide on how to deploy Open Commerce for evaluation purposes or small deployments. This guide is not meant to generate an enterprise production grade deployment. This deployment guide does not use Kubernetes, instead, Docker Compose is used to manage containers.
+This deployment guide's purpose is to provide a simple and easy guide on how to deploy Open Commerce for evaluation 
+purposes or small deployments. This guide is not meant to generate an enterprise production grade deployment, rather 
+it uses Docker Compose is used to manage containers which is not suitable for production deployments.
 
 > Note: It is important to understand that Open Commerce cannot provide support for your deployment. If you need 
 > help you can reach out to the community on our [Discord Server](https://discord.gg/Bwm63tBcQY)
@@ -10,28 +12,26 @@ This deployment guide's purpose is to provide a simple and easy guide on how to 
 - A Linux host with at least 2GB of RAM, this guide uses a DigitalOcean droplet
 - A registered domain
 - A DNS manager that supports Certification Authority Authorization (CCA) records, such as Digital Ocean
-- Docker
-- Docker Compose
-- Git
-- Node
-- Yarn
 - Some familiarity with [Traefik](https://github.com/containous/traefik/)
 
-## Open Commerce Services Overview
 
- - Reaction GraphQL API -
-   The [Reaction GraphQL API](https://github.com/reactioncommerce/reaction) service provides the interface to the Reaction core functionality.
- - Storefront -
-   The [example storefront](https://github.com/reactioncommerce/example-storefront) service provides the public facing storefront interface that customers will interact with.
- - Reaction Admin -
-   The [Reaction Admin](https://github.com/reactioncommerce/reaction-admin) service is a Meteor application that provides the administration UI to manage products, orders etc.
 
-## Getting Started
+## Understand what the deployment will look like
+
+**Open Commerce Services Overview**
+
+- **Open Commerce GraphQL API**:
+  The [Open Commerce GraphQL API](https://github.com/reactioncommerce/reaction) service provides the GraphQL interface 
+  to the Open Commerce core functionality.
+- **Storefront**:
+  The [Example storefront](https://github.com/reactioncommerce/example-storefront) service provides the public facing storefront interface that customers will interact with.
+- **Open Commerce Admin**:
+  The [Admin](https://github.com/reactioncommerce/reaction-admin) service is a Meteor application that provides the UI to manage products, orders etc.
 
 Open Commerce services will be exposed to the public using [Traefik](https://github.com/containous/traefik/), which 
 is a cloud native router. Traefik will act as a reverse proxy that will route traffic to Docker containers. As stated above, you will need a registered domain to complete this step, as it will be necessary to manage DNS records for it.
 
-This guide will use the following sub-domains, where `example.com` will need to substitute it with your domain:
+This guide will use the following subdomains, where `example.com` will need to substitute it with your domain:
 
 | Subdomain              | Description                       |
 | ---------------------- |-----------------------------------|
@@ -40,18 +40,31 @@ This guide will use the following sub-domains, where `example.com` will need to 
 | admin.example.com      | The Open Commerce admin interface |
 | traefik.example.com    | Traefik's admin UI                |
 
-Each of your domains will need an `A` DNS record that resolves to your host's IP. It's recommend to use DigitalOcean's free [DNS manager](https://www.digitalocean.com/docs/networking/dns/overview/). Further, in order to obtain SSL certificates for your sub-domains, you will need a DNS manager that supports [CAA](https://support.dnsimple.com/articles/caa-record/) records.
+Each of your domains will need an `A` DNS record that resolves to your host's IP. It's recommend to use DigitalOcean's free [DNS manager](https://www.digitalocean.com/docs/networking/dns/overview/). Further, in order to obtain SSL certificates for your subdomains, you will need a DNS manager that supports [CAA](https://support.dnsimple.com/articles/caa-record/) records.
 
 
 Further, you will need a [DigitalOcean Auth token](https://docs.digitalocean.com/reference/api/create-personal-access-token/) to generate CAA records for your sub-domains.
 
+## Clone the Proxy-Traefik Repo to your local machine
+
+The project that contains all the playbooks, etc. is located [here](https://github.com/reactioncommerce/proxy-traefik).
+
+In order to use these files you need to have a local copy on your machine. To clone the files locally just run:
+```sh
+git clone git@github.com:reactioncommerce/proxy-traefik.git
+```
+
+To make the project disconnected from the original repository you should `rm -rf .git` from within the newly created directory and then `git init`.
+You should not push any of your changes, especially your DO key, to a public repository and there is no need to do so since the command are intended to run from your local machine.
+
 ## Prepare the Remote Host
 
-In this guide a DigitalOcean node will be used to host the Open Commerce Platform. If you don't yet have an account, create one at [digitalocean.com](https://digitalocean.com). Once you are signed into your account, create a new droplet using the Ubuntu 18.4 image with at least 2GB of RAM. Enable DigitalOcean's [free firewall](https://www.digitalocean.com/docs/networking/firewalls/) and add inbound rules for SSH, HTTP, HTTPS and add your droplet to the firewall.
+In this guide a DigitalOcean node will be used to host the Open Commerce Platform. If you don't yet have an account, 
+create one at [digitalocean.com](https://digitalocean.com). Once you are signed in to your account, create a new droplet using the Ubuntu 18.4 image with at least 2GB of RAM. Enable DigitalOcean's [free firewall](https://www.digitalocean.com/docs/networking/firewalls/) and add inbound rules for SSH, HTTP, HTTPS and add your droplet to the firewall.
 
 After the droplet is created either select an existing SSH key to login or click on the "New SSH Key" under the authentication section  and copy your public SSH key from your local computer.
 
-Copy the newly created IP address and verify that you can login into the new server by executing:
+Copy the newly created IP address and verify that you can log in into the new server by executing:
 
 ```
 ssh root@XXX.XXX.XXX.XXX
@@ -91,7 +104,8 @@ Edit your hosts file (your local DNS hosts file, NOT your newly created Ansible 
 sudo vim /etc/hosts
 ```
 
-and add an entry for the DigitalOcean droplet, ensuring to substitude the XXX octet's for your droplets external IP address.
+And add an entry for the DigitalOcean droplet, ensuring to substitute the XXX octet's for your droplets external IP 
+address.
 
 ```
 XXX.XXX.XXX.XXX reaction.server
@@ -140,7 +154,9 @@ NOTE: the `-l reaction.server` limits the execution of the playbook to the `reac
 
 At this point the Open Commerce GraphQL API, Example Storefront, Admin should be accessible over the internet.
 
-To create the primary shop login into the Reaction Admin at the following URL, first substitute the `example.com` with your actual domain:
+To create the primary shop login into the Open Commerce Admin at the following URL, first substitute the `example.com` 
+with your 
+actual domain:
 ```
 https://admin.example.com
 ```
