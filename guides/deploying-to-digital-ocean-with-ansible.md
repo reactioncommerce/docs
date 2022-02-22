@@ -1,8 +1,6 @@
 ## At a Glance
 
-This deployment guide's purpose is to provide a simple and easy guide on how to deploy Open Commerce for evaluation 
-purposes or small deployments. This guide is not meant to generate an enterprise production grade deployment, rather 
-it uses Docker Compose is used to manage containers which is not suitable for production deployments.
+This deployment guide's purpose is to provide a simple and easy way to deploy Open Commerce for evaluation purposes or small deployments. This guide is not meant to generate an enterprise production grade deployment, rather Docker Compose is used to manage containers which is not suitable for production deployments.
 
 > Note: It is important to understand that Open Commerce cannot provide support for your deployment. If you need 
 > help you can reach out to the community on our [Discord Server](https://discord.gg/Bwm63tBcQY)
@@ -13,8 +11,6 @@ it uses Docker Compose is used to manage containers which is not suitable for pr
 - A registered domain
 - A DNS manager that supports Certification Authority Authorization (CCA) records, such as Digital Ocean
 - Some familiarity with [Traefik](https://github.com/containous/traefik/)
-
-
 
 ## Understand what the deployment will look like
 
