@@ -1,6 +1,7 @@
 ## At a glance
 
-You're working on a new implementation for Leader of the Pack, an outdoor equipment retailer. Let's say that you don't ship Kayaks to every location because of the logistical challenges of shipping something that large. So you need to add a query that will show you if a particular product can be shipped to a particular zip code. Once you have that data in the system you need to have a way to make it available to the client. This is usually done by creating a GraphQL query. In this guide, we’ll walk you through the steps you need to create a query in GraphQL and have it recognized by the system.
+You're working on a new implementation for Leader of the Pack, an outdoor equipment retailer that we just took 
+through [building an API plugin](https://mailchimp.com/developer/open-commerce/guides/build-api-plugin/). Let's say that you don't ship Kayaks to every location because of the logistical challenges of shipping something that large. So you need to add a query that will show you if a particular product can be shipped to a particular zip code. Once you have that data in the system you need to have a way to make it available to the client. This is usually done by creating a GraphQL query. In this guide, we’ll walk you through the steps you need to create a query in GraphQL and have it recognized by the system.
 
 ## What you need
 
@@ -20,9 +21,8 @@ When choosing a name for the query, there are a few rules to follow:
 
 ## Define the query in the schema
 
-- If it doesn't already exist, create `schemas` folder in the plugin, and add an `index.js` file there.
-- If it doesn't already exist, create `schema.graphql` in `schemas` in the plugin.
-- Import the GraphQL file into `index.js` and default export it in an array:
+If it doesn't already exist, create schemas folder in the plugin and add an index.js file there. Then check to see if there is a schema.graphql file in your schemas directory within the plugin. If there isn't, create that file now. 
+Next import the GraphQL file into `index.js` and default export it in an array:
 
 ```js
 import importAsString from "@reactioncommerce/api-utils/importAsString.js";
@@ -34,13 +34,15 @@ export default [schema];
 
 > NOTE: For large plugins, you can split to multiple `.graphql` files and export a multi-item array.
 
-- In the `.graphql` file, add your query within `extend type Query { }`. Add an `extend type Query` section near the top if the file doesn't have it yet.
-- If your query returns multiple documents, it should return a Relay-compatible Connection and accept standard connection arguments. This is true of any `fields` on any types you create as well.
+In the `.graphql` file, add your query within `extend type Query { }`. Add an `extend type Query` section near the top if the file doesn't have it yet.
+If your query returns multiple documents, it should return a Relay-compatible Connection and accept standard connection arguments. This is true of any `fields` on any types you create as well.
 
    Example: `groups(after: ConnectionCursor, before: ConnectionCursor, first: ConnectionLimitInt, last: ConnectionLimitInt, sortOrder: SortOrder = asc, sortBy: GroupSortByField = createdAt): GroupConnection`
 
-- Document your query, the new types, and all fields in those types using string literals. <!-- TODO: See [Documenting a GraphQL Schema](../guides/developers-guide/core/developing-graphql.md#documenting-a-graphql-schema) -->.
-- If not already done, register your schemas in the plugin's `index.js` file:
+Next, document your query, the new types, and all fields in those types using string literals. <!-- TODO: See 
+[Documenting a GraphQL Schema](../guides/developers-guide/core/developing-graphql.md#documenting-a-graphql-schema) -->.
+
+If not already done, register your schemas in the plugin's `index.js` file:
 
 ```js
 import schemas from "./schemas";
