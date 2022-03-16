@@ -1,27 +1,42 @@
 ## At a glance
 
-You're working on a new implementation for Leader of the Pack, an outdoor equipment retailer that we just took 
-through [building an API plugin](https://mailchimp.com/developer/open-commerce/guides/build-api-plugin/). Let's say that you don't ship Kayaks to every location because of the logistical challenges of shipping something that large. So you need to add a query that will show you if a particular product can be shipped to a particular zip code. Once you have that data in the system you need to have a way to make it available to the client. This is usually done by creating a GraphQL query. In this guide, we’ll walk you through the steps you need to create a query in GraphQL and have it recognized by the system.
+Queries are a way to allow clients to ask a question of the system. Queries can be complex similar to a database 
+query, or they can be simple like asking the system a simple yes or no question. This is opposed to mutations which 
+are ways via GraphQL to change data. Queries never change data, just return it.
+
+We're working on a new implementation for Leader of the Pack, the outdoor equipment retailer that we just built an API plugin for. The store stocks kayaks, but can't ship them to every location because of the logistical challenges of shipping something that large. This leads to annoyed customers who get excited about buying the kayaks of their dreams but then find that we can't get it to them. We need a way to show if a particular product can be shipped to a particular ZIP code. This is usually accomplished by creating a GraphQL query.
+
+In this guide, we'll walk you through the process of creating a GraphQL query `canShipStandardGround` that will 
+query by `productId` and `postalCode` whether a product can be shipped to a particular address.
 
 ## What you need
 
-You should already have an understanding of what fields/data you wish to share with the client and what GraphQL type each field is. Consult the [GraphQL Reference](https://graphql.org/learn/schema/) for more info on GraphQL types.
+You should have already created a plugin from the [example plugin template](https://github.com/reactioncommerce/api-plugin-example) and that plugin should be installed into your local development environment.
+You can also look at the [Leader of the Pack example plugin](https://github.com/reactioncommerce/leader-of-the-pack-example) which contains the finished files for this and other guides.
 
-## Identify which plugin owns the query
+You should already have an understanding of what fields/data you wish to share with the client and what GraphQL type 
+each field is. Consult the [GraphQL Reference](https://graphql.org/learn/schema/) for more info on GraphQL types. 
+For our example we will query using `productId` and `postalCode` which are both strings, and return a simple true or 
+false, indicating if we can ship this product via a standard ground method.
 
-The complete Open Commerce GraphQL API is created by stitching together domain-specific APIs from all the API plugins. So when adding a new query, the first step is to decide which plugin should own it. This is usually obvious, but not always. You should think about whether any other plugins or services will need to call your query.
-Typically, if you are adding data your new query will exist in your custom plugin.
 
 ## Name the query
 
 When choosing a name for the query, there are a few rules to follow:
 - In keeping with general GraphQL best practices, do not use verbs such as "list", "get", or "find" at the beginning of your query name. For example, use "cart" instead of "getCart" and "carts" instead of "listCarts".
-- Prefix with adjectives as necessary to fully describe what the query returns. For example, "anonymousCart" and "accountCart" queries.
-- If there are similar queries that take slightly different parameters, add a suffix to clarify. In most cases, we begin the suffix with "By". For example, "accountCartById" and "accountCartByAccountId".
+- Add prefixes with adjectives as necessary to fully describe what the query returns. For example, use "anonymousCart" or "accountCart" to name your queries.
+- If there are similar queries that take slightly different parameters, add a suffix to clarify. In most cases, we 
+  begin the suffix with "By". For example, "accountCartById" and "accountCartByAccountId". 
+
+For our example we will use `canShipStandardGround`.
 
 ## Define the query in the schema
 
-If it doesn't already exist, create schemas folder in the plugin and add an index.js file there. Then check to see if there is a schema.graphql file in your schemas directory within the plugin. If there isn't, create that file now. 
+If it doesn't already exist, create a `schemas` folder in the plugin and add an index.js file there. Then check to see 
+if there is a schema.graphql file in your schemas directory within the plugin. If there isn't, create that file now. 
+
+> Note: You must have `@reactioncommerce/api-utils` installed as a dependency
+
 Next import the GraphQL file into `index.js` and default export it in an array:
 
 ```js
@@ -42,6 +57,37 @@ If your query returns multiple documents, it should return a Relay-compatible Co
 Next, document your query, the new types, and all fields in those types using string literals. <!-- TODO: See 
 [Documenting a GraphQL Schema](../guides/developers-guide/core/developing-graphql.md#documenting-a-graphql-schema) -->.
 
+Here is what our example query for LOTP looks like:
+
+```graphql
+
+input CanShipStandardGroundInput {
+  "The product we want to ship"
+  productId: String!
+    
+  "The postal code of the address we want to ship to"
+  postalCode: String!
+}
+
+type CanShipStandardGroupPayload {
+  "Can ship standard ground"
+  canShipStandardGround: Boolean!
+}
+
+extend type Query {
+  "Can ship standard ground"
+  canShipStandardGround(
+    input: CanShipStandardGroundInput
+  ): Boolean!
+}
+```
+
+Notice that we created an `input` type since our query contains multiple fields, but we just return a simple scalar 
+value so there is no need to declare another type. All the fields are required so they are suffixed by the ! 
+character. Also notice that we document each field with a short description of what is in the field, but we don't need to repeat it's type.
+
+Next we need to register the schema within the plugin.
+
 If not already done, register your schemas in the plugin's `index.js` file:
 
 ```js
@@ -57,23 +103,23 @@ export default async function register(app) {
 }
 ```
 
+> NOTE: Be careful to make it `graphQL` and not `graphQl` as this will be a difficult bug to find
+
 ## Create the plugin query file
 
 - If it doesn't already exist, create `queries` folder in the plugin, and add an `index.js` file there.
-- In `queries`, create a file for the query, e.g. `isAvailableToShip.js` for the `isAvailableToShip` query. The file should look something like this:
+- In `queries`, create a file for the query, e.g. `canShipStandardGround.js` for the `canShipStandardGround` query. The file should look something like this:
 
 ```js
-import Logger from "@reactioncommerce/logger";
-
 /**
- * @method isAvailableToShip
- * @summary TODO
+ * @method canShipStandardGround
+ * @summary Query the shipping service and return if we can ship a product via standard ground to the zipcode
  * @param {Object} context - an object containing the per-request state
- * @return {Promise<Object>} TODO
+ * @return {Promise<Boolean>} - If we can ship this product standard ground to this zipcode
  */
-export default async function isAvailableToShip(context) {
-  Logger.info("isAvailableToShip query is not yet implemented");
-  return null;
+export default async function canShipStandardGround(context) {
+    // Put your logic here. For this example we just always return false
+    return false;
 }
 ```
 
@@ -82,10 +128,10 @@ export default async function isAvailableToShip(context) {
 In `queries/index.js` in the plugin, import your query and add it to the default export object. Example:
 
 ```js
-import isAvailableToShip from "./isAvailableToShip.js"
+import canShipStandardGround from "./canShipStandardGround.js";
 
 export default {
-  isAvailableToShip
+    canShipStandardGround
 };
 ```
 
@@ -102,25 +148,25 @@ export default async function register(app) {
 }
 ```
 
-Your plugin query function is now available in the GraphQL context as `context.queries.isAvailableToShip`.
+Your plugin query function is now available in the GraphQL context as `context.queries.canShipStandardGround`.
 
 > NOTE: The queries objects from all plugins are merged, so be sure that another plugin does not have a query with the same name. The last one registered with that name will win, and plugins are generally registered in alphabetical order by plugin name. Tip: You can use this to your advantage if you want to override the query function of a core plugin without modifying core code.
 
 ## Add a test file for your query
 
-If your query is in a file named `isAvailableToShip.js`, your Jest tests should be in a file named `isAvailableToShip.test.js` in the same folder. Initially you can copy and paste the following test:
+If your query is in a file named `canShipStandardGround.js`, your Jest tests should be in a file named 
+`canShipStandardGround.test.js` in 
+the same folder. Initially you can copy and paste the following test:
 
 ```js
 import mockContext from "/imports/test-utils/helpers/mockContext";
-import isAvailableToShip from "./isAvailableToShip.js";
+import canShipStandardGround from "./canShipStandardGround.js";
 
 test("expect to return a Promise that resolves to null", async () => {
-  const result = await isAvailableToShip(mockContext);
-  expect(result).toEqual(null);
+  const result = await canShipStandardGround(mockContext);
+  expect(result).toEqual(false);
 });
 ```
-
-This of course should be updated with tests that are appropriate for whatever your query does.
 
 ## Create the GraphQL query resolver file
 
@@ -128,22 +174,19 @@ This of course should be updated with tests that are appropriate for whatever yo
 
 - If it doesn't already exist, create `resolvers` folder in the plugin, and add an `index.js` file there.
 - If it doesn't already exist, create `resolvers/Query` folder in the plugin, and add an `index.js` file there. "Query" must be capitalized.
-- In `resolvers/Query`, create a file for the query resolver, e.g. `isAvailableToShip.js` for the `isAvailableToShip` query. The file should look something like this initially:
+- In `resolvers/Query`, create a file for the query resolver, e.g. `canShipStandardGround.js` for the `canShipStandardGround` query. The file should look something like this initially:
 
 ```js
 /**
- * @name "Query.isAvailableToShip"
- * @method
- * @memberof MyPlugin/GraphQL
- * @summary resolver for the isAvailableToShip GraphQL query
+ * @summary resolver for the canShipStandardGround GraphQL query
  * @param {Object} parentResult - unused
  * @param {Object} args - an object of all arguments that were sent by the client
  * @param {Object} context - an object containing the per-request state
- * @return {Promise<Object>} TODO
+ * @return {Promise<Object>} Results of the canShipStandardGround query
  */
-export default async function isAvailableToShip(parentResult, args, context) {
-  // TODO: decode incoming IDs here
-  return context.queries.isAvailableToShip(context);
+export default async function canShipStandardGround(parentResult, args, context) {
+    // TODO: decode incoming IDs here
+    return context.queries.canShipStandardGround(context);
 }
 ```
 
@@ -157,10 +200,10 @@ Make adjustments to the resolver function so that it reads and passes along the 
 In `resolvers/Query/index.js` in the plugin, import your query resolver and add it to the default export object. Example:
 
 ```js
-import isAvailableToShip from "./isAvailableToShip.js"
+import canShipStandardGround from "./canShipStandardGround.js";
 
 export default {
-  isAvailableToShip
+    canShipStandardGround
 };
 ```
 
@@ -207,17 +250,17 @@ Calling your query with GraphQL should now work.
 
 ## Add a test file for your query resolver
 
-If your query resolver is in a file named `isAvailableToShip.js`, your Jest tests should be in a file named `isAvailableToShip.test.js` in the same folder. Initially you can copy and paste the following test:
+If your query resolver is in a file named `canShipStandardGround.js`, your Jest tests should be in a file named `canShipStandardGround.test.js` in the same folder. Initially you can copy and paste the following test:
 
 ```js
-import isAvailableToShip from "./isAvailableToShip.js";
+import canShipStandardGround from "./canShipStandardGround.js";
 
-test("calls queries.isAvailableToShip and returns the result", async () => {
-  const mockResponse = "MOCK_RESPONSE";
-  const mockQuery = jest.fn().mockName("queries.isAvailableToShip").mockReturnValueOnce(Promise.resolve(mockResponse));
+test("calls queries.canShipStandardGround and returns the result", async () => {
+  const mockResponse = false;
+  const mockQuery = jest.fn().mockName("queries.canShipStandardGround").mockReturnValueOnce(Promise.resolve(mockResponse));
 
-  const result = await isAvailableToShip(null, { /* TODO */ }, {
-    queries: { isAvailableToShip: mockQuery },
+  const result = await canShipStandardGround(null, { /* TODO */ }, {
+    queries: { canShipStandardGround: mockQuery },
     userId: "123"
   });
 
@@ -231,10 +274,6 @@ This of course should be updated with tests that are appropriate for whatever yo
 ## Finish implementing your query
 
 Adjust the query function and the query resolver function until they work as expected, with tests that prove it. This will likely involve adding additional arguments, ID transformations, permission checks, and MongoDB queries.
-
-## Update the JSDoc comments
-
-Write/update jsdoc comments for the plugin query function, the query resolver, and any util functions. The resolver function must have `@memberof <PluginName>/GraphQL` in the jsdoc, and the `@name` must be the full GraphQL schema path in quotation marks, e.g., "Query.isAvailableToShip". (The quotation marks are necessary for the output API documentation to be correct due to the periods.)
 
 ## More resources
 
