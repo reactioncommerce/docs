@@ -52,8 +52,11 @@ From here, we’ll change directories to `reaction-development-platform/reaction
 }
 ```
     
-    
-To link our plugin to the Open Commerce API Docker container, we’ll run `bin/package-link api-plugin-products-volume`. If you need to link a plugin that is not in the `api-plugins` folder, add the path to your plugin as the second argument of `bin/package-link`.
+> **Note**: reaction v4.0.0 requires to use ```@<org-name>``` with plugin name for `package-link` and `package-unlink`. 
+
+> **Note**: reaction v4.0.0 requires to create directory in the `reaction/node_modules` with name of your organization `@leaderpack`.  
+	
+To link our plugin to the Open Commerce API Docker container, we’ll run `bin/package-link @leaderpack/api-plugin-products-volume`. If you need to link a plugin that is not in the `api-plugins` folder, add the path to your plugin as the second argument of `bin/package-link`.
 
 The API will restart automatically with the new plugin loaded and ready to use. When you make edits to a plugin in development mode, the Open Commerce API service will automatically refresh to reflect those edits. 
 
