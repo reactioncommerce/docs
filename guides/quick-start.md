@@ -30,7 +30,7 @@ In addition you need to have your system setup for [SSH authentication with GitH
 - Change directory into your newly created server directory and run `npm install`
 - Once this is complete run `reaction develop`. This will start the Open Commerce server in development mode.
 - Congrats you have installed the Mailchimp Open Commerce API server. You can now proceed to install the Storefront 
-  and Admin applications. You can view the graphQL playground locally `http://localhost:3000/graphql`
+  and Admin applications. You can view the GraphQL playground locally `http://localhost:3000/graphql`
 
 ## Install the Storefront
 
