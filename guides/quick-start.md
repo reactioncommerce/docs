@@ -20,7 +20,7 @@ In addition you need to have your system setup for [SSH authentication with GitH
 
 ## Install the CLI
 
-`npm install -g @reactioncommerce/reaction-cli`
+`npm install -g reaction-cli`
 
 ## Install the API Server
 
