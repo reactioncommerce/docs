@@ -22,25 +22,30 @@ In addition you need to have your system setup for [SSH authentication with GitH
 
 `npm install -g reaction-cli`
 
-## Install the API Server
+## Create your the API Server project
 
-- Create a directory for your entire project using `mkdir myproject` and then `cd` into it
-- Create an API server by running `reaction create-project api <myapiserver>`, _you can substitute any directory 
-  name for `<myapiserver>`_
+This will create a project that is your version of the project that you can commit to git and build a Docker image 
+from. By default it is all the stock Mailchimp Open Commerce plugins plus the one example one (which you can remove).
+
+- _(optional)_ Create a directory for your entire project using `mkdir myproject` and then `cd` into it
+- Create the project server by running `reaction create-project api <myapiserver>`, (_you can substitute any directory 
+  name for `<myapiserver>`_)
 - Change directory into your newly created server directory and run `npm install`
-- Once this is complete run `reaction develop`. This will start the Open Commerce server in development mode.
-- Congrats you have installed the Mailchimp Open Commerce API server. You can now proceed to install the Storefront 
-  and Admin applications. You can view the GraphQL playground locally `http://localhost:3000/graphql`
+- Once this is complete run `reaction develop`. This will start the Open Commerce server in development mode. The 
+  server will automatically restart on every code change. When you are ready to stop press Ctrl+C.
+- **Congratulations** you have created your Mailchimp Open Commerce API server project. You can now 
+  optionally proceed to install the Storefront and Admin applications. You can view the GraphQL playground locally 
+  `http://localhost:3000/graphql`
 
 ## Install the Storefront
 
 - Open a new terminal window
 - Change to the root of the project directory you created above
 - Execute `reaction create-project storefront <mystorefront>` (like above you can name this directory whatever you like)
-- Change directory into the newly created storefront by doing `cd <mystorefront>` (using whatever name you have it 
-  above)
+- Change directory into the newly created storefront by doing `cd <mystorefront>`
 - Now run `yarn install` to install the dependencies
-- Then run `reaction develoop` to start the storefront in development mode
+- Then run `reaction develoop` to start the storefront in development mode. The app automatically will restart whenever 
+  you make changes.
 - Congratulations, you have installed the default storefront for Mailchimp Open Commerce. You can access the 
   storefront from http://localhost:4000
 
@@ -51,8 +56,9 @@ In addition you need to have your system setup for [SSH authentication with GitH
 - Change into your newly created directory by doing `cd <myadmin>`
 - Now run `npm install`
 - Then run `reaction develop` which will start the Admin in development mode (Note: The admin can take a little 
-  while to start up the first time because it's in Meteor)
-- Once the server has started you can access it by going to `http://localhost:4080`
+  while to start up the first time)
+- Once the server has started you can access it by going to `http://localhost:4080`. The instructions below cover 
+  how to create your first user and first shop.
 
 ## Access the dashboard, playground, and storefront
 
