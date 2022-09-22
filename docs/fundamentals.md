@@ -8,7 +8,8 @@ Like the code, the documentation is also [open source](https://github.com/reacti
 
 ### Using Open Commerce
 
-Whether you’re a business owner running a shop or a developer setting up a custom implementation, it’s easy to get a shop up and running with the Open Commerce development platform and build from there.
+Whether you’re a business owner running a shop or a developer setting up a custom implementation, it’s easy to get a 
+shop up and running with the Open Commerce CLI and build from there.
 
 Every shop is built around a catalog of products. You can [set up your products](/open-commerce/docs/creating-organizing-products/) in the admin dashboard and then [organize them with tags](/open-commerce/docs/tags-navigation/) to help shoppers navigate your catalog. Once shoppers have found what they want and make a purchase, you’ll [fulfill their orders](/open-commerce/docs/fulfilling-orders/) by accepting payments and delivering their items.
 

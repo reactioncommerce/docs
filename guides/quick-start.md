@@ -1,8 +1,9 @@
 ## At a glance
 
-There are two main routes to getting started with Mailchimp Open Commerce: installing the platform on your local computer or on a server. This guide will focus on the former, which will allow you to explore the main features of Open Commerce.
+There are two main routes to getting started with Mailchimp Open Commerce: installing the system on your local computer 
+or on a server. This guide will focus on the former, which will allow you to explore the main features of Open Commerce.
 
-In this guide, we’ll set up a full local instance of the Open Commerce platform, including core plugins provided by Mailchimp. We’ll walk through cloning and starting the Open Commerce development platform, registering an account, and creating your first shop.
+In this guide, we’ll set up a full local instance of the Open Commerce platform, including core plugins provided by Mailchimp. We’ll walk you through installing the CLI, creating your first server project and local admin and storefront instances, registering an account, and creating your first shop.
 
 ## What you’ll need
 
@@ -16,16 +17,17 @@ In this guide, we’ll set up a full local instance of the Open Commerce platfor
 
 - Windows users: [WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install-win10) and [Docker for WSL](https://docs.docker.com/docker-for-windows/wsl/)
 
-In addition you need to have your system setup for [SSH authentication with GitHub](`https://docs.github.com/en/authentication/connecting-to-github-with-ssh`)
+In addition, you need to have your system setup for [SSH authentication with GitHub](`https://docs.github.
+com/en/authentication/connecting-to-github-with-ssh`)
 
 ## Install the CLI
 
 `npm install -g reaction-cli`
 
-## Create your the API Server project
+## Create your first API Server project
 
 This will create a project that is your version of the project that you can commit to git and build a Docker image 
-from. By default it is all the stock Mailchimp Open Commerce plugins plus the one example one (which you can remove).
+from. By default, it is all the stock Mailchimp Open Commerce plugins plus the one example one (which you can remove).
 
 - _(optional)_ Create a directory for your entire project using `mkdir myproject` and then `cd` into it
 - Create the project server by running `reaction create-project api <myapiserver>`, (_you can substitute any directory 
