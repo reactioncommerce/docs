@@ -18,8 +18,6 @@ In this guide, we’ll create a new plugin from the template provided by Open Co
 
   * An [Open Commerce installation](/developer/open-commerce/guides/quick-start/)
 
-  * The [Open Commerce CLI](https://github.com/reactioncommerce/cli) installed
-
   * [Docker](https://www.docker.com/)
 
   * [npm](https://www.npmjs.com/get-npm)
@@ -28,13 +26,9 @@ In this guide, we’ll create a new plugin from the template provided by Open Co
 
 ## Create your custom plugin
 
-Navigate to where you have created your api project (called `myapiserver` in the getting started doc). From there 
-you can execute `reaction create-plugin api <mypluginname>` where "mypluginname" is the name of the plugin you want 
-to create. This will create new plugin from the plugin template and place it in the `custom-packages` directory. The local instance of the plugin has automatically been added to `plugins.json` so that you can work on it locally
+We’ll be creating a plugin that extends our products schema to include a volume attribute for our backpacks. To build our custom plugin, we’ll first navigate to where we created our API project (called `myapiserver` in the [Quick Start Guide](/developer/open-commerce/guides/quick-start/)). From there we'll execute `reaction create-plugin api <mypluginname>` where `mypluginname` is the name of the plugin we want to create. This creates a new plugin from the plugin template and places it in the `custom-packages` directory. The local instance of the plugin is automatically added to `plugins.json` so that we can work on it locally.
 
-Next, we’ll edit the `package.json` and `src/index.js` files to replace the template defaults with information about 
-our volume attribute plugin; the information in these files will be used when installing, registering and publishing 
-the plugin. We’ll name our plugin Product Volume, with an npm name of `@leaderpack/api-plugin-products-volume`.
+Next, we’ll edit the `package.json` and `src/index.js` files to replace the template defaults with information about our volume attribute plugin; the information in these files will be used when linking, installing, and registering the plugin. We’ll name our plugin Product Volume, with an npm name of `@leaderpack/api-plugin-products-volume`.
 
 > **Note**: To keep things organized, it’s a good idea to name plugins after their “parent” plugins. In our case, we’re customizing aspects of `api-plugin-products`, so we named our plugin `api-plugin-products-volume`.
 
