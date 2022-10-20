@@ -18,46 +18,25 @@ In this guide, we’ll create a new plugin from the template provided by Open Co
 
   * An [Open Commerce installation](/developer/open-commerce/guides/quick-start/)
 
+  * The [Open Commerce CLI](https://github.com/reactioncommerce/cli) installed
+
   * [Docker](https://www.docker.com/)
 
   * [npm](https://www.npmjs.com/get-npm)
 
   * A [GitHub](https://github.com/) account
 
-## Clone the example plugin template
+## Create your custom plugin
 
-We’ll be creating a plugin that extends our products schema to include a `volume` attribute for our backpacks. To build our custom plugin, we’ll first create our own repo from the [Example Plugin template on GitHub](https://github.com/reactioncommerce/api-plugin-example/) and then clone the new plugin to our working directory. (Cloning to `reaction-development-platform/api-plugins` is recommended but not required.)
+Navigate to where you have created your api project (called `myapiserver` in the getting started doc). From there 
+you can execute `reaction create-plugin api <mypluginname>` where "mypluginname" is the name of the plugin you want 
+to create. This will create new plugin from the plugin template and place it in the `custom-packages` directory. The local instance of the plugin has automatically been added to `plugins.json` so that you can work on it locally
 
-Next, we’ll edit the `package.json` and `src/index.js` files to replace the template defaults with information about our volume attribute plugin; the information in these files will be used when linking, installing, and registering the plugin. We’ll name our plugin Product Volume, with an npm name of `@leaderpack/api-plugin-products-volume`.
+Next, we’ll edit the `package.json` and `src/index.js` files to replace the template defaults with information about 
+our volume attribute plugin; the information in these files will be used when installing, registering and publishing 
+the plugin. We’ll name our plugin Product Volume, with an npm name of `@leaderpack/api-plugin-products-volume`.
 
 > **Note**: To keep things organized, it’s a good idea to name plugins after their “parent” plugins. In our case, we’re customizing aspects of `api-plugin-products`, so we named our plugin `api-plugin-products-volume`.
-
-## Link the plugin
-
-Next we have to load our new plugin by linking it inside the Open Commerce Docker container. While you can do this in production mode, it’s better to do it in development mode, which allows you to add and remove plugins on the fly. 
-
-To enable development mode, navigate to your `reaction-development-platform` directory and run `make dev-reaction`.
-
-> **Note**: Starting development mode takes a couple minutes—much longer than production mode. Development mode builds an editable Docker image on demand, while production mode uses an uneditable, pre-built image. 
-
-From here, we’ll change directories to `reaction-development-platform/reaction` and add our plugin to the list in `plugins.json`: 
-
-### plugins.json
-
-```json
-{
-  ...
-  "productsVolume": "@leaderpack/api-plugin-products-volume",
-  ...
-}
-```
-    
-    
-To link our plugin to the Open Commerce API Docker container, we’ll run `bin/package-link api-plugin-products-volume`. If you need to link a plugin that is not in the `api-plugins` folder, add the path to your plugin as the second argument of `bin/package-link`.
-
-The API will restart automatically with the new plugin loaded and ready to use. When you make edits to a plugin in development mode, the Open Commerce API service will automatically refresh to reflect those edits. 
-
-You can verify that the plugin has loaded in the logs by running `docker-compose logs -f api`, or in the admin dashboard under **Settings > System information**.
 
 ## Add functions
 
@@ -116,7 +95,8 @@ export default async function register(app) {
 
 ## Extend the GraphQL API
 
-Our custom plugin is linked, registered, and has a startup function, so now it’s time to extend the GraphQL API. We’ll do that by creating a `schema.graphql` file in the plugin’s `src/` directory and adding type extensions:
+Our custom plugin is created, registered, and has a startup function, so now it’s time to extend the GraphQL API. 
+We’ll do that by creating a `schema.graphql` file in the plugin’s `src/` directory and adding type extensions:
 
 ```graphql title="schema.graphql"
 extend type ProductVariant {
