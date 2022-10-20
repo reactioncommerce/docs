@@ -35,7 +35,14 @@ Each of the items there is critical for us for to evaluate the code in your PR. 
 
 ## Pass all tests
 
-We will never merge a PR that doesn't pass build checks and tests. You should be able to run most tests locally by just running `npm run test`. Typically we won't even begin the review process if tests do not pass. 
+We will never merge a PR that doesn't pass build checks and tests. You should be able to run most tests locally by just running `npm run test`. Typically we won't even begin the review process if tests do not pass.
+
+## Add a Changeset
+
+Reaction uses [changesets](https://github.com/changesets/changesets) to more intentionally manage versioning. 
+Changesets allow you to specify which plugins you want bump and how. Simply run `npx changeset` and follow the 
+onscreen instructions or read [the documentation](https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md). 
+Changesets don't need to be created if the changes don't require bumping the package version (such as correcting a typo in a README)
 
 ## Review Process Begins
 
