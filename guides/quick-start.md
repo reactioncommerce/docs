@@ -1,9 +1,8 @@
 ## At a glance
 
-There are two main routes to getting started with Mailchimp Open Commerce: installing the system on your local computer 
-or on a server. This guide will focus on the former, which will allow you to explore the main features of Open Commerce.
+There are two main routes to getting started with Mailchimp Open Commerce: installing the platform on your local computer or on a server. This guide will focus on the former, which will allow you to explore the main features of Open Commerce.
 
-In this guide, we’ll set up a full local instance of the Open Commerce platform, including core plugins provided by Mailchimp. We’ll walk you through installing the CLI, creating your first server project and local admin and storefront instances, registering an account, and creating your first shop.
+In this guide, we’ll set up a full local instance of the Open Commerce platform, including core plugins provided by Mailchimp. We’ll walk through installing the command line interface, creating the various projects, registering an account, and creating your first shop.
 
 ## What you’ll need
 
@@ -20,47 +19,64 @@ In this guide, we’ll set up a full local instance of the Open Commerce platfor
 In addition, you need to have your system setup for [SSH authentication with GitHub](`https://docs.github.
 com/en/authentication/connecting-to-github-with-ssh`)
 
-## Install the CLI
+## Windows install
+
+If you're using Windows 10/11, you'll need to take a few extra steps before you can continue with the Open Commerce installation process. (If you're not using Windows, you can skip to the next section.)
+
+First, you'll need to Install [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10). Note that the 
+automatic Windows Insider install comes with the Ubuntu distro. 
+If you manually install WSL2, you can choose any Linux distro but this guide is written for Ubuntu.
+
+Next, install the [Docker Desktop WSL2 backend.](https://docs.docker.com/desktop/windows/wsl/) Once that's completed, open Docker and navigate to Settings>Resources>WSL Integration. Verify that everything on that page is activated.
+
+Under Experimental Features, enable Use Docker Compose v2 candidate.
+
+Finally, start Ubuntu. You're now ready to install the CLI and the OC projects.
+
+## Install the command line interface
 
 `npm install -g reaction-cli`
 
-## Create your first API Server project
+## Install the API server
 
-This will create a project that is your version of the project that you can commit to git and build a Docker image 
-from. By default, it is all the stock Mailchimp Open Commerce plugins plus the one example one (which you can remove).
+Your next task is to install the API server.
 
-- _(optional)_ Create a directory for your entire project using `mkdir myproject` and then `cd` into it
-- Create the project server by running `reaction create-project api <myapiserver>`, (_you can substitute any directory 
-  name for `<myapiserver>`_)
-- Change directory into your newly created server directory and run `npm install`
-- Once this is complete run `reaction develop`. This will start the Open Commerce server in development mode. The 
-  server will automatically restart on every code change. When you are ready to stop press Ctrl+C.
-- **Congratulations** you have created your Mailchimp Open Commerce API server project. You can now 
-  optionally proceed to install the Storefront and Admin applications. You can view the GraphQL playground locally 
-  `http://localhost:3000/graphql`
+Create a directory for your entire project using `mkdir myproject`, and then `cd` into it.
+
+Create an API server by running `reaction create-project api <myapiserver>`. You can substitute any directory name for `<myapiserver>`.
+
+Change directory into your newly created server directory and run `npm install`.
+
+Once this is complete, run `reaction develop`. This will start the Open Commerce server in development mode.
+
+Congrats! You've installed the Mailchimp Open Commerce API server. Next, you can install the storefront and admin applications. You can view the graphQL playground locally at `http://localhost:3000/graphql`.
 
 ## Install the Storefront
 
-- Open a new terminal window
-- Change to the root of the project directory you created above
-- Execute `reaction create-project storefront <mystorefront>` (like above you can name this directory whatever you like)
-- Change directory into the newly created storefront by doing `cd <mystorefront>`
-- Now run `yarn install` to install the dependencies
-- Then run `reaction develoop` to start the storefront in development mode. The app automatically will restart whenever 
-  you make changes.
-- Congratulations, you have installed the default storefront for Mailchimp Open Commerce. You can access the 
-  storefront from http://localhost:4000
+Next on your list is to install the storefront app.
 
-## Install the Reaction Admin
-- Open a new terminal window
-- Change to the root of the project directory you created above
-- Execute `reaction create-project admin <myadmin>` (like above you can name this directory whatever you like)
-- Change into your newly created directory by doing `cd <myadmin>`
-- Now run `npm install`
-- Then run `reaction develop` which will start the Admin in development mode (Note: The admin can take a little 
-  while to start up the first time)
-- Once the server has started you can access it by going to `http://localhost:4080`. The instructions below cover 
-  how to create your first user and first shop.
+Open a new terminal window and change to the root of the project directory you created earlier.
+
+Execute `reaction create-project storefront <mystorefront>`. As before, you can name this directory to suit your needs. We'll use `<mystorefront>` for this example.
+
+Change directory into the newly created storefront with `cd <mystorefront>` and run `yarn install` to install the dependencies.
+
+Run `reaction develop` to start the storefront in development mode.
+
+Congratulations! You've installed the default storefront for Mailchimp Open Commerce. You can access the storefront from `http://localhost:4000`.
+
+## Install the admin app
+Next, you'll install the admin app.
+
+Open a new terminal window and change to the root of the project directory you created previously.
+
+Execute `reaction create-project admin <myadmin>`. As before, you can name this directory however best fits your needs.
+
+Change into your newly created directory and then run `npm install`.
+
+Finally, run `reaction develop` which will start the admin app in development mode. Note that the admin app can take a little time to start up the first time because it's in Meteor.
+
+Once the server has started, you can access it at `http://localhost:4080`.
 
 ## Access the dashboard, playground, and storefront
 
