@@ -22,12 +22,16 @@ Shipping options can be restricted based on nearly any aspect of a cart, includi
 
 * `attributes`
 * `weight`, `height`, `width`, `length`
-* `price`
+* `price.amount`
 * `productVendor`
 * `quantity`
-* `subtotal`
+* `subtotal.amount`
 * `tags`
 * `title`, `variantTitle`
+* `description`
+* `attributeLabel`
+* `isTaxable`
+* `originCountry`
 * `postal` (ZIP or postal code), `region`, `country`
 
 Based on these criteria, the restriction can be set to either `allow` or `deny`. Shipping restrictions can be applied universally to all shipping methods or only to select methods.
